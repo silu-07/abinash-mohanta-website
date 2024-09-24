@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,12 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent {
+
   toggleMenu() {
     let navMenu = document.getElementById("mobile-menu-js");
     if (navMenu?.style.height == "0px") {
-      document.getElementById("mobile-menu-js")?.setAttribute("style", "height:134px");
+      navMenu?.setAttribute("style", "height:134px");
     } else {
-      document.getElementById("mobile-menu-js")?.setAttribute("style", "height:0px");;
+      navMenu?.setAttribute("style", "height:0px");;
     }
   }
+  
 }
