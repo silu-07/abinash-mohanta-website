@@ -31,7 +31,7 @@ body {
 .wrapper {
   width: 100%;
   height: auto;
-  padding-top: 20px;
+  // padding-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -39,7 +39,7 @@ body {
 
   .side-content {
     width: 250px;
-    height: 600px;
+    // height: 600px;
     position: fixed;
     top: 0;
     left: 0;
@@ -56,10 +56,11 @@ body {
 
     .logo {
       margin-top: 20px;
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
       font-weight: normal;
       font-family: Impact;
       font-size: 40px;
+      z-index: 999 !important;
     }
 
     .nav-menu {
@@ -85,13 +86,13 @@ body {
 
     .categories {
       margin-top: 5px;
-      padding-left: 2px;
+      // padding-left: 2px;
 
       .category {
         width: calc(100% - 15px);
         margin-bottom: 0;
         margin-top: 15px;
-        font-size: 42px;
+        font-size: 32px;
         font-family: "Cormorant Infant", serif;
         font-weight: 600;
         cursor: pointer;
@@ -166,7 +167,7 @@ body {
     height: 0px;
     margin-right: 21px !important;
     margin-left: -19px;
-    margin-top: -8px;
+    margin-top: -24px;
     padding-top: 10px;
     text-align: right;
     background-color: white;
@@ -180,7 +181,7 @@ body {
     padding-bottom: 8px !important;
     position: relative;
     right: 0 !important;
-    font-size: 90% !important;
+    font-size: 110% !important;
     font-family: sans-serif;
     font-weight: bold;
     text-decoration: none;

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent {
+  imagePath = '../../../asset/logo.png';
 
   toggleMenu() {
     let navMenu = document.getElementById("mobile-menu-js");
