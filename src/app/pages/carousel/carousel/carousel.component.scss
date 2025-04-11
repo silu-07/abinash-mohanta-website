@@ -1,0 +1,77 @@
+.carousel {
+  margin: 0 280px; /* Add 120px padding to the left and right */
+  position: relative; /* Ensure the carousel is the positioning context */
+  height: 800px; /* Set a fixed height for the carousel */
+  overflow: hidden; /* Prevent overflow of images outside the carousel */
+  background-color: black; /* Optional: Set a fallback background color */
+}
+
+.carousel-inner {
+  border-radius: 8px; /* Optional: Add rounded corners for better visuals */
+  height: 100%; /* Ensure the inner container fills the carousel height */
+  position: relative; /* Ensure proper stacking of items */
+}
+
+.carousel-item {
+  position: absolute; /* Stack all items on top of each other */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ensure the item fills the carousel height */
+  opacity: 0; /* Start with hidden images */
+  transition: opacity 0.5s ease-in-out; /* Smooth fade-out effect */
+  z-index: 1; /* Default z-index for inactive items */
+}
+
+.carousel-item.active {
+  opacity: 1; /* Show the active image */
+  z-index: 2; /* Ensure the active item is above others */
+}
+
+.carousel-item-next,
+.carousel-item-prev {
+  opacity: 1; /* Ensure the next/previous image is visible immediately */
+  z-index: 1; /* Place it below the active image */
+}
+
+.carousel img {
+  width: 100%; /* Ensure the image fills the width of the carousel */
+  height: 100%; /* Ensure the image fills the height of the carousel */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  max-width: 100%; /* Prevent scaling beyond the container */
+  max-height: 100%; /* Prevent scaling beyond the container */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%; /* Center the buttons vertically */
+  transform: translateY(-50%); /* Adjust for perfect centering */
+  width: 40px; /* Adjust button size */
+  height: 40px; /* Adjust button size */
+  opacity: 1 !important; /* Ensure the buttons are always fully visible */
+  visibility: visible !important; /* Prevent the buttons from being hidden */
+  z-index: 10; /* Ensure buttons are above the images */
+}
+
+.carousel-control-prev {
+  left: 10px; /* Position the "Previous" button inside the image */
+}
+
+.carousel-control-next {
+  right: 10px; /* Position the "Next" button inside the image */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent background for better visibility */
+  border-radius: 50%; /* Optional: Make the icons circular */
+  padding: 10px; /* Optional: Add padding for larger clickable areas */
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    margin: 0; /* Remove margin on mobile devices */
+    height: 400px; /* Adjust height for smaller screens */
+  }
+}
