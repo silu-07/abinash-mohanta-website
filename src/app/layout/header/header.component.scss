@@ -1,0 +1,78 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  /* Set background to white */
+  color: black;
+  /* Set text color to black */
+  padding: 2rem 10rem;
+  /* Increased padding to the left and right */
+  height: 50px;
+  /* Set the height of the header */
+}
+
+.header-left {
+  flex: 1;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  color: black;
+  /* Set hamburger icon color to black */
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.header-center {
+  flex: 1;
+  text-align: center;
+}
+
+.logo {
+  max-height: 60px;
+  /* Adjust the logo size to fit the increased header height */
+}
+
+.header-right {
+  flex: 1;
+  text-align: right;
+}
+
+.icon {
+  font-size: 24px;
+  margin-left: 1rem;
+  color: #444;
+  /* Set icon color to a lighter black (dark gray) */
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  /* Smooth transition for hover effects */
+}
+
+.icon:hover {
+  color: #222;
+  /* Slightly darker gray on hover */
+  opacity: 1;
+  /* Ensure full opacity on hover */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  header {
+    padding: 0;
+    /* Remove padding for mobile devices */
+    height: 70px;
+    /* Adjust header height for mobile devices */
+  }
+
+  .logo {
+    max-height: 30px;
+    /* Smaller logo size for mobile devices */
+  }
+
+  .icon {
+    font-size: 20px;
+    /* Smaller icon size for mobile devices */
+  }
+}
