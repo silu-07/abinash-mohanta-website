@@ -23,7 +23,7 @@
   background-color: white; /* Set background color to white */
   color: black; /* Set text color to black */
   overflow: auto;
-  transition: left 0.3s ease-in-out;
+  transition: left 1.5s cubic-bezier(0.4, 0.0, 0.2, 1); /* Slower and smoother left-to-right transition */
   padding: 1rem;
   z-index: 1000;
   display: flex;
