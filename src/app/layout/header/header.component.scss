@@ -3,13 +3,9 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  /* Set background to white */
   color: black;
-  /* Set text color to black */
-  padding: 2rem 10rem;
-  /* Increased padding to the left and right */
+  margin: 0rem 6rem;
   height: 100px;
-  /* Set the height of the header */
 }
 
 .header-left {
@@ -20,7 +16,6 @@ header {
   background: none;
   border: none;
   color: black;
-  /* Set hamburger icon color to black */
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -31,8 +26,7 @@ header {
 }
 
 .logo {
-  max-height: 50px;
-  /* Adjust the logo size to fit the increased header height */
+  max-height: 35px;
 }
 
 .header-right {
@@ -44,35 +38,43 @@ header {
   font-size: 24px;
   margin-left: 1rem;
   color: #444;
-  /* Set icon color to a lighter black (dark gray) */
   cursor: pointer;
   transition: color 0.2s ease, opacity 0.2s ease;
-  /* Smooth transition for hover effects */
 }
 
 .icon:hover {
   color: #222;
-  /* Slightly darker gray on hover */
   opacity: 1;
-  /* Ensure full opacity on hover */
 }
 
-/* Media Query for Mobile Devices */
+/* Media Query for Tablet Devices */
 @media (max-width: 768px) {
   header {
-    padding: 0 10px;
-    /* Remove padding for mobile devices */
+    margin: 0rem 2rem;
     height: 70px;
-    /* Adjust header height for mobile devices */
   }
 
   .logo {
     max-height: 30px;
-    /* Smaller logo size for mobile devices */
   }
 
-  .icon {
+  .icon, .hamburger {
+    font-size: 25px;
+  }
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 400px) {
+  header {
+    margin: 0rem 1rem;
+    height: 50px;
+  }
+
+  .logo {
+    max-height: 25px;
+  }
+
+  .icon, .hamburger {
     font-size: 20px;
-    /* Smaller icon size for mobile devices */
   }
 }

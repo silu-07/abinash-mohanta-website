@@ -1,5 +1,5 @@
 .carousel {
-  margin: 0 280px; /* Add 120px padding to the left and right */
+  margin: 0.5rem 8rem; /* Add 120px padding to the left and right */
   position: relative; /* Ensure the carousel is the positioning context */
   height: 800px; /* Set a fixed height for the carousel */
   overflow: hidden; /* Prevent overflow of images outside the carousel */
@@ -7,7 +7,7 @@
 }
 
 .carousel-inner {
-  border-radius: 8px; /* Optional: Add rounded corners for better visuals */
+  // border-radius: 8px; /* Optional: Add rounded corners for better visuals */
   height: 100%; /* Ensure the inner container fills the carousel height */
   position: relative; /* Ensure proper stacking of items */
 }
@@ -69,9 +69,18 @@
   padding: 10px; /* Optional: Add padding for larger clickable areas */
 }
 
+/* Media Query for Tablet Devices */
 @media (max-width: 768px) {
   .carousel {
-    margin: 0; /* Remove margin on mobile devices */
-    height: 400px; /* Adjust height for smaller screens */
+    margin: 0; 
+    height: 10rem;
+  }
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 400px) {
+  .carousel {
+    margin: 0; 
+    height: 15rem;
   }
 }

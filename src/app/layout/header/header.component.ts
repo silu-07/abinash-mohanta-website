@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
+import { SidenavComponent } from '../sidenav/sidenav.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [SidenavComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  isSidenavOpen = false; // Track the state of the sidenav
+
   toggleSidenav() {
-    console.log('Sidenav toggled');
-    // Add logic to open/close sidenav
+    this.isSidenavOpen = !this.isSidenavOpen; // Toggle the sidenav state
   }
 }

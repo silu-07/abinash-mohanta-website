@@ -1,0 +1,16 @@
+<div class="sidenav-overlay" [class.open]="isOpen" (click)="onOverlayClick()">
+  <div class="sidenav" [class.open]="isOpen" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeSidenav()">&#10005;</button>
+    <ul>
+      <li>
+        <a routerLink="/home" routerLinkActive="active-link" (click)="onLinkClick()">Home</a>
+      </li>
+      <li>
+        <a routerLink="/about" routerLinkActive="active-link" (click)="onLinkClick()">About</a>
+      </li>
+      <li>
+        <a routerLink="/contact" routerLinkActive="active-link" (click)="onLinkClick()">Contact</a>
+      </li>
+    </ul>
+  </div>
+</div>
