@@ -2,12 +2,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: #faf9fd;
   color: black;
   margin: 0rem 3rem;
-  /* Add horizontal space */
   height: 70px;
-  /* Fixed height for the header */
 }
 
 .header-left {
@@ -70,7 +68,7 @@ header {
 }
 
 .logo {
-  max-height: 45px;
+  max-height: 40px;
 }
 
 .header-right {
