@@ -137,9 +137,8 @@
 // Small screens (mobile/tablet)
 @media (max-width: 450px) {
   .portfolio-section {
-    padding: 0.5rem;
+    padding: 0.8rem;
   }
-
   .portfolio-row-wrapper {
     max-width: 100vw;
     overflow-x: visible;
@@ -212,7 +211,7 @@
 
 @media (max-width: 600px) {
   .portfolio-heading {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
   .portfolio-more-btn {
     font-size: 0.8rem;
