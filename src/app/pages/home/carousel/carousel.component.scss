@@ -97,10 +97,15 @@ background: transparent !important;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #faf9fd !important ; /* White background */
-  color: black; /* Black font color */
+  background: #fff;
+  color: #7b5be6;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
   transition: opacity 0s linear, filter 0s linear;
+  &:hover, &:focus {
+    background: #ece7fa;
+    box-shadow: 0 8px 32px 0 rgba(123, 91, 230, 0.28), 0 3px 12px 0 rgba(60, 60, 90, 0.16);
+    outline: none;
+  }
 }
 
 .close-fullscreen:hover {
@@ -124,15 +129,17 @@ background: transparent !important;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #faf9fd !important;
-  color: #212529;
+  background: #fff;
+  color: #7b5be6;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, color 0.3s ease;
+  &:hover, &:focus {
+    background: #ece7fa;
+    box-shadow: 0 8px 32px 0 rgba(123, 91, 230, 0.28), 0 3px 12px 0 rgba(60, 60, 90, 0.16);
+    outline: none;
+  }
 }
-.stop-carousel:hover {
-  background-color: #ece7fa ; /* Slightly darker background on hover */
-  color: #333; /* Slightly darker font color on hover */
-}
+
 
 .carousel-item-next::before {
   content: '';
