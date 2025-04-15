@@ -64,7 +64,9 @@
 
 
 .portfolio-scroll-btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -75,16 +77,25 @@
   width: 2.5rem;
   height: 2.5rem;
   font-size: 1.5rem;
-  box-shadow: 0 2px 8px rgba(123, 91, 230, 0.10);
+  line-height: 1;
+  margin-top: -2px; /* Nudge arrow slightly up for visual centering */
+  box-shadow: 0 6px 24px 0 rgba(123, 91, 230, 0.22), 0 1.5px 6px 0 rgba(60, 60, 90, 0.10);
   cursor: pointer;
   z-index: 2;
   transition: background 0.2s, box-shadow 0.2s;
   &:hover, &:focus {
     background: #ece7fa;
-    box-shadow: 0 4px 16px rgba(123, 91, 230, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(123, 91, 230, 0.28), 0 3px 12px 0 rgba(60, 60, 90, 0.16);
     outline: none;
   }
 }
+
+.arrow-icon {
+  display: inline-block;
+  position: relative;
+  top: -2px; // Adjust this value as needed
+}
+
 .portfolio-scroll-btn.left {
   left: 0.5rem;
 }

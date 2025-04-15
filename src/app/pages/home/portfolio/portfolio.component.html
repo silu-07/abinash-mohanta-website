@@ -14,10 +14,10 @@
     </div>
   </div>
   <button *ngIf="canScrollLeft" class="portfolio-scroll-btn left" (click)="scrollLeft(portfolioRow)" aria-label="Scroll left">
-    &#8592;
+    <span class="arrow-icon">&#8592;</span>
   </button>
   <button *ngIf="canScrollRight" class="portfolio-scroll-btn right" (click)="scrollRight(portfolioRow)" aria-label="Scroll right">
-    &#8594;
+    <span class="arrow-icon">&#8594;</span>
   </button>
 </div>
 </section>

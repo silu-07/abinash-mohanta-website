@@ -13,6 +13,7 @@
 }
 
 .carousel-inner {
+  scroll-behavior: smooth;
   height: 100%;
   /* Ensure the inner container fills the carousel height */
   position: relative;

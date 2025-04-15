@@ -67,9 +67,15 @@ header {
   text-align: center;
 }
 
+.logo-link {
+  cursor: pointer;
+  display: inline-block;
+}
+
 .logo {
   max-height: 40px;
 }
+
 
 .header-right {
   flex: 1;
