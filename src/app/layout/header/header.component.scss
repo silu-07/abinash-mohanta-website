@@ -18,10 +18,9 @@ header {
   background: none;
   border: none;
   color: black;
-  /* Match your classy accent color */
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
+  padding: 0.2rem 0.75rem;
   border-radius: 50%;
   transition:
     background 0.3s cubic-bezier(0.77, 0, 0.175, 1),
@@ -113,6 +112,6 @@ header {
 
   .icon,
   .hamburger {
-    font-size: 20px;
+    font-size: 1rem;
   }
 }
