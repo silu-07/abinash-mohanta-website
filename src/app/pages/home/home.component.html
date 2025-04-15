@@ -1,6 +1,42 @@
-<app-carousel></app-carousel>
-<div class="container">
-  <app-portfolio></app-portfolio>
+
+<!-- Top Navigation and Logo -->
+<div class="home-header">
+  <div class="logo">
+    <span class="logo-initials">A.M</span>
+    <span class="logo-desc">| Photographer</span>
+  </div>
+  <nav class="main-nav">
+    <a href="#">Home</a>
+    <a href="#">Portraits</a>
+    <a href="#">Commissions</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+</div>
+
+<!-- Main Content -->
+<div class="home-main">
+  <div class="main-image-container">
+    <div class="arrow-container left">
+      <button class="arrow left" aria-label="Previous" (click)="prevImage()">
+        <svg width="36" height="36" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3L6 9L12 15" stroke="#888" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <h1 class="photographer-name">ABINASH MOHANTA</h1>
+    <img [src]="currentImage" alt="Portrait" class="main-image" />
+    <div class="arrow-container right">
+      <button class="arrow right" aria-label="Next" (click)="nextImage()">
+        <svg width="36" height="36" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 3L12 9L6 15" stroke="#888" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <footer class="home-footer">
+      <span>&copy; 2025 by Abinash Mohanta. Powered and secured by Wix.</span>
+    </footer>
+  </div>
 </div>
 
 <app-movetotop></app-movetotop>
