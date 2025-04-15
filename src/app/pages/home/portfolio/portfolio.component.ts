@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { portfolioCards } from '../config/portfolio-cards.config';
 
 @Component({
   selector: 'app-portfolio',
@@ -11,6 +12,10 @@ import { CommonModule } from '@angular/common';
 export class PortfolioComponent implements AfterViewInit {
   @ViewChild('portfolioRow', { static: true }) portfolioRow!: ElementRef<HTMLDivElement>;
 
+  public portfolioCards = portfolioCards;
+
+  canScrollLeft = false;
+  canScrollRight = true;
   private isDragging = false;
   private startX = 0;
   private dragScrollLeft = 0;
@@ -55,48 +60,6 @@ export class PortfolioComponent implements AfterViewInit {
       row.scrollLeft = this.dragScrollLeft - walk;
     });
   }
-
-  canScrollLeft = false;
-  canScrollRight = true;
-
-  portfolioCards = [
-    {
-      title: 'Project One',
-      desc: 'A short description of project one goes here.',
-      img: 'https://via.placeholder.com/200x120',
-      alt: 'Project 1'
-    },
-    {
-      title: 'Project Two',
-      desc: 'A short description of project two goes here.',
-      img: 'https://via.placeholder.com/200x120',
-      alt: 'Project 2'
-    },
-    {
-      title: 'Project Three',
-      desc: 'A short description of project three goes here.',
-      img: 'https://via.placeholder.com/200x120',
-      alt: 'Project 3'
-    },
-    {
-      title: 'Project Four',
-      desc: 'A short description of project four goes here.',
-      img: 'https://via.placeholder.com/200x120',
-      alt: 'Project 4'
-    },
-    {
-      title: 'Project Five',
-      desc: 'A short description of project five goes here.',
-      img: 'https://via.placeholder.com/200x120',
-      alt: 'Project 5'
-    },
-    {
-      title: 'Project Six',
-      desc: 'A short description of project six goes here.',
-      img: 'https://via.placeholder.com/200x120',
-      alt: 'Project 6'
-    }
-  ];
 
   scrollRight(row: HTMLElement) {
     const card = row.querySelector('.portfolio-card') as HTMLElement;
