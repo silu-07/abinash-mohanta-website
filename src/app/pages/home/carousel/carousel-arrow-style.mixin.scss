@@ -1,0 +1,27 @@
+.carousel-arrow-style {
+  background: #fff;
+  color: #7b5be6;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 8px rgba(123, 91, 230, 0.10);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+  &:hover, &:focus {
+    background: #ece7fa;
+    box-shadow: 0 4px 16px rgba(123, 91, 230, 0.15);
+    outline: none;
+  }
+  &:disabled {
+    background: #f0f0f0;
+    color: #bbb;
+    cursor: not-allowed;
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+  }
+}

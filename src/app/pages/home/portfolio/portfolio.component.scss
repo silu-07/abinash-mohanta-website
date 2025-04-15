@@ -1,0 +1,263 @@
+.portfolio-section {
+  padding: 2rem 0;
+  background: #faf9fd;
+}
+
+.portfolio-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  padding: 0 1rem;
+}
+
+.portfolio-heading {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3a3d5c;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.portfolio-more-btn {
+  background: #7b5be6;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(123, 91, 230, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-left: 1rem;
+  &:hover, &:focus {
+    background: #5d3fae;
+    box-shadow: 0 4px 16px rgba(123, 91, 230, 0.18);
+    outline: none;
+  }
+}
+
+.portfolio-row-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.portfolio-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 2rem;
+  overflow-x: hidden;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+.portfolio-card {
+  flex: 0 0 33.3333%; // 3 cards per row for desktop
+  max-width: 33.3333%;
+  box-sizing: border-box;
+}
+
+// Large screens (desktop)
+@media (min-width: 900px) {
+  .portfolio-row-wrapper {
+    max-width: 1020px; // 3 cards * 320px + 2*2rem gap
+  }
+  .portfolio-row {
+    overflow-x: hidden;
+  }
+  .portfolio-card {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+
+// Small screens (mobile/tablet)
+@media (max-width: 899px) {
+  .portfolio-row-wrapper {
+    max-width: 95vw;
+    overflow-x: auto;
+  }
+  .portfolio-row {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #7b5be6 #ece7fa;
+  }
+  .portfolio-row::-webkit-scrollbar {
+    height: 8px;
+    background: #ece7fa;
+    border-radius: 4px;
+  }
+  .portfolio-row::-webkit-scrollbar-thumb {
+    background: #7b5be6;
+    border-radius: 4px;
+  }
+  .portfolio-card {
+    flex: 0 0 90vw; // 1 card per row for mobile
+    max-width: 90vw;
+    min-width: 90vw;
+  }
+  .portfolio-scroll-btn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    background: #fff;
+    color: #7b5be6;
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(123, 91, 230, 0.10);
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s, box-shadow 0.2s;
+    &:hover, &:focus {
+      background: #ece7fa;
+      box-shadow: 0 4px 16px rgba(123, 91, 230, 0.15);
+      outline: none;
+    }
+  }
+}
+
+.portfolio-scroll-btn {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  color: #7b5be6;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 8px rgba(123, 91, 230, 0.10);
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s, box-shadow 0.2s;
+  &:hover, &:focus {
+    background: #ece7fa;
+    box-shadow: 0 4px 16px rgba(123, 91, 230, 0.15);
+    outline: none;
+  }
+}
+.portfolio-scroll-btn.left {
+  left: 0.5rem;
+}
+.portfolio-scroll-btn.right {
+  right: 0.5rem;
+}
+
+
+// Large screens (desktop)
+@media (min-width: 900px) {
+  .portfolio-row {
+    overflow-x: hidden;
+    flex-wrap: nowrap;
+  }
+}
+
+// Small screens (mobile/tablet)
+@media (max-width: 899px) {
+  .portfolio-row {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: #7b5be6 #ece7fa;
+  }
+  .portfolio-row::-webkit-scrollbar {
+    height: 8px;
+    background: #ece7fa;
+    border-radius: 4px;
+  }
+  .portfolio-row::-webkit-scrollbar-thumb {
+    background: #7b5be6;
+    border-radius: 4px;
+  }
+  .portfolio-scroll-btn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    background: #fff;
+    color: #7b5be6;
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(123, 91, 230, 0.10);
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s, box-shadow 0.2s;
+    &:hover, &:focus {
+      background: #ece7fa;
+      box-shadow: 0 4px 16px rgba(123, 91, 230, 0.15);
+      outline: none;
+    }
+  }
+}
+
+
+.portfolio-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(123, 91, 230, 0.08);
+  overflow: hidden;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.2s cubic-bezier(0.77, 0, 0.175, 1);
+  &:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(123, 91, 230, 0.16);
+  }
+}
+
+.portfolio-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.portfolio-card-content {
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+.portfolio-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #7b5be6;
+}
+
+.portfolio-card-desc {
+  font-size: 1rem;
+  color: #444;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .portfolio-row {
+    gap: 1.25rem;
+  }
+  .portfolio-card {
+    width: 95vw;
+    max-width: 360px;
+  }
+}
