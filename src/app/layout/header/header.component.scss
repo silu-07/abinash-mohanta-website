@@ -4,8 +4,11 @@ header {
   align-items: center;
   background-color: #faf9fd;
   color: black;
-  margin: 0rem 3rem;
   height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 998;
+  box-shadow: 0 4px 12px -2px rgba(0,0,0,0.12);
 }
 
 .header-left {
@@ -15,6 +18,7 @@ header {
 .hamburger {
   background: none;
   border: none;
+  margin: 0rem 2rem;
   color: black;
   font-size: 1.5rem;
   cursor: pointer;
@@ -42,7 +46,7 @@ header {
 
 .icon {
   font-size: 24px;
-  margin-left: 1rem;
+  margin-right: 2rem;
   color: #444;
   cursor: pointer;
   transition: color 0.2s ease, opacity 0.2s ease;
@@ -55,16 +59,6 @@ header {
     outline: none;
   }
 
-  &:active {
-    background: #7b5be6;
-    color: #fff;
-    box-shadow: 0 4px 16px rgba(123, 91, 230, 0.18);
-  }
-}
-
-.header-center {
-  flex: 1;
-  text-align: center;
 }
 
 .logo-link {
@@ -85,10 +79,10 @@ header {
 /* Media Query for Tablet Devices */
 @media (max-width: 768px) {
   header {
-    margin: 0rem 2rem;
-    /* Reduce horizontal space for tablets */
     height: 70px;
-    /* Adjust height for tablets */
+    position: sticky;
+    top: 0;
+    box-shadow: 0 4px 12px -2px rgba(0,0,0,0.12);
   }
 
   .logo {
@@ -104,10 +98,7 @@ header {
 /* Media Query for Mobile Devices */
 @media (max-width: 400px) {
   header {
-    margin: 0rem 1rem;
-    /* Reduce horizontal space for mobile devices */
     height: 50px;
-    /* Adjust height for smaller screens */
   }
 
   .logo {
