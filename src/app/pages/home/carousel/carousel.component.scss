@@ -168,7 +168,13 @@ background: transparent !important;
 }
 
 /* Media Query for Mobile Devices */
-@media (max-width: 400px) {
+@media (max-width: 450px) {
+  .stop-carousel {
+    font-size: 12px;
+    padding: 4px 8px;
+    min-width: 32px;
+    min-height: 28px;
+  }
   .carousel {
     height: calc(40vh);
     /* Adjust height for smaller screens */

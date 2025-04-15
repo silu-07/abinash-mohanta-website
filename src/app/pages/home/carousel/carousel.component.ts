@@ -54,6 +54,10 @@ export class CarouselComponent implements AfterViewInit {
   }
 
   openFullscreen(event: Event) {
+    // Prevent fullscreen on mobile devices (≤450px)
+    if (window.innerWidth <= 450) {
+      return;
+    }
     const carouselElement = document.querySelector('#carouselExample') as HTMLElement;
 
     if (carouselElement) {
