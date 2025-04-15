@@ -4,8 +4,10 @@ header {
   align-items: center;
   background-color: white;
   color: black;
-  margin: 0rem 6rem;
-  height: 100px;
+  margin: 0rem 6rem; /* Add horizontal space */
+  padding: 1rem 0; /* Add vertical padding for spacing */
+  height: 100px; /* Fixed height for the header */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better visibility */
 }
 
 .header-left {
@@ -50,8 +52,9 @@ header {
 /* Media Query for Tablet Devices */
 @media (max-width: 768px) {
   header {
-    margin: 0rem 2rem;
-    height: 70px;
+    margin: 0rem 2rem; /* Reduce horizontal space for tablets */
+    padding: 0.5rem 0; /* Adjust vertical padding */
+    height: 70px; /* Adjust height for tablets */
   }
 
   .logo {
@@ -66,8 +69,9 @@ header {
 /* Media Query for Mobile Devices */
 @media (max-width: 400px) {
   header {
-    margin: 0rem 1rem;
-    height: 50px;
+    margin: 0rem 1rem; /* Reduce horizontal space for mobile devices */
+    padding: 0.5rem 0; /* Adjust vertical padding */
+    height: 50px; /* Adjust height for smaller screens */
   }
 
   .logo {
