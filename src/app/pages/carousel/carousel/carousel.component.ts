@@ -1,36 +1,60 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements AfterViewInit {
-  ngAfterViewInit() {
-    setTimeout(() => {
-      const carouselElement = document.querySelector('#carouselExample');
-      if (carouselElement) {
-        const bootstrapCarousel = (window as any).bootstrap?.Carousel;
-        if (bootstrapCarousel) {
-          new bootstrapCarousel(carouselElement, {
-            interval: 2000, // 2 seconds interval between slides
-            ride: 'carousel', // Automatically start the carousel
-            wrap: true // Enable infinite looping
-          });
-        } else {
-          console.error('Bootstrap Carousel is not loaded.');
-        }
-      } else {
-        console.error('Carousel element not found.');
+  isPlaying = true;
+
+  private fullscreenChangeHandler: () => void;
+  private carouselInstance: any;
+
+  constructor() {
+    this.fullscreenChangeHandler = () => {
+      const closeButton = document.querySelector('#closeFullscreen') as HTMLElement;
+      const carouselElement = document.querySelector('#carouselExample') as HTMLElement;
+      if (closeButton) {
+        closeButton.hidden = !document.fullscreenElement;
       }
-    });
+      // Add or remove context menu prevention based on fullscreen state
+      if (document.fullscreenElement) {
+        carouselElement?.addEventListener('contextmenu', this.preventContextMenu);
+      } else {
+        carouselElement?.removeEventListener('contextmenu', this.preventContextMenu);
+      }
+    };
+  }
+
+  private preventContextMenu(event: Event) {
+    event.preventDefault();
+    return false;
+  }
+
+  ngAfterViewInit() {
+    const carouselElement = document.querySelector('#carouselExample');
+    if (carouselElement && (window as any).bootstrap?.Carousel) {
+      this.carouselInstance = new (window as any).bootstrap.Carousel(carouselElement, {
+        interval: 3500,
+        ride: 'carousel',
+        wrap: true,
+        pause: false // <--- This disables pause on hover!
+      });
+  
+      // Prevent right-click on all images in the carousel
+      const images = carouselElement.querySelectorAll('img');
+      images.forEach(img => {
+        img.addEventListener('contextmenu', this.preventContextMenu);
+      });
+    }
   }
 
   openFullscreen(event: Event) {
     const carouselElement = document.querySelector('#carouselExample') as HTMLElement;
-    const closeButton = document.querySelector('#closeFullscreen') as HTMLElement;
 
     if (carouselElement) {
       if (carouselElement.requestFullscreen) {
@@ -43,16 +67,24 @@ export class CarouselComponent implements AfterViewInit {
         (carouselElement as any).msRequestFullscreen();
       }
 
-      // Show the close button in fullscreen mode
-      if (closeButton) {
-        closeButton.hidden = false;
+      // Add fullscreen change event listener
+      document.addEventListener('fullscreenchange', this.fullscreenChangeHandler);
+      document.addEventListener('webkitfullscreenchange', this.fullscreenChangeHandler);
+    }
+  }
+
+  stopCarousel() {
+    if (this.carouselInstance) {
+      if (this.isPlaying) {
+        this.carouselInstance.pause();
+      } else {
+        this.carouselInstance.cycle();
       }
+      this.isPlaying = !this.isPlaying;
     }
   }
 
   closeFullscreen() {
-    const closeButton = document.querySelector('#closeFullscreen') as HTMLElement;
-
     if (document.fullscreenElement) {
       document.exitFullscreen();
     } else if ((document as any).webkitExitFullscreen) {
@@ -61,11 +93,6 @@ export class CarouselComponent implements AfterViewInit {
     } else if ((document as any).msExitFullscreen) {
       // IE11
       (document as any).msExitFullscreen();
-    }
-
-    // Hide the close button when exiting fullscreen mode
-    if (closeButton) {
-      closeButton.hidden = true;
     }
   }
 }

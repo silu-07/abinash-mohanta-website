@@ -4,8 +4,10 @@ header {
   align-items: center;
   background-color: white;
   color: black;
-  margin: 0rem 3rem; /* Add horizontal space */
-  height: 70px; /* Fixed height for the header */
+  margin: 0rem 3rem;
+  /* Add horizontal space */
+  height: 70px;
+  /* Fixed height for the header */
 }
 
 .header-left {
@@ -16,8 +18,51 @@ header {
   background: none;
   border: none;
   color: black;
-  font-size: 1.5rem;
+  /* Match your classy accent color */
+  font-size: 2rem;
   cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 50%;
+  transition:
+    background 0.3s cubic-bezier(0.77, 0, 0.175, 1),
+    color 0.3s cubic-bezier(0.77, 0, 0.175, 1),
+    box-shadow 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+
+  &:hover,
+  &:focus {
+    background: rgba(123, 91, 230, 0.1);
+    color: #3a3d5c;
+    box-shadow: 0 2px 8px rgba(123, 91, 230, 0.12);
+    outline: none;
+  }
+
+  &:active {
+    background: #7b5be6;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(123, 91, 230, 0.18);
+  }
+}
+
+.icon {
+  font-size: 24px;
+  margin-left: 1rem;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease;
+
+  &:hover,
+  &:focus {
+    background: rgba(123, 91, 230, 0.1);
+    color: #3a3d5c;
+    box-shadow: 0 2px 8px rgba(123, 91, 230, 0.12);
+    outline: none;
+  }
+
+  &:active {
+    background: #7b5be6;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(123, 91, 230, 0.18);
+  }
 }
 
 .header-center {
@@ -34,31 +79,21 @@ header {
   text-align: right;
 }
 
-.icon {
-  font-size: 24px;
-  margin-left: 1rem;
-  color: #444;
-  cursor: pointer;
-  transition: color 0.2s ease, opacity 0.2s ease;
-}
-
-.icon:hover {
-  color: #222;
-  opacity: 1;
-}
-
 /* Media Query for Tablet Devices */
 @media (max-width: 768px) {
   header {
-    margin: 0rem 2rem; /* Reduce horizontal space for tablets */
-    height: 70px; /* Adjust height for tablets */
+    margin: 0rem 2rem;
+    /* Reduce horizontal space for tablets */
+    height: 70px;
+    /* Adjust height for tablets */
   }
 
   .logo {
     max-height: 30px;
   }
 
-  .icon, .hamburger {
+  .icon,
+  .hamburger {
     font-size: 25px;
   }
 }
@@ -66,15 +101,18 @@ header {
 /* Media Query for Mobile Devices */
 @media (max-width: 400px) {
   header {
-    margin: 0rem 1rem; /* Reduce horizontal space for mobile devices */
-    height: 50px; /* Adjust height for smaller screens */
+    margin: 0rem 1rem;
+    /* Reduce horizontal space for mobile devices */
+    height: 50px;
+    /* Adjust height for smaller screens */
   }
 
   .logo {
     max-height: 25px;
   }
 
-  .icon, .hamburger {
+  .icon,
+  .hamburger {
     font-size: 20px;
   }
 }

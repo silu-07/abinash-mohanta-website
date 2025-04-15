@@ -4,11 +4,11 @@
   /* Ensure the carousel is positioned correctly */
   width: 100%;
   /* Full width */
-  height: calc(100vh - 100px);
+  height: calc(100vh - 70px);
   /* Subtract the header height (100px) */
   overflow: hidden;
   /* Prevent overflow of images outside the carousel */
-  background-color: transparent;
+  background: transparent !important;
   /* Remove the black background */
 }
 
@@ -16,34 +16,26 @@
   height: 100%;
   /* Ensure the inner container fills the carousel height */
   position: relative;
-  /* Ensure proper stacking of items */
+/* Ensure proper stacking of items */
+background: transparent !important;
 }
 
 .carousel-item {
   position: absolute;
-  /* Stack all items on top of each other */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Ensure the item fills the carousel height */
   opacity: 0;
-  /* Start with hidden images */
-  filter: blur(5px);
-  /* Add a slight blur effect */
-  transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
-  /* Reduce transition duration to 0.4s */
+  transition: opacity 1.5s cubic-bezier(0.86, 0, 0.07, 1);
   z-index: 1;
-  /* Default z-index for inactive items */
+  background: transparent !important;
 }
 
 .carousel-item.active {
+  display: block;
   opacity: 1;
-  /* Show the active image */
-  filter: blur(0);
-  /* Remove blur for the active image */
   z-index: 2;
-  /* Ensure the active item is above others */
 }
 
 .carousel img {
@@ -107,7 +99,7 @@
   background-color: white; /* White background */
   color: black; /* Black font color */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  transition: opacity 0s linear, filter 0s linear;
 }
 
 .close-fullscreen:hover {
@@ -115,10 +107,62 @@
   color: #333; /* Slightly darker font color on hover */
 }
 
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stop-carousel {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1100;
+  padding: 8px 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white; /* Bootstrap warning color */
+  color: #212529;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.stop-carousel:hover {
+  background-color: #f0f0f0; /* Slightly darker background on hover */
+  color: #333; /* Slightly darker font color on hover */
+}
+
+.carousel-item-next::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 123, 255, 0.12); /* semi-transparent blue */
+
+  border-radius: 4px;
+  z-index: 3;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.carousel-item-next::before,
+.carousel-item-start::before,
+.carousel-item-end::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
 /* Media Query for Tablet Devices */
 @media (max-width: 768px) {
   .carousel {
-    height: calc(100vh - 70px);
+    height: calc(50vh);
     /* Adjust height for tablets */
   }
 }
@@ -126,7 +170,7 @@
 /* Media Query for Mobile Devices */
 @media (max-width: 400px) {
   .carousel {
-    height: calc(100vh - 50px);
+    height: calc(40vh);
     /* Adjust height for smaller screens */
   }
 }

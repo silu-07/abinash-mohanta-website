@@ -1,4 +1,4 @@
-<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+<div id="carouselExample" class="carousel slide carousel-fade">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="/carosuel-home/image1.jpg" class="d-block w-100" alt="Image 1" (click)="openFullscreen($event)">
@@ -20,6 +20,9 @@
   </button>
   <!-- Close Button -->
   <button id="closeFullscreen" class="btn btn-danger close-fullscreen" (click)="closeFullscreen()" hidden>
-    Close
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </button>
+  <button id="stopCarousel" class="btn btn-warning stop-carousel" (click)="stopCarousel()">
+    <i class="fa" [ngClass]="isPlaying ? 'fa-pause' : 'fa-play'" aria-hidden="true"></i>
   </button>
 </div>
