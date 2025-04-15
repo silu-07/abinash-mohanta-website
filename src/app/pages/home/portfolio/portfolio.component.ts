@@ -52,13 +52,43 @@ export class PortfolioComponent {
   ];
 
   scrollRight(row: HTMLElement) {
-    row.scrollBy({ left: 340, behavior: 'smooth' });
-    setTimeout(() => this.updateScrollButtons(row), 350);
+    const card = row.querySelector('.portfolio-card') as HTMLElement;
+    if (!card) return;
+    const cardStyle = getComputedStyle(card);
+    const cardWidth = card.offsetWidth + parseFloat(cardStyle.marginRight || '0') + parseFloat(cardStyle.marginLeft || '0');
+    const visibleCards = Math.floor(row.offsetWidth / card.offsetWidth) || 1;
+    const scrollAmount = cardWidth * visibleCards;
+    row.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    setTimeout(() => {
+      this.updateScrollButtons(row);
+      this.focusFirstVisibleCard(row);
+    }, 350);
   }
 
   scrollLeft(row: HTMLElement) {
-    row.scrollBy({ left: -340, behavior: 'smooth' });
-    setTimeout(() => this.updateScrollButtons(row), 350);
+    const card = row.querySelector('.portfolio-card') as HTMLElement;
+    if (!card) return;
+    const cardStyle = getComputedStyle(card);
+    const cardWidth = card.offsetWidth + parseFloat(cardStyle.marginRight || '0') + parseFloat(cardStyle.marginLeft || '0');
+    const visibleCards = Math.floor(row.offsetWidth / card.offsetWidth) || 1;
+    const scrollAmount = cardWidth * visibleCards;
+    row.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    setTimeout(() => {
+      this.updateScrollButtons(row);
+      this.focusFirstVisibleCard(row);
+    }, 350);
+  }
+
+  focusFirstVisibleCard(row: HTMLElement) {
+    const cards = Array.from(row.querySelectorAll('.portfolio-card')) as HTMLElement[];
+    for (const card of cards) {
+      const rect = card.getBoundingClientRect();
+      const rowRect = row.getBoundingClientRect();
+      if (rect.left >= rowRect.left && rect.right <= rowRect.right) {
+        card.focus();
+        break;
+      }
+    }
   }
 
   onRowScroll(row: HTMLElement) {
@@ -66,8 +96,9 @@ export class PortfolioComponent {
   }
 
   updateScrollButtons(row: HTMLElement) {
-    this.canScrollLeft = row.scrollLeft > 0;
-    this.canScrollRight = row.scrollLeft + row.offsetWidth < row.scrollWidth - 1;
+    const tolerance = 2; // px, to account for floating point errors
+    this.canScrollLeft = row.scrollLeft > tolerance;
+    this.canScrollRight = row.scrollLeft + row.offsetWidth < row.scrollWidth - tolerance;
   }
 
 }

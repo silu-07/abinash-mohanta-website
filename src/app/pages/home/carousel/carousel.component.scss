@@ -96,7 +96,7 @@ background: transparent !important;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: white; /* White background */
+  background-color: #faf9fd !important ; /* White background */
   color: black; /* Black font color */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
   transition: opacity 0s linear, filter 0s linear;
@@ -123,13 +123,13 @@ background: transparent !important;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: white; /* Bootstrap warning color */
+  background-color: #faf9fd !important;
   color: #212529;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 .stop-carousel:hover {
-  background-color: #f0f0f0; /* Slightly darker background on hover */
+  background-color: #ece7fa ; /* Slightly darker background on hover */
   color: #333; /* Slightly darker font color on hover */
 }
 
