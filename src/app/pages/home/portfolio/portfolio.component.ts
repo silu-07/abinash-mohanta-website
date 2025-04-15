@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,7 +8,54 @@ import { CommonModule } from '@angular/common';
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss'
 })
-export class PortfolioComponent {
+export class PortfolioComponent implements AfterViewInit {
+  @ViewChild('portfolioRow', { static: true }) portfolioRow!: ElementRef<HTMLDivElement>;
+
+  private isDragging = false;
+  private startX = 0;
+  private dragScrollLeft = 0;
+
+  ngAfterViewInit(): void {
+    const row = this.portfolioRow.nativeElement;
+    // Mouse events
+    row.addEventListener('mousedown', (e) => {
+      this.isDragging = true;
+      row.classList.add('dragging');
+      this.startX = e.pageX - row.offsetLeft;
+      this.dragScrollLeft = row.scrollLeft;
+    });
+    row.addEventListener('mouseleave', () => {
+      this.isDragging = false;
+      row.classList.remove('dragging');
+    });
+    row.addEventListener('mouseup', () => {
+      this.isDragging = false;
+      row.classList.remove('dragging');
+    });
+    row.addEventListener('mousemove', (e) => {
+      if (!this.isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - row.offsetLeft;
+      const walk = (x - this.startX) * 1.2;
+      row.scrollLeft = this.dragScrollLeft - walk;
+    });
+    // Touch events
+    row.addEventListener('touchstart', (e: TouchEvent) => {
+      this.isDragging = true;
+      this.startX = e.touches[0].pageX - row.offsetLeft;
+      this.dragScrollLeft = row.scrollLeft;
+    });
+    row.addEventListener('touchend', () => {
+      this.isDragging = false;
+    });
+    row.addEventListener('touchmove', (e: TouchEvent) => {
+      if (!this.isDragging) return;
+      const x = e.touches[0].pageX - row.offsetLeft;
+      const walk = (x - this.startX) * 1.2;
+      row.scrollLeft = this.dragScrollLeft - walk;
+    });
+  }
+
   canScrollLeft = false;
   canScrollRight = true;
 
