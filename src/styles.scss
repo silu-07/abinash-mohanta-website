@@ -1,15 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Roboto:wght@300;400&display=swap');
 
 html, body {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #faf9fd !important;
+  background-color: #fff !important;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
 }
 
 :root, :host, .spxThemeOverride, .max-width-container {

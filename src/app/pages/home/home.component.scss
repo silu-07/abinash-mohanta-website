@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Roboto:wght@300;400&display=swap');
+
 
 * {
   box-sizing: border-box;
@@ -32,32 +32,6 @@ body {
 
 .home-main,
 .main-image-container,
-
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  letter-spacing: 2.5px;
-  color: #000;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-}
-
-.logo-initials {
-  font-weight: 700;
-  margin-right: 3px;
-  font-size: 20px;
-  letter-spacing: 1.8px;
-  color: #000;
-}
-
-.logo-desc {
-  font-weight: 500;
-  font-size: 13px;
-  color: #000;
-  margin-left: 4px;
-}
-
 .home-main {
   display: flex;
   flex-direction: row;
