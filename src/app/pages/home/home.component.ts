@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MoveToTopComponent } from './movetotop/movetotop.component';
 
@@ -7,9 +7,14 @@ import { MoveToTopComponent } from './movetotop/movetotop.component';
   standalone: true,
   imports: [CommonModule, MoveToTopComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+  ngOnInit(): void {}
+
+  showMobileNav = false;
+  touchStartX = 0;
+  touchEndX = 0;
   images: string[] = [
     'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
@@ -29,6 +34,39 @@ export class HomeComponent {
 
   nextImage() {
     this.currentIndex = (this.currentIndex + 1) % this.images.length;
+  }
+
+  autoScrollInterval: any;
+
+  onTouchStart(event: TouchEvent) {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  onTouchMove(event: TouchEvent) {
+    this.touchEndX = event.changedTouches[0].screenX;
+  }
+
+  onTouchEnd(event: TouchEvent) {
+    const deltaX = this.touchEndX - this.touchStartX;
+    if (Math.abs(deltaX) > 50) { // Minimum swipe distance
+      if (deltaX < 0) {
+        this.nextImage();
+      } else {
+        this.prevImage();
+      }
+    }
+  }
+
+  ngAfterViewInit() {
+    this.autoScrollInterval = setInterval(() => {
+      this.nextImage();
+    }, 3000); // every 3 seconds
+  }
+
+  ngOnDestroy() {
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+    }
   }
 }
 
