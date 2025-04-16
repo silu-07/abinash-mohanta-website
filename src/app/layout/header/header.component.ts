@@ -10,4 +10,8 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   showMobileNav = false;
+
+  closeMobileNav() {
+    this.showMobileNav = false;
+  }
 }
