@@ -12,6 +12,29 @@ import { FooterComponent } from "../../layout/footer/footer.component";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+  // Modal state for fullscreen image
+  modalOpen: boolean = false;
+  modalImage: string = '';
+
+  openImageModal(img: string) {
+    this.modalImage = img;
+    this.modalOpen = true;
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+      this.autoScrollInterval = null;
+    }
+  }
+
+  closeImageModal() {
+    this.modalOpen = false;
+    this.modalImage = '';
+    if (!this.autoScrollInterval) {
+      this.autoScrollInterval = setInterval(() => {
+        this.nextImage();
+      }, 3000);
+    }
+  }
+
   ngOnInit(): void {}
 
   showMobileNav = false;
@@ -32,10 +55,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   prevImage() {
     this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    if (this.modalOpen) {
+      this.modalImage = this.images[this.currentIndex];
+    }
   }
 
   nextImage() {
     this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    if (this.modalOpen) {
+      this.modalImage = this.images[this.currentIndex];
+    }
   }
 
   autoScrollInterval: any;

@@ -19,6 +19,8 @@
     (touchstart)="onTouchStart($event)"
     (touchmove)="onTouchMove($event)"
     (touchend)="onTouchEnd($event)"
+    (click)="openImageModal(currentImage)"
+    style="cursor: zoom-in;"
   />
   <div class="arrow-container right">
     <button class="arrow right" aria-label="Next" (click)="nextImage()">
@@ -30,6 +32,23 @@
 </div>
     <app-footer></app-footer>
   </div>
+</div>
+
+
+<!-- Fullscreen Image Modal Overlay -->
+<div class="image-modal-overlay" *ngIf="modalOpen">
+  <button class="modal-arrow left" (click)="prevImage()" aria-label="Previous image">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  </button>
+  <img [src]="modalImage" alt="Enlarged" class="modal-image" />
+  <button class="modal-arrow right" (click)="nextImage()" aria-label="Next image">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  </button>
+  <button class="close-modal" (click)="closeImageModal()" aria-label="Close image">&#10005;</button>
 </div>
 
 <app-movetotop></app-movetotop>
