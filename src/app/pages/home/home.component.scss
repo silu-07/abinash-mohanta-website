@@ -245,10 +245,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.image-modal-overlay.modal-active {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(1);
-  transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 
 .modal-image {
@@ -262,9 +265,11 @@ body {
   border-radius: 0;
   box-shadow: none;
   z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.image-modal-overlay.modal-active .modal-image {
   opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 
 
@@ -370,7 +375,7 @@ body {
   background: #fff;
   color: #000;
   border: none;
-  font-size: 2.2rem;
+  font-size: 1.2rem;
   cursor: pointer;
   padding: 8px 16px;
   border-radius: 8px;
