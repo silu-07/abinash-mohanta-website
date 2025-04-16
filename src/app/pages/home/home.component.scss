@@ -252,30 +252,42 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
+  background: none;
   border: none;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
+  border-radius: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #888;
   cursor: pointer;
   z-index: 10002;
-  transition: background 0.2s, box-shadow 0.2s;
-  opacity: 0.8;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  transition: filter 0.2s;
+  outline: none;
+  box-shadow: none;
+  opacity: 1;
 }
+.modal-arrow svg {
+  display: block;
+  margin: 0 auto;
+  stroke: #888;
+  transition: stroke 0.2s;
+  width: 28px;
+  height: 28px;
+}
+.modal-arrow:hover svg path,
+.modal-arrow:focus svg path {
+  stroke: #222;
+}
+
 .modal-arrow.left {
   left: 24px;
 }
 .modal-arrow.right {
   right: 24px;
-}
-.modal-arrow:hover {
-  background: rgba(0,0,0,0.85);
-  opacity: 1;
 }
 
 .close-modal {
@@ -343,10 +355,6 @@ body {
   padding: 8px 16px;
   border-radius: 8px;
   transition: background 0.2s;
-}
-
-.close-modal:hover {
-  background: rgba(0,0,0,0.85);
 }
 
 .scroll-to-top {

@@ -69,6 +69,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   autoScrollInterval: any;
 
+  // Swipe for main image row
   onTouchStart(event: TouchEvent) {
     this.touchStartX = event.changedTouches[0].screenX;
   }
@@ -80,6 +81,29 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   onTouchEnd(event: TouchEvent) {
     const deltaX = this.touchEndX - this.touchStartX;
     if (Math.abs(deltaX) > 50) { // Minimum swipe distance
+      if (deltaX < 0) {
+        this.nextImage();
+      } else {
+        this.prevImage();
+      }
+    }
+  }
+
+  // Swipe for modal fullscreen image
+  modalTouchStart(event: TouchEvent) {
+    if (!this.modalOpen) return;
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  modalTouchMove(event: TouchEvent) {
+    if (!this.modalOpen) return;
+    this.touchEndX = event.changedTouches[0].screenX;
+  }
+
+  modalTouchEnd(event: TouchEvent) {
+    if (!this.modalOpen) return;
+    const deltaX = this.touchEndX - this.touchStartX;
+    if (Math.abs(deltaX) > 50) {
       if (deltaX < 0) {
         this.nextImage();
       } else {
