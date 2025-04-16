@@ -195,6 +195,105 @@ body {
   margin: 0 auto;
 }
 
+//Modal
+.modal-image {
+  max-width: calc(100vw - 64px);
+  max-height: calc(100vh - 64px);
+  width: calc(100vw - 64px);
+  height: calc(100vh - 64px);
+  margin: 32px;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 10000;
+}
+
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-modal-overlay.modal-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-modal-overlay.modal-active .modal-image {
+  opacity: 1;
+}
+
+.modal-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  border-radius: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  cursor: pointer;
+  z-index: 10002;
+  transition: filter 0.2s;
+  outline: none;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.modal-arrow svg {
+  display: block;
+  margin: 0 auto;
+  stroke: #888;
+  transition: stroke 0.2s;
+  width: 28px;
+  height: 28px;
+}
+
+.modal-arrow:hover svg path,
+.modal-arrow:focus svg path {
+  stroke: #222;
+}
+
+.modal-arrow.left {
+  left: 24px;
+}
+
+.modal-arrow.right {
+  right: 24px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 10003;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
 
 // Responsive
 @media (max-width: 900px) {
@@ -314,94 +413,13 @@ body {
     font-size: 15px;
     letter-spacing: 5px;
   }
-}
-
-//Modal
-.modal-image {
-  max-width: calc(100vw - 64px);
-  max-height: calc(100vh - 64px);
-  width: calc(100vw - 64px);
-  height: calc(100vh - 64px);
-  margin: 32px;
-  object-fit: contain;
-  display: block;
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  z-index: 10000;
-}
-
-.image-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #fff;
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.image-modal-overlay.modal-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.image-modal-overlay.modal-active .modal-image {
-  opacity: 1;
-}
-
-.modal-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  border-radius: 0;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #888;
-  cursor: pointer;
-  z-index: 10002;
-  transition: filter 0.2s;
-  outline: none;
-  box-shadow: none;
-  opacity: 1;
-}
-
-.modal-arrow svg {
-  display: block;
-  margin: 0 auto;
-  stroke: #888;
-  transition: stroke 0.2s;
-  width: 28px;
-  height: 28px;
-}
-
-.modal-arrow:hover svg path,
-.modal-arrow:focus svg path {
-  stroke: #222;
-}
-
-.modal-arrow.left {
-  left: 24px;
-}
-
-.modal-arrow.right {
-  right: 24px;
-}
-
-@media (max-width: 600px) {
+  .modal-image {
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    width: calc(100vw - 16px);
+    height: calc(100vh - 16px);
+    margin: 8px;
+  }
   .modal-arrow {
     width: 36px;
     height: 36px;
@@ -427,30 +445,4 @@ body {
     padding: 4px 8px;
     border-radius: 6px;
   }
-}
-
-@media (max-width: 600px) {
-  .modal-image {
-    max-width: calc(100vw - 16px);
-    max-height: calc(100vh - 16px);
-    width: calc(100vw - 16px);
-    height: calc(100vh - 16px);
-    margin: 8px;
-  }
-}
-
-
-.close-modal {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  z-index: 10003;
-  background: #fff;
-  color: #000;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: background 0.2s;
 }
