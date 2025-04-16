@@ -1,11 +1,12 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MoveToTopComponent } from './movetotop/movetotop.component';
+import { HeaderComponent } from '../../layout/header/header.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MoveToTopComponent],
+  imports: [CommonModule, MoveToTopComponent, HeaderComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

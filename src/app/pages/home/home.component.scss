@@ -74,39 +74,6 @@ body {
   margin-left: 4px;
 }
 
-.main-nav {
-  display: flex;
-  gap: 18px;
-  font-size: 13px;
-  font-family: 'Montserrat', sans-serif;
-  margin-top: 2px;
-  font-weight: 500;
-  letter-spacing: 0.8px;
-  color: #000;
-  text-transform: none;
-  transition: all 0.3s;
-}
-
-// Hamburger hidden by default
-.hamburger {
-  display: none;
-}
-
-.main-nav a {
-  color: #000;
-  text-decoration: none;
-  letter-spacing: 0.8px;
-  transition: color 0.2s;
-  font-weight: 500;
-  padding-bottom: 2px;
-  font-size: 13px;
-}
-
-.main-nav a:hover {
-  color: #000;
-  border-bottom: 1px solid #000;
-}
-
 .home-main {
   display: flex;
   flex-direction: row;
@@ -418,11 +385,6 @@ body {
     width: 100vw;
   }
 
-  .main-nav {
-    gap: 10px;
-    font-size: 10px;
-  }
-
   .home-main {
     margin-top: 60px;
   }
@@ -453,90 +415,4 @@ body {
     max-width: 98vw;
   }
 
-  .main-nav {
-    display: none;
-    position: absolute;
-    top: 54px;
-    right: 18px;
-    background: #fff;
-    flex-direction: column;
-    gap: 16px;
-    padding: 20px 32px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
-    border-radius: 8px;
-    z-index: 100;
-    transition: none;
-  }
-
-  .main-nav.mobile-open {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #fff;
-    z-index: 999;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 36px;
-    padding: 0;
-    box-shadow: none;
-    border-radius: 0;
-  }
-
-  .main-nav.mobile-open a {
-    font-size: 1rem;
-    color: #222;
-    text-align: center;
-    padding: 12px 0;
-    width: 100vw;
-    font-weight: 500;
-  }
-
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 36px;
-    height: 36px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 12px;
-    z-index: 2001;
-    position: relative;
-    transition: z-index 0.2s;
-  }
-
-  .hamburger.open {
-    position: fixed;
-    top: 18px;
-    right: 18px;
-    z-index: 2001;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 3px;
-    margin: 1.5px 0;
-    background: #222;
-    border-radius: 2px;
-    transition: all 0.3s;
-  }
-
-  .hamburger.open span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .hamburger.open span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.open span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
 }

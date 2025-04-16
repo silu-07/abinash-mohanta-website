@@ -1,22 +1,4 @@
-<!-- Top Navigation and Logo -->
-<div class="home-header" #carouselScroll>
-  <div class="logo">
-    <span class="logo-initials">A.M</span>
-    <span class="logo-desc">| Photographer</span>
-  </div>
-  <button class="hamburger" [class.open]="showMobileNav" (click)="showMobileNav = !showMobileNav" [attr.aria-label]="showMobileNav ? 'Close navigation' : 'Open navigation'">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <nav class="main-nav" [class.mobile-open]="showMobileNav">
-    <a href="#">Home</a>
-    <a href="#">Portraits</a>
-    <a href="#">Commissions</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </nav>
-</div>
+<app-header></app-header>
 
 <!-- Main Content -->
 <div class="home-main">
