@@ -104,17 +104,21 @@ body {
 .arrow {
   background: none;
   border: none;
+  border-radius: 0;
+  width: 36px;
+  height: 36px;
   padding: 0;
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #888;
   cursor: pointer;
-  outline: none;
+  z-index: 10002;
   transition: filter 0.2s;
-  user-select: none;
-  width: 36px;
-  height: 100%;
+  outline: none;
+  box-shadow: none;
+  opacity: 1;
 }
 
 .arrow svg {
@@ -122,11 +126,15 @@ body {
   margin: 0 auto;
   stroke: #888;
   transition: stroke 0.2s;
+  width: 38px;
+  height: 38px;
 }
 
-.arrow:hover svg path {
+.arrow:hover svg path,
+.arrow:focus svg path {
   stroke: #222;
 }
+
 
 
 .main-image-container {
@@ -260,7 +268,7 @@ body {
   background: #fff;
   color: #000;
   border: none;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   cursor: pointer;
   padding: 8px 16px;
   border-radius: 8px;
@@ -415,7 +423,7 @@ body {
   .close-modal {
     top: 10px;
     right: 16px;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     padding: 4px 8px;
     border-radius: 6px;
   }
