@@ -10,9 +10,7 @@
           </svg>
         </button>
       </div>
-      <!-- <img [src]="currentImage" alt="Portrait" class="main-image" (touchstart)="onTouchStart($event)"
-        (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd($event)" (click)="openImageModal(currentImage)"
-        style="cursor: zoom-in;" /> -->
+
       <!-- Hidden LightGallery container -->
       <div #lightGallery style="display: none;">
         <a *ngFor="let img of images" [href]="img">
