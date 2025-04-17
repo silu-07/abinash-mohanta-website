@@ -444,21 +444,7 @@ body {
   }
 
   .modal-arrow {
-    width: 36px;
-    height: 36px;
-  }
-
-  .modal-arrow.left {
-    left: 8px;
-  }
-
-  .modal-arrow.right {
-    right: 8px;
-  }
-
-  .modal-arrow svg {
-    width: 22px !important;
-    height: 22px !important;
+   display: none;
   }
 
   .close-modal {
