@@ -10,9 +10,33 @@
           </svg>
         </button>
       </div>
-      <img [src]="currentImage" alt="Portrait" class="main-image" (touchstart)="onTouchStart($event)"
+      <!-- <img [src]="currentImage" alt="Portrait" class="main-image" (touchstart)="onTouchStart($event)"
         (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd($event)" (click)="openImageModal(currentImage)"
-        style="cursor: zoom-in;" />
+        style="cursor: zoom-in;" /> -->
+      <!-- Hidden LightGallery container -->
+      <div #lightGallery style="display: none;">
+        <a *ngFor="let img of images" [href]="img">
+          <img [src]="img" />
+        </a>
+      </div>
+
+      <!-- Carousel as you already have it -->
+      <div class="carousel-container">
+        <button class="arrow left" aria-label="Previous" (click)="prevImage()">
+          <!-- SVG for left arrow -->
+        </button>
+        <div class="carousel-track">
+          <img [src]="images[currentIndex]"
+            class="carousel-image active"
+            (click)="openGalleryAt(currentIndex)"
+            alt="Carousel image" />
+        </div>
+        <button class="arrow right" aria-label="Next" (click)="nextImage()">
+          <!-- SVG for right arrow -->
+        </button>
+      </div>
+
+      <!-- Your existing UI remains unchanged -->
       <div class="arrow-container right">
         <button class="arrow right" aria-label="Next" (click)="nextImage()">
           <svg width="36" height="36" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,30 +48,3 @@
   </div>
 </div>
 
-
-<!-- Fullscreen Image Modal Overlay -->
-<div class="image-modal-overlay" *ngIf="modalOpen" [ngClass]="{'modal-active': modalOpen}">
-  <button class="modal-arrow left" (click)="prevImage()" aria-label="Previous image">
-    <svg width="36" height="36" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 3L6 9L12 15" stroke="#888" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
-  <img [src]="modalImage" alt="Enlarged" class="modal-image" (touchstart)="modalTouchStart($event)"
-    (touchmove)="modalTouchMove($event)" (touchend)="modalTouchEnd($event)" />
-  <button class="modal-arrow right" (click)="nextImage()" aria-label="Next image">
-    <svg width="36" height="36" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6 3L12 9L6 15" stroke="#888" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
-  <button class="close-modal" (click)="closeImageModal()" aria-label="Close image">&#10005;</button>
-
-  <!-- Modal Thumbnails Row (visible only on large screens) -->
-  <div class="modal-thumbnails">
-    <img *ngFor="let img of images; let idx = index"
-         [src]="img"
-         [class.active]="img === modalImage"
-         (click)="currentIndex = idx; modalImage = img"
-         alt="Thumbnail"
-         class="modal-thumbnail" />
-  </div>
-</div>

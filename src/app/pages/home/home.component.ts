@@ -1,13 +1,16 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MoveToTopComponent } from './movetotop/movetotop.component';
 import { HeaderComponent } from '../../layout/header/header.component';
 import { FooterComponent } from "../../layout/footer/footer.component";
+import lightGallery from 'lightgallery';
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MoveToTopComponent, HeaderComponent, FooterComponent],
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -31,7 +34,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!this.autoScrollInterval) {
       this.autoScrollInterval = setInterval(() => {
         this.nextImage();
-      }, 3000);
+      }, 2000);
     }
   }
 
@@ -112,14 +115,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  ngAfterViewInit() {
-    this.autoScrollInterval = setInterval(() => {
-      this.nextImage();
-    }, 3000); // every 3 seconds
-
-    // Keyboard navigation for modal
-    window.addEventListener('keydown', this.handleKeyDown);
-  }
 
   ngOnDestroy() {
     if (this.autoScrollInterval) {
@@ -141,6 +136,42 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       event.preventDefault();
     }
   };
+
+  
+  @ViewChild('lightGallery', { static: false }) lightGallery!: ElementRef;
+
+  lgInstance: any; // To hold the LightGallery instance
+  
+  ngAfterViewInit(): void {
+    if (this.lightGallery) {
+      this.lgInstance = lightGallery(this.lightGallery.nativeElement, {
+        plugins: [lgThumbnail, lgZoom],
+        speed: 500,
+        thumbnail: true,
+        zoom: true
+      });
+    }
+    // Start auto slideshow
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+    }
+    this.autoScrollInterval = setInterval(() => {
+      this.nextImage();
+    }, 2000); // 2000 ms = 2 seconds
+  }
+  
+  openGalleryAt(index: number) {
+    if (this.lgInstance && this.lgInstance.openGallery) {
+      this.lgInstance.openGallery(index);
+    } else if (
+      this.lightGallery &&
+      (this.lightGallery.nativeElement as any).lgData &&
+      (this.lightGallery.nativeElement as any).lgData.openGallery
+    ) {
+      // Fallback for some LightGallery versions
+      (this.lightGallery.nativeElement as any).lgData.openGallery(index);
+    }
+  }
 
 }
 
