@@ -12,7 +12,10 @@
       </div>
 
       <!-- Carousel as you already have it -->
-      <div class="carousel-container">
+      <div class="carousel-container"
+           (touchstart)="onTouchStart($event)"
+           (touchmove)="onTouchMove($event)"
+           (touchend)="onTouchEnd($event)">
         <button class="arrow left" aria-label="Previous" (click)="prevImage()">
           <!-- SVG for left arrow -->
         </button>

@@ -63,6 +63,22 @@
   color: #999 !important;
 }
 
+.lg-download {
+  display: none;
+}
+
+.lg-thumb-item img {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.lg-thumb-item.active img,
+.lg-thumb-item.lg-thumb-active img {
+  filter: none;
+  opacity: 1;
+}
+
 html,
 body {
   scroll-behavior: smooth;
@@ -162,4 +178,22 @@ body {
   --font_10: normal normal normal 12px / 1.4em din-next-w01-light, sans-serif;
 
   --color-active-link: rgb(178, 58, 58);
+}
+
+/* Grayscale all LightGallery thumbnails except the active one */
+.lg-thumb-item img {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.3s, opacity 0.3s;
+}
+.lg-thumb-item.active img,
+.lg-thumb-item.lg-thumb-active img {
+  filter: none;
+  opacity: 1;
+}
+
+@media  screen and (max-width: 600px) {
+  .lg-next, .lg-prev {
+    display: none;
+  }
 }
