@@ -1,1 +1,9 @@
-<p>commercial works!</p>
+<div #lightGallery id="lightgallery" class="gallery-container">
+    <a *ngFor="let img of galleryImages"
+    [href]="img.src"
+    data-lg-size="800-600"
+    [attr.data-sub-html]="img.subHtml"
+    (click)="$event.preventDefault()">
+   <img [src]="img.thumb" alt="Gallery image" />
+ </a>
+</div>

@@ -1,6 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Roboto:wght@300;400&display=swap');
+@import 'lightgallery/css/lightgallery.css';
+@import 'lightgallery/css/lg-thumbnail.css';
+@import 'lightgallery/css/lg-zoom.css';
 
-html, body {
+//Light Gallry Styling
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.gallery-container a {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gallery-container a:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+}
+
+.gallery-container img {
+  display: block;
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* LightGallery white background override */
+.lg-backdrop {
+  background-color: #fff !important;
+}
+
+.lg-sub-html {
+  font: var(--font_7) !important;
+
+  .lg-sub-html * {
+    font: var(--font_10) !important;
+  }
+}
+
+.lg-sub-html,
+.lg-sub-html *,
+.lg-icon,
+.lg-title,
+.lg-actions {
+  color: #000 !important;
+  fill: #000 !important;
+}
+
+.lightGallery-white-theme .lg-next,
+.lightGallery-white-theme .lg-prev,
+.lg-icon,
+.lg-thumb-outer,
+.lg-thumb {
+  background-color: #fff !important;
+  color: #999 !important;
+}
+
+html,
+body {
   scroll-behavior: smooth;
 }
 
@@ -15,7 +79,10 @@ body {
   vertical-align: baseline;
 }
 
-:root, :host, .spxThemeOverride, .max-width-container {
+:root,
+:host,
+.spxThemeOverride,
+.max-width-container {
   --color_0: 255, 255, 255;
   --color_1: 255, 255, 255;
   --color_2: 0, 0, 0;
@@ -94,5 +161,5 @@ body {
   --font_9: normal normal normal 11px / 1.4em montserrat, sans-serif;
   --font_10: normal normal normal 12px / 1.4em din-next-w01-light, sans-serif;
 
-  --color-active-link: rgb(178,58,58);
+  --color-active-link: rgb(178, 58, 58);
 }
