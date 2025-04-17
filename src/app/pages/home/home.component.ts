@@ -136,6 +136,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     } else if (event.key === 'ArrowRight') {
       this.nextImage();
       event.preventDefault();
+    } else if (event.key === 'Escape' || event.key === 'Esc') {
+      this.closeImageModal();
+      event.preventDefault();
     }
   };
 
