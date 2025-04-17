@@ -31,17 +31,15 @@
 <!-- Fullscreen Image Modal Overlay -->
 <div class="image-modal-overlay" *ngIf="modalOpen" [ngClass]="{'modal-active': modalOpen}">
   <button class="modal-arrow left" (click)="prevImage()" aria-label="Previous image">
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"
-      stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6" />
+    <svg width="36" height="36" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 3L6 9L12 15" stroke="#888" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
   <img [src]="modalImage" alt="Enlarged" class="modal-image" (touchstart)="modalTouchStart($event)"
     (touchmove)="modalTouchMove($event)" (touchend)="modalTouchEnd($event)" />
   <button class="modal-arrow right" (click)="nextImage()" aria-label="Next image">
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"
-      stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6" />
+    <svg width="36" height="36" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 3L12 9L6 15" stroke="#888" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
   <button class="close-modal" (click)="closeImageModal()" aria-label="Close image">&#10005;</button>

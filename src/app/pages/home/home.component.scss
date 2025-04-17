@@ -1,5 +1,3 @@
-
-
 * {
   box-sizing: border-box;
 }
@@ -284,14 +282,25 @@ body {
   .main-image {
     max-width: 98vw;
   }
-//   .main-image {
-//     margin: 0.2rem 0rem;
-// }
+
+  .arrow-container {
+    display: none !important;
+  }
 }
 
 @media (max-width: 600px) {
+  :host {
+    overflow-y: hidden !important;
+  }
+  .home-main {
+    overflow-y: hidden !important;
+  }
+  .arrow-container {
+    display: none !important;
+  }
+
   .main-image {
-    height: 180px;
+    height: 240px !important;
     max-width: 98vw;
     min-width: 60px;
     object-fit: cover;
@@ -366,7 +375,6 @@ body {
     font-size: 16px;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
-    // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -395,6 +403,7 @@ body {
     font-size: 15px;
     letter-spacing: 5px;
   }
+
   .modal-image {
     max-width: calc(100vw - 16px);
     max-height: calc(100vh - 16px);
@@ -402,6 +411,7 @@ body {
     height: calc(100vh - 16px);
     margin: 8px;
   }
+
   .modal-arrow {
     width: 36px;
     height: 36px;
