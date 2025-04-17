@@ -116,12 +116,28 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.autoScrollInterval = setInterval(() => {
       this.nextImage();
     }, 3000); // every 3 seconds
+
+    // Keyboard navigation for modal
+    window.addEventListener('keydown', this.handleKeyDown);
   }
 
   ngOnDestroy() {
     if (this.autoScrollInterval) {
       clearInterval(this.autoScrollInterval);
     }
+    window.removeEventListener('keydown', this.handleKeyDown);
   }
+
+  handleKeyDown = (event: KeyboardEvent) => {
+    if (!this.modalOpen) return;
+    if (event.key === 'ArrowLeft') {
+      this.prevImage();
+      event.preventDefault();
+    } else if (event.key === 'ArrowRight') {
+      this.nextImage();
+      event.preventDefault();
+    }
+  };
+
 }
 
