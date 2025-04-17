@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import lightGallery from 'lightgallery';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
+import lgAutoplay from 'lightgallery/plugins/autoplay';
 
-  
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -87,6 +88,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }, 300);
   }
 
+
   // Swipe for main image row
   onTouchStart(event: TouchEvent) {
     this.touchStartX = event.changedTouches[0].screenX;
@@ -120,12 +122,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (this.lightGallery) {
+      // Cast config to 'any' to allow plugin-specific options (autoplayInterval)
       this.lgInstance = lightGallery(this.lightGallery.nativeElement, {
-        plugins: [lgThumbnail, lgZoom],
+        plugins: [lgThumbnail, lgZoom, lgAutoplay],
         speed: 500,
         thumbnail: true,
-        zoom: false
-      });
+        zoom: false,
+        autoplay: true,
+        autoplayControls: true,
+        autoplayInterval: 2000 // ms between slides
+      } as any);
     }
     // Start auto slideshow
     if (this.autoScrollInterval) {
@@ -149,11 +155,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    if (this.autoScrollInterval) {
-      clearInterval(this.autoScrollInterval);
-    }
-  }
+  ngOnDestroy() { }
 
 }
 
