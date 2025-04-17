@@ -4,6 +4,32 @@
 @import 'lightgallery/css/lg-autoplay.css';
 @import 'lightgallery/css/lg-fullscreen.css';
 
+// Smoother modal open/close animation for LightGallery
+.lg-outer {
+  opacity: 0;
+  transform: scale(0.98);
+  transition:
+    opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.lg-outer.lg-open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+// Smoother backdrop fade
+.lg-backdrop {
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lg-backdrop.in {
+  opacity: 1;
+}
+
+
 //Light Gallry Styling
 .gallery-container {
     display: flex;
