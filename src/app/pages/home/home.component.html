@@ -5,7 +5,7 @@
     <div class="main-image-row">
 
       <!-- Bootstrap Carousel Replacement -->
-      <div id="homeBootstrapCarousel" class="carousel slide carousel-container" [ngClass]="{'gallery-open': isGalleryOpen}" data-bs-ride="carousel">
+      <div id="homeBootstrapCarousel" class="carousel slide carousel-container" [ngClass]="{'gallery-open': isGalleryOpen}" data-bs-ride="carousel" data-bs-pause="false">
         <div class="carousel-inner">
           <div *ngFor="let img of images; let i = index" class="carousel-item" [class.active]="i === 0">
             <img [src]="img" class="carousel-image d-block w-100" alt="Carousel image" (click)="openGalleryAt(i)" />
