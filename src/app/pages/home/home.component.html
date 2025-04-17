@@ -40,6 +40,14 @@
     </svg>
   </button>
   <button class="close-modal" (click)="closeImageModal()" aria-label="Close image">&#10005;</button>
-</div>
 
-<app-movetotop></app-movetotop>
+  <!-- Modal Thumbnails Row (visible only on large screens) -->
+  <div class="modal-thumbnails">
+    <img *ngFor="let img of images; let idx = index"
+         [src]="img"
+         [class.active]="img === modalImage"
+         (click)="currentIndex = idx; modalImage = img"
+         alt="Thumbnail"
+         class="modal-thumbnail" />
+  </div>
+</div>
