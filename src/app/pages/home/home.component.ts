@@ -15,21 +15,16 @@ import lgFullscreen from 'lightgallery/plugins/fullscreen';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  constructor(private cdr: ChangeDetectorRef) {}
-  // Modal state for fullscreen image
-  modalOpen: boolean = false;
-  modalImage: string = '';
-
-
-  ngOnInit(): void { }
-
-  showMobileNav = false;
 
   @ViewChild('lightGallery', { static: false }) lightGallery!: ElementRef;
 
+  showMobileNav = false;
   lgInstance: any; // To hold the LightGallery instance
-
   isGalleryOpen = false;
+
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  ngOnInit(): void { }
 
   images: string[] = [
     'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
@@ -51,7 +46,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         autoplayInterval: 2000,
         mode: 'lg-slide'
       } as any);
-  
+
       // Listen for LightGallery events
       this.lightGallery.nativeElement.addEventListener('lgAfterOpen', () => {
         this.isGalleryOpen = true;
