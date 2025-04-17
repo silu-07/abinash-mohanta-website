@@ -126,12 +126,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       // Cast config to 'any' to allow plugin-specific options (autoplayInterval)
       this.lgInstance = lightGallery(this.lightGallery.nativeElement, {
         plugins: [lgThumbnail, lgZoom, lgFullscreen, lgAutoplay],
-        speed: 500,
+        speed: 600, // Smoother transition
         thumbnail: true,
         zoom: false,
         autoplay: true,
         autoplayControls: true,
-        autoplayInterval: 2000 // ms between slides
+        autoplayInterval: 2000, // ms between slides
+        mode: 'lg-slide' // Smooth sliding transition
       } as any);
     }
     // Start auto slideshow
