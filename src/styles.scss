@@ -67,6 +67,64 @@
   display: none;
 }
 
+.lg-thumb-item img {
+  width: 40px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 5px;
+  opacity: 0.6;
+  transition: 
+    opacity 0.3s, 
+    transform 0.25s cubic-bezier(0.4,0,0.2,1), 
+    border 0.25s cubic-bezier(0.4,0,0.2,1), 
+    box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);
+  border: 2px solid transparent;
+}
+
+.lg-thumb-item.active img,
+.lg-thumb-item.lg-thumb-active img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.3);
+  border: 2px solid #b23a3a;
+  box-shadow: 0 0 8px rgba(178, 58, 58, 0.25);
+  z-index: 2;
+}
+
+.lg-outer {
+  padding: 2vw !important;
+  box-sizing: border-box !important;
+}
+
+.lg-current,
+.lg-inner,
+.lg-item,
+.lg-img-wrap,
+.lg-image {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  background: transparent !important;
+}
+
+img.lg-object {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
 html,
 body {
   scroll-behavior: smooth;

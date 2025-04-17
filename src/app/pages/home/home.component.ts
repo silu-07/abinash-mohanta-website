@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   touchEndX = 0;
   currentIndex: number = 0;
   autoScrollInterval: any;
+  autoScrollTimeout: any;
 
   @ViewChild('lightGallery', { static: false }) lightGallery!: ElementRef;
 
@@ -43,11 +44,47 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   prevImage() {
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+      this.autoScrollInterval = null;
+    }
+    if (this.autoScrollTimeout) {
+      clearTimeout(this.autoScrollTimeout);
+    }
     this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    if (this.modalOpen) {
+      this.modalImage = this.images[this.currentIndex];
+    }
+    // Resume auto-scroll after 3 seconds
+    this.autoScrollTimeout = setTimeout(() => {
+      if (!this.autoScrollInterval) {
+        this.autoScrollInterval = setInterval(() => {
+          this.nextImage();
+        }, 2000);
+      }
+    }, 300);
   }
 
   nextImage() {
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+      this.autoScrollInterval = null;
+    }
+    if (this.autoScrollTimeout) {
+      clearTimeout(this.autoScrollTimeout);
+    }
     this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    if (this.modalOpen) {
+      this.modalImage = this.images[this.currentIndex];
+    }
+    // Resume auto-scroll after 3 seconds
+    this.autoScrollTimeout = setTimeout(() => {
+      if (!this.autoScrollInterval) {
+        this.autoScrollInterval = setInterval(() => {
+          this.nextImage();
+        }, 2000);
+      }
+    }, 300);
   }
 
   // Swipe for main image row
