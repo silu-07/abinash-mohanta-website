@@ -3,42 +3,24 @@
   <div class="main-image-container">
     <h1 class="photographer-name">ABINASH MOHANTA</h1>
     <div class="main-image-row">
-      <div class="arrow-container left">
-        <button class="arrow left" aria-label="Previous" (click)="prevImage()">
-          <svg width="36" height="36" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 3L6 9L12 15" stroke="#888" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-      </div>
 
-      <!-- Carousel as you already have it -->
-      <div class="carousel-container"
-           (touchstart)="onTouchStart($event)"
-           (touchmove)="onTouchMove($event)"
-           (touchend)="onTouchEnd($event)">
-        <button class="arrow left" aria-label="Previous" (click)="prevImage()">
-          <!-- SVG for left arrow -->
-        </button>
-        <div class="carousel-track">
-          <img [src]="images[currentIndex]"
-            class="carousel-image active"
-            (click)="openGalleryAt(currentIndex)"
-            alt="Carousel image" />
+      <!-- Bootstrap Carousel Replacement -->
+      <div id="homeBootstrapCarousel" class="carousel slide carousel-container" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div *ngFor="let img of images; let i = index" class="carousel-item" [class.active]="i === 0">
+            <img [src]="img" class="carousel-image d-block w-100" alt="Carousel image" (click)="openGalleryAt(i)" />
+          </div>
         </div>
-        <button class="arrow right" aria-label="Next" (click)="nextImage()">
-          <!-- SVG for right arrow -->
+        <button class="arrow left carousel-control-prev" type="button" data-bs-target="#homeBootstrapCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="arrow right carousel-control-next" type="button" data-bs-target="#homeBootstrapCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
         </button>
       </div>
 
-      <!-- Your existing UI remains unchanged -->
-      <div class="arrow-container right">
-        <button class="arrow right" aria-label="Next" (click)="nextImage()">
-          <svg width="36" height="36" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 3L12 9L6 15" stroke="#888" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-      </div>
-      
       <!-- Hidden LightGallery container -->
       <div #lightGallery style="display: none;">
         <a *ngFor="let img of images" [href]="img">
