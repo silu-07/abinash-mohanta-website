@@ -11,13 +11,6 @@
         </button>
       </div>
 
-      <!-- Hidden LightGallery container -->
-      <div #lightGallery style="display: none;">
-        <a *ngFor="let img of images" [href]="img">
-          <img [src]="img" />
-        </a>
-      </div>
-
       <!-- Carousel as you already have it -->
       <div class="carousel-container">
         <button class="arrow left" aria-label="Previous" (click)="prevImage()">
@@ -41,6 +34,13 @@
             <path d="M6 3L12 9L6 15" stroke="#888" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </button>
+      </div>
+      
+      <!-- Hidden LightGallery container -->
+      <div #lightGallery style="display: none;">
+        <a *ngFor="let img of images" [href]="img">
+          <img [src]="img" />
+        </a>
       </div>
     </div>
   </div>
