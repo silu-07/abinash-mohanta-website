@@ -4,6 +4,7 @@ import lightGallery from 'lightgallery';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 import lgAutoplay from 'lightgallery/plugins/autoplay';
+import lgFullscreen from 'lightgallery/plugins/fullscreen';
 
 
 @Component({
@@ -124,7 +125,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.lightGallery) {
       // Cast config to 'any' to allow plugin-specific options (autoplayInterval)
       this.lgInstance = lightGallery(this.lightGallery.nativeElement, {
-        plugins: [lgThumbnail, lgZoom, lgAutoplay],
+        plugins: [lgThumbnail, lgZoom, lgFullscreen, lgAutoplay],
         speed: 500,
         thumbnail: true,
         zoom: false,

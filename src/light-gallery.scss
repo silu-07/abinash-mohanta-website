@@ -2,6 +2,7 @@
 @import 'lightgallery/css/lg-thumbnail.css';
 @import 'lightgallery/css/lg-zoom.css';
 @import 'lightgallery/css/lg-autoplay.css';
+@import 'lightgallery/css/lg-fullscreen.css';
 
 //Light Gallry Styling
 .gallery-container {
@@ -49,7 +50,8 @@
 .lg-sub-html *,
 .lg-icon,
 .lg-title,
-.lg-actions {
+.lg-actions,
+.lg-counter {
     color: #000 !important;
     fill: #000 !important;
 }
@@ -60,7 +62,7 @@
 .lg-thumb-outer,
 .lg-thumb {
     background-color: #fff !important;
-    color: #999 !important;
+    color: var(--color_2) !important;
 }
 
 .lg-download {
@@ -147,6 +149,7 @@ img.lg-object {
 }
 
 @media screen and (max-width: 600px) {
+
     .lg-next,
     .lg-prev {
         display: none;
