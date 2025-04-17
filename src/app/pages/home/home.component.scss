@@ -60,13 +60,25 @@ body {
 
 .carousel-control-prev,
 .carousel-control-next {
-  display: none !important;
+  display: flex !important;
+  z-index: 10005;
+  opacity: 1;
+  margin: 44px;
+  margin-right: 44px;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+  // filter: invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.25));
   background-size: 60% 60%;
+  // background-color: #000;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover,
+.carousel-control-prev-icon:focus,
+.carousel-control-next-icon:focus {
+  filter: invert(0.7) drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
 .arrow-container {
@@ -170,7 +182,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   margin: 0 auto;
   background: #fff;
 }
