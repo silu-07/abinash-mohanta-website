@@ -1,1 +1,1 @@
-<h2 class="second-header-title">{{ secondHeaderTitle }}</h2>
+<h2 class="second-header-title" *ngIf="secondHeaderTitle" [@titleFade]="currentTitleKey">{{ secondHeaderTitle }}</h2>
