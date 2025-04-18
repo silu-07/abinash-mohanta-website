@@ -32,12 +32,16 @@
   font-weight: 700;
   letter-spacing: 0.02em;
 }
-.google-btn .g-blue { color: #4285f4; }
-.google-btn .g-red { color: #ea4335; }
-.google-btn .g-yellow { color: #fbbc05; }
-.google-btn .g-green { color: #34a853; }
+.g-blue { color: #4285f4; }
+.g-red { color: #ea4335; }
+.g-yellow { color: #fbbc05; }
+.g-green { color: #34a853; }
 .google-btn:hover {
   background: #f1f3f4;
   border-color: #1967d2;
   color: #1967d2;
+}
+
+a {
+    text-decoration: underline !important;
 }
