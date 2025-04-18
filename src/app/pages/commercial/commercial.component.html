@@ -1,9 +1,6 @@
-<div #lightGallery id="lightgallery" class="gallery-container">
-    <a *ngFor="let img of galleryImages"
-    [href]="img.src"
-    data-lg-size="800-600"
-    [attr.data-sub-html]="img.subHtml"
+<div #lightGallery id="lightgallery" class="gallery-container" appInViewport>
+  <a *ngFor="let img of galleryImages" [href]="img.src" data-lg-size="800-600" [attr.data-sub-html]="img.subHtml"
     (click)="$event.preventDefault()">
-   <img [src]="img.thumb" alt="Gallery image" />
- </a>
+    <img [src]="img.thumb" alt="Gallery image" />
+  </a>
 </div>

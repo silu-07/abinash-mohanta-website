@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InViewportDirective } from '../../shared/in-viewport.directive';
+import { InViewportDirective } from '../../custom-directive/in-viewport.directive';
 
 @Component({
   selector: 'app-personal',
