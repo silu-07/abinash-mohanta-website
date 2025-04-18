@@ -1,5 +1,9 @@
 :host {
     display: block;
-padding: 48px 16px;
+    padding: 48px 16px;
     font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
-  }
+}
+
+.py-5 {
+    padding-top: 0 !important;
+}
