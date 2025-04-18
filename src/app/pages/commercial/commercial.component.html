@@ -1,19 +1,27 @@
 <div class="container py-5" appInViewport>
   <div class="commercial-simple-grid">
-    <div class="commercial-simple-card" *ngFor="let item of commercialImages">
+    <div class="commercial-simple-card" *ngFor="let item of commercialImages" (click)="openModal(item)" style="cursor:pointer">
       <div class="commercial-simple-img-wrapper">
-        <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-img-link">
+        <div class="commercial-simple-img-link">
           <img [src]="item.image" class="commercial-simple-img" alt="Commercial image">
           <span class="commercial-simple-img-overlay"></span>
-        </a>
+        </div>
       </div>
       <div class="commercial-simple-info mt-auto">
         <div class="commercial-simple-title-row">
-          <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-title-link">{{ item.title }}</a>
+          <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-title-link" (click)="$event.stopPropagation()">{{ item.title }}</a>
           <span class="commercial-simple-title-row-spacer"></span>
-          <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-viewmore-link">View More</a>
+          <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-viewmore-link" (click)="$event.stopPropagation()">View More</a>
         </div>
       </div>
     </div>
+
+    <app-modal
+      [open]="modalOpen"
+      [image]="modalImage"
+      [title]="modalTitle"
+      [description]="modalDescription"
+      (closeModal)="closeModal()">
+    </app-modal>
   </div>
 </div>

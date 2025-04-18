@@ -1,0 +1,14 @@
+<div class="modal-backdrop" *ngIf="open" (click)="onClose()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="onClose()" aria-label="Close">&times;</button>
+    <div class="modal-content">
+      <div class="modal-image" *ngIf="image">
+        <img [src]="image" [alt]="title" />
+      </div>
+      <div class="modal-info">
+        <h2 class="modal-title">{{ title }}</h2>
+        <p class="modal-description">{{ description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
