@@ -1,12 +1,7 @@
 :host {
   display: block;
-  margin-top: 90px !important;
   font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
-}
-
-h2 {
-  font: var(--font_3) !important;
-  letter-spacing: 0.5em;
+  padding: 48px 16px;
 }
 
 .container {
@@ -65,8 +60,4 @@ h2 {
 
 a {
   text-decoration: underline !important;
-}
-
-.mb-3 {
-  margin: 1rem !important;
 }
