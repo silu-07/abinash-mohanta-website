@@ -7,3 +7,9 @@
 .py-5 {
   padding-top: 0 !important;
 }
+
+@media (max-width: 600px) {
+  :host {
+    padding: 12px 4px !important;
+  }
+}
