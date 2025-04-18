@@ -8,19 +8,6 @@
   min-height: 100vh;
   font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
   color: #222;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-  overflow-x: hidden;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-:host ::-webkit-scrollbar {
-  display: none;
 }
 
 .home-main {
@@ -28,12 +15,11 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  min-height: 80vh;
-  margin-top: 90px;
+  height: calc(100vh - 90px) !important;
+  padding-top: 90px;
   position: relative;
   width: 100vw;
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 .main-image {
@@ -168,7 +154,7 @@ body {
 
 
 .photographer-name {
-  font: var(--font_3);
+  font: var(--font_4);
   letter-spacing: 0.5em;
   color: var(--color-black);
   margin: 18px;
