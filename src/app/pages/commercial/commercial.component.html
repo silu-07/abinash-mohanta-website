@@ -1,10 +1,12 @@
 <div class="container py-5" appInViewport>
   <div class="commercial-simple-grid">
     <div class="commercial-simple-card" *ngFor="let item of commercialImages">
-      <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-img-link">
-        <img [src]="item.image" class="commercial-simple-img" alt="Commercial image">
-      </a>
-      <div class="commercial-simple-info">
+      <div class="commercial-simple-img-wrapper">
+        <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-img-link">
+          <img [src]="item.image" class="commercial-simple-img" alt="Commercial image">
+        </a>
+      </div>
+      <div class="commercial-simple-info mt-auto">
         <div class="commercial-simple-title-row">
           <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-title-link">{{ item.title }}</a>
           <span class="commercial-simple-title-row-spacer"></span>
