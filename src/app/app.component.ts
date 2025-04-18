@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from "./layout/footer/footer.component";
 import { HeaderComponent } from "./layout/header/header.component";
 import { SecondHeaderComponent } from "./layout/second-header/second-header/second-header.component";
-import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
+import { ProgressBarComponent } from './layout/progress-bar/progress-bar.component';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
