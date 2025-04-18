@@ -1,4 +1,10 @@
 :host {
   display: block;
   margin-top: 90px !important;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+}
+
+h2 {
+  font: var(--font_3) !important;
+  letter-spacing: 0.5em;
 }
