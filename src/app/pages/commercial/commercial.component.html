@@ -1,6 +1,18 @@
-<div #lightGallery id="lightgallery" class="gallery-container" appInViewport>
-  <a *ngFor="let img of galleryImages" [href]="img.src" data-lg-size="800-600" [attr.data-sub-html]="img.subHtml"
-    (click)="$event.preventDefault()">
-    <img [src]="img.thumb" alt="Gallery image" />
-  </a>
+<div class="container py-5" appInViewport>
+  <div class="row g-4">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of commercialImages">
+      <div class="card h-100 shadow-sm commercial-card d-flex flex-column">
+        <a [href]="item.link" target="_blank" rel="noopener" class="commercial-card-img-link">
+          <img [src]="item.image" class="card-img-top commercial-card-img" alt="Commercial image">
+        </a>
+        <div class="card-body d-flex flex-column align-items-center text-center justify-content-end commercial-card-body">
+          <h6 class="card-title mb-0 commercial-card-title">
+            <a [href]="item.link" target="_blank" rel="noopener" class="commercial-card-title-link">
+              {{ item.title }}
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
