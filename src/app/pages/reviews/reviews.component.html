@@ -1,1 +1,18 @@
-<p>reviews works!</p>
+<div class="container py-5">
+  <h2 class="text-center mb-4">Client Reviews</h2>
+  <div class="row g-4">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let review of reviews">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column align-items-center text-center">
+          <img [src]="review.avatar" class="rounded-circle mb-3" alt="Avatar" width="70" height="70">
+          <h5 class="card-title mb-1">{{ review.name }}</h5>
+          <div class="mb-2 text-warning">
+            <ng-container *ngFor="let star of [].constructor(review.rating)">&#9733;</ng-container>
+            <ng-container *ngFor="let star of [].constructor(5 - review.rating)">&#9734;</ng-container>
+          </div>
+          <p class="card-text small">{{ review.text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
