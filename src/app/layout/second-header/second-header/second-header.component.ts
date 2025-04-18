@@ -16,8 +16,8 @@ export class SecondHeaderComponent {
     home: 'ABINASH MOHANTA',
     about: 'ABOUT ME',
     contact: 'CONTACT',
-    personal: 'PERSONAL PROJECTS',
-    commercial: 'COMMERCIAL PROJECTS',
+    personal: 'PERSONAL WORK',
+    commercial: 'COMMERCIAL WORK',
     reviews: ' CLIENT REVIEWS',
   };
 
