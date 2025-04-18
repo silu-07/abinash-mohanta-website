@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { InViewportDirective } from '../../shared/in-viewport.directive';
 
 @Component({
   selector: 'app-personal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, InViewportDirective],
   templateUrl: './personal.component.html',
   styleUrl: './personal.component.scss'
 })
