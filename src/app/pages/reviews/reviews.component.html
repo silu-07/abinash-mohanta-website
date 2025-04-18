@@ -2,15 +2,15 @@
   <h2 class="text-center mb-4">Client Reviews</h2>
   <div class="row g-4">
     <div class="col-12 col-sm-6 col-lg-4" *ngFor="let review of reviews">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body d-flex flex-column align-items-center text-center">
+      <div class="card h-100 shadow-sm" style="min-height: 340px;">
+        <div class="card-body d-flex flex-column align-items-center text-center justify-content-between p-3" style="height: 100%;">
           <img [src]="review.avatar" class="rounded-circle mb-3" alt="Avatar" width="70" height="70">
           <h5 class="card-title mb-1">{{ review.name }}</h5>
           <div class="mb-2 text-warning">
             <ng-container *ngFor="let star of [].constructor(review.rating)">&#9733;</ng-container>
             <ng-container *ngFor="let star of [].constructor(5 - review.rating)">&#9734;</ng-container>
           </div>
-          <p class="card-text small">{{ review.text }}</p>
+          <p class="card-text" style="font-size: 1.05rem; margin-top: 1rem; margin-bottom: 0; min-height: 90px; max-height: 170px; overflow-y: auto;">{{ review.text }}</p>
         </div>
       </div>
     </div>
