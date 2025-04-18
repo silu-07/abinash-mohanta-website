@@ -146,7 +146,8 @@
     text-align: left;
   }
 
-  .project-title {
-    font: var(--font_8);
+  .project-title, .project-more {
+    font: var(--font_7);
+    padding: 0 0.5rem;
   }
 }
