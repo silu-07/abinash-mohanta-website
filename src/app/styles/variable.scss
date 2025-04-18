@@ -2,6 +2,12 @@
 :host,
 .spxThemeOverride,
 .max-width-container {
+    --color-active-link: rgb(178, 58, 58);
+    --color-black: 0, 0, 0;
+    --color-white: 255, 255, 255;
+    --color-gray: 117, 117, 117;
+
+
   --color_0: 255, 255, 255;
   --color_1: 255, 255, 255;
   --color_2: 0, 0, 0;
@@ -79,6 +85,4 @@
   --font_8: normal normal normal 13px / 1.4em montserrat, sans-serif;
   --font_9: normal normal normal 11px / 1.4em montserrat, sans-serif;
   --font_10: normal normal normal 12px / 1.4em din-next-w01-light, sans-serif;
-
-  --color-active-link: rgb(178, 58, 58);
 }

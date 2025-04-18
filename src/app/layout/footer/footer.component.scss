@@ -5,12 +5,12 @@
     width: 100vw;
     text-align: center;
     font-size: 9px;
-    color: #000;
+    color: var(--color-black);
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.6px;
     font-weight: 300;
     z-index: 20;
-    background: #fff;
+    background: var(--color-white);
     padding: 8px 0 6px 0;
     box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
   }
@@ -21,7 +21,7 @@
   }
 
   .home-footer {
-    background: #fff !important;
+    background: var(--color-white) !important;
   }
 
   @media (max-width: 600px) {

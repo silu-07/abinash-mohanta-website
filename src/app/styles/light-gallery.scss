@@ -61,7 +61,7 @@
 
 /* LightGallery white background override */
 .lg-backdrop {
-    background-color: #fff !important;
+    background-color: var(--color-white) !important;
 }
 
 .lg-sub-html {
@@ -78,8 +78,8 @@
 .lg-title,
 .lg-actions,
 .lg-counter {
-    color: #000 !important;
-    fill: #000 !important;
+    color: var(--color-black) !important;
+    fill: var(--color-black) !important;
 }
 
 .lightGallery-white-theme .lg-next,
@@ -87,7 +87,7 @@
 .lg-icon,
 .lg-thumb-outer,
 .lg-thumb {
-    background-color: #fff !important;
+    background-color: var(--color-white) !important;
     color: var(--color_2) !important;
 }
 
