@@ -1,7 +1,7 @@
 :host {
   display: block;
   font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
-  padding: 48px 16px;
+  padding: 22px 16px;
 }
 
 .container {
@@ -73,5 +73,9 @@ span {
 
   .google-btn {
     padding: 0.4rem 1.5rem;
+  }
+
+  span {
+    font-size: 1rem;
   }
 }
