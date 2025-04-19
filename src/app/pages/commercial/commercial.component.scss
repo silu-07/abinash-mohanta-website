@@ -129,8 +129,10 @@
   color: #fff;
   background: #6c63ff;
   box-shadow: 0 4px 16px rgba(108, 99, 255, 0.13);
+
   .fa-filter {
-    color: #ffc107 !important; /* Bootstrap text-warning */
+    color: #ffc107 !important;
+    /* Bootstrap text-warning */
   }
 }
 
@@ -167,7 +169,7 @@
 .dropdown-item:focus {
   background: #f2f1ff;
   color: #6c63ff;
-  
+
 }
 
 /* --- End Stylish Controls --- */
@@ -243,6 +245,7 @@
   color: #222 !important;
 }
 
+// For Mobile
 @media (max-width: 600px) {
   :host {
     padding: 12px 4px !important;
@@ -272,4 +275,15 @@
     opacity: 1 !important;
   }
 
+}
+
+//For desktop - Image overlay on search, filter & mouse hover
+@media (min-width: 601px) {
+
+  .card:hover .card-overlay,
+  .card:focus-within .card-overlay,
+  .card-overlay.show-overlay {
+    display: flex !important;
+    opacity: 1 !important;
+  }
 }
