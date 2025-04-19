@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { comImages } from './images-commercial';
-
-import { cardGridAnimation } from './commercial.animations';
+import { cardGridAnimation } from '../../animation/cardgrid.animations';
 import { dropdownAnimation } from '../../animation/dropdown.animations';
 import { overlayAnimation } from '../../animation/overlay.animations';
 
