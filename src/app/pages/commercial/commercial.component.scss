@@ -9,12 +9,70 @@
 }
 
 .card {
-  min-height: 340px;
-  background: rgba(255,255,255,0.96);
-  border: 1.5px solid #e7eaf0;
-  box-shadow: 0 8px 24px 0 rgba(60,72,88,.10);
-  transition: box-shadow 0.22s, border-color 0.18s;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: none;
 }
+
+.commercial-card-custom {
+  min-height: 340px;
+  position: relative;
+  overflow: hidden;
+}
+
+.commercial-card-img {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-overlay {
+  background: rgba(0,0,0,0.38);
+  z-index: 2;
+  padding: 1.2rem 1rem 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.commercial-card-btn {
+  font-weight: 500;
+  z-index: 3;
+  border-radius: 24px;
+  padding: 0.45rem 1.4rem;
+  background: rgba(255,255,255,0.09);
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.commercial-card-btn:hover, .commercial-card-btn:focus {
+  background: #fff;
+  color: #222;
+  border-color: #fff;
+}
+
+.commercial-card-title {
+  font-size: 1.12rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.6rem;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+.commercial-card-desc {
+  font-size: 1.05rem;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  margin-bottom: 0;
+}
+
 
 .card:hover, .card:focus-within {
   box-shadow: 0 24px 64px 0 rgba(60,72,88,.18);
