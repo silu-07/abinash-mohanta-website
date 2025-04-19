@@ -249,8 +249,21 @@
   .work-card-title {
     display: block !important;
   }
+
   .mb-4 {
     margin-bottom: 0.8rem !important;
-}
+  }
+
+  // Always add Overlay on image and show title for mobile
+  .card-overlay {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto;
+  }
+
+  .work-card-title {
+    display: block !important;
+    opacity: 1 !important;
+  }
 
 }
