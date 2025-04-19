@@ -8,6 +8,69 @@
   padding-top: 0 !important;
 }
 
+/* --- Stylish Search & Filter Controls --- */
+.form-control.search-input {
+  border-radius: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  padding: 0.75rem 1.25rem;
+  font-size: 1.05rem;
+  border: 1.5px solid #e0e0e0;
+  background: #fafaff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-control.search-input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.13);
+  background: #fff;
+}
+
+.btn-outline-secondary.dropdown-toggle {
+  border-radius: 2rem;
+  background: #fff;
+  color: #6c63ff;
+  border: 1.5px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  padding: 0.65rem 1.6rem 0.65rem 1.2rem;
+  font-weight: 500;
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.btn-outline-secondary.dropdown-toggle:hover,
+.btn-outline-secondary.dropdown-toggle:focus {
+  border-color: #6c63ff;
+  color: #fff;
+  background: #6c63ff;
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.13);
+}
+
+.dropdown-menu {
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.13), 0 1.5px 6px rgba(0, 0, 0, 0.04);
+  padding: 0.5rem 0.25rem;
+  min-width: 220px;
+  margin-top: 0.5rem;
+  border: 1px solid #f0f0f0;
+  background: #fff;
+}
+
+.dropdown-item {
+  border-radius: 0.5rem;
+  margin: 0.1rem 0.25rem;
+  padding: 0.45rem 0.9rem;
+  transition: background 0.15s;
+  color: #333;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: #f2f1ff;
+  color: #6c63ff;
+}
+
+/* --- End Stylish Controls --- */
+
 .card {
   background: transparent;
   border: none;
