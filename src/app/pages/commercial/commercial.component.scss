@@ -11,11 +11,11 @@
 /* --- Stylish Search & Filter Controls --- */
 .form-control.search-input {
   border-radius: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   padding: 0.75rem 1.25rem;
   font-size: 1.05rem;
   border: 1.5px solid #e0e0e0;
   background: #fafaff;
+  color: #333;
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
 }
@@ -24,14 +24,14 @@
   border-color: #6c63ff;
   box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.13);
   background: #fff;
-}
+  color: #333;
+} 
 
 .btn-outline-secondary.dropdown-toggle {
   border-radius: 2rem;
   background: #fff;
   color: #6c63ff;
   border: 1.5px solid #e0e0e0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   padding: 0.65rem 1.6rem 0.65rem 1.2rem;
   font-weight: 500;
   transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
@@ -43,7 +43,7 @@
   color: #fff;
   background: #6c63ff;
   box-shadow: 0 4px 16px rgba(108, 99, 255, 0.13);
-}
+} 
 
 .dropdown-menu {
   border-radius: 1rem;
@@ -59,9 +59,10 @@
   border-radius: 0.5rem;
   margin: 0.1rem 0.25rem;
   padding: 0.45rem 0.9rem;
-  transition: background 0.15s;
+  transition: background 0.15s, color 0.15s;
   color: #333;
-}
+  background: transparent;
+} 
 
 .dropdown-item:hover,
 .dropdown-item:focus {
