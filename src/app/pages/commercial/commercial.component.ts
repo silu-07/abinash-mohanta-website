@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalComponent } from '../../layout/modal/card-modal/modal.component';
 
 @Component({
   selector: 'app-commercial',
   standalone: true,
-  imports: [CommonModule, ModalComponent],
+  imports: [CommonModule],
   templateUrl: './commercial.component.html',
   styleUrl: './commercial.component.scss'
 })
@@ -48,20 +47,4 @@ export class CommercialComponent {
       description: 'Stock video reflecting the Animals and Influencers trend'
     }
   ];
-
-  modalOpen = false;
-  modalImage = '';
-  modalTitle = '';
-  modalDescription = '';
-
-  openModal(item: any) {
-    this.modalImage = item.image;
-    this.modalTitle = item.title;
-    this.modalDescription = item.description;
-    this.modalOpen = true;
-  }
-
-  closeModal() {
-    this.modalOpen = false;
-  }
 }

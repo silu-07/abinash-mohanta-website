@@ -1,27 +1,14 @@
 <div class="container py-5" appInViewport>
-  <div class="commercial-simple-grid">
-    <div class="commercial-simple-card" *ngFor="let item of commercialImages" (click)="openModal(item)" style="cursor:pointer">
-      <div class="commercial-simple-img-wrapper">
-        <div class="commercial-simple-img-link">
-          <img [src]="item.image" class="commercial-simple-img" alt="Commercial image">
-          <span class="commercial-simple-img-overlay"></span>
-        </div>
-      </div>
-      <div class="commercial-simple-info mt-auto">
-        <div class="commercial-simple-title-row">
-          <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-title-link" (click)="$event.stopPropagation()">{{ item.title }}</a>
-          <span class="commercial-simple-title-row-spacer"></span>
-          <a [href]="item.link" target="_blank" rel="noopener" class="commercial-simple-viewmore-link" (click)="$event.stopPropagation()">View More</a>
+  <div class="row g-4">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of commercialImages">
+      <div class="card h-100 shadow-sm" style="min-height: 340px;">
+        <img [src]="item.image" class="card-img-top" alt="Commercial image" style="height: 200px; object-fit: cover;">
+        <div class="card-body d-flex flex-column align-items-center text-center justify-content-between p-3" style="height: 100%;">
+          <h5 class="card-title mb-2">{{ item.title }}</h5>
+          <p class="card-text mb-3" style="font-size: 1.05rem; min-height: 80px; max-height: 140px; overflow-y: auto;">{{ item.description }}</p>
+          <a [href]="item.link" target="_blank" rel="noopener" class="btn btn-outline-primary mt-auto" style="font-weight: 500;">View Project</a>
         </div>
       </div>
     </div>
-
-    <app-modal
-      [open]="modalOpen"
-      [image]="modalImage"
-      [title]="modalTitle"
-      [description]="modalDescription"
-      (closeModal)="closeModal()">
-    </app-modal>
   </div>
 </div>
