@@ -15,7 +15,7 @@
     <div class="dropdown d-inline-block" style="position:relative;" #dropdownContainer
       (document:click)="onOutsideClick($event, dropdownContainer)">
       <button class="btn btn-outline-secondary dropdown-toggle" type="button" (click)="onDropdownToggle()">
-        <i class="fa-solid fa-filter text-black"></i> Filter work
+        <i class="fa-solid fa-filter text-black"></i> Filter
       </button>
 
       <ul class="dropdown-menu"[@dropdownMenu]="showDropdown ? 'open' : 'closed'"
