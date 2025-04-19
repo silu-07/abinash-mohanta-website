@@ -1,14 +1,8 @@
 <div class="container py-5" appInViewport>
-  <app-search-filter
-    [searchTerm]="searchTerm"
-    [selectedTitles]="selectedTitles"
-    [uniqueTitles]="uniqueTitles"
-    [showDropdown]="showDropdown"
-    (searchTermChange)="searchTerm = $event"
-    (selectedTitlesChange)="selectedTitles = $event"
-    (showDropdownChange)="onShowDropdownChange($event)"
-    (clearAll)="clearAllFilters()"
-    (toggleTitle)="toggleTitleSelection($event)"
+  <app-search-filter [searchTerm]="searchTerm" [selectedTitles]="selectedTitles" [uniqueTitles]="uniqueTitles"
+    [showDropdown]="showDropdown" (searchTermChange)="searchTerm = $event"
+    (selectedTitlesChange)="selectedTitles = $event" (showDropdownChange)="onShowDropdownChange($event)"
+    (clearAll)="clearAllFilters()" (toggleTitle)="toggleTitleSelection($event)"
     (outsideClick)="onOutsideClick($event, dropdownRef)">
   </app-search-filter>
   <div #dropdownRef></div>
@@ -16,19 +10,17 @@
   <div class="row g-4">
     <ng-container *ngIf="filteredCards.length > 0; else noResults">
       <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of filteredCards; trackBy: trackByFn">
-        <div class="card h-100 shadow-sm position-relative overflow-hidden work-card-custom"
-             (click)="goToProject(item)"
-             style="cursor:pointer;"
-             @cardAnimation>
+        <div class="card h-100 shadow-sm position-relative overflow-hidden work-card-custom work-card"
+          (click)="goToProject(item)" style="cursor:pointer;" @cardAnimation [ngClass]="{
+               'active-filter': isActiveFilter(item),
+               'active-search': isActiveSearch(item)
+             }">
           <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0" alt="work image">
-          <ng-container *ngIf="searchTerm || selectedTitles.length > 0">
-            <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3"
-                 @overlayFade>
-              <div class="flex-grow-1 d-flex flex-column justify-content-end align-items-center text-center">
-                <h5 class="card-title mb-2 text-white work-card-title" [innerHTML]="highlightMatch(item.title)"></h5>
-              </div>
+          <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3" @overlayFade>
+            <div class="flex-grow-1 d-flex flex-column justify-content-end align-items-center text-center">
+              <h5 class="card-title mb-2 text-white work-card-title" [innerHTML]="highlightMatch(item.title)"></h5>
             </div>
-          </ng-container>
+          </div>
         </div>
       </div>
     </ng-container>

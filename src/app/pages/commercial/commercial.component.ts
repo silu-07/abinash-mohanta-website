@@ -20,8 +20,15 @@ export class CommercialComponent {
   searchTerm: string = '';
   selectedTitles: string[] = [];
   showDropdown: boolean = false;
+  isDesktop: boolean = window.innerWidth >= 600;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    window.addEventListener('resize', this.updateIsDesktop.bind(this));
+  }
+
+  updateIsDesktop() {
+    this.isDesktop = window.innerWidth >= 600;
+  }
 
   trackByFn(_index: number, item: any) {
     return item.title; // Or item.id if you have a unique id
@@ -35,6 +42,14 @@ export class CommercialComponent {
     if (this.showDropdown && dropdownRef && !dropdownRef.contains(event.target as Node)) {
       this.showDropdown = false;
     }
+  }
+
+  isActiveFilter(item: any): boolean {
+    return this.isDesktop && this.selectedTitles.length > 0 && this.selectedTitles.includes(item.title);
+  }
+
+  isActiveSearch(item: any): boolean {
+    return this.isDesktop && this.searchTerm && item.title.toLowerCase().includes(this.searchTerm.toLowerCase());
   }
 
   goToProject(item: { link: string }) {
