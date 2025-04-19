@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-commercial',
@@ -9,12 +10,21 @@ import { CommonModule } from '@angular/common';
   styleUrl: './commercial.component.scss'
 })
 export class CommercialComponent {
-  commercialImages = [
+  images = [
     {
       image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
       title: "Curators' picks",
-      link: 'https://example.com/project1',
-      description: 'Our latest favorite stock footage'
+      link: '/project1',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
+      title: 'Colors and textures',
+      link: '/project2',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80',
+      title: 'Creative trends',
+      link: '/project3',
     },
     {
       image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
@@ -31,20 +41,15 @@ export class CommercialComponent {
     {
       image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
       title: "Curators' picks",
-      link: 'https://example.com/project1',
-      description: 'Our latest favorite stock footage'
+      link: '/project1',
     },
-    {
-      image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80',
-      title: 'Colors and textures',
-      link: 'https://example.com/project2',
-      description: 'Stock footage showcasing rich hues and patterns'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80',
-      title: 'Creative trends',
-      link: 'https://example.com/project3',
-      description: 'Stock video reflecting the Animals and Influencers trend'
-    }
   ];
+
+  constructor(private router: Router) { }
+
+  goToProject(item: { link: string }) {
+    this.router.navigate([item.link]);
+  }
+
+
 }
