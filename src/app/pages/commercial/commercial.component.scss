@@ -90,8 +90,6 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-
-
 /* --- Stylish Search & Filter Controls --- */
 
 .form-control.search-input {
@@ -136,6 +134,7 @@
   }
 }
 
+// Filter Dropdown
 .dropdown-menu {
   border-radius: 1rem;
   box-shadow: 0 8px 24px rgba(108, 99, 255, 0.13), 0 1.5px 6px rgba(0, 0, 0, 0.04);
@@ -169,10 +168,18 @@
 .dropdown-item:focus {
   background: #f2f1ff;
   color: #6c63ff;
-
 }
 
-/* --- End Stylish Controls --- */
+.search-clear-icon {
+  font-size: 1.5rem !important;
+  color: #000 !important;
+
+  :hover {
+    background-color: #6c63ff;
+  }
+}
+
+/* --- End Stylish Search & Filter Controls --- */
 
 //Search Clear Icon 
 .search-input-wrapper {
