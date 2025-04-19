@@ -90,6 +90,8 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
+
+
 /* --- Stylish Search & Filter Controls --- */
 
 .form-control.search-input {
@@ -127,6 +129,9 @@
   color: #fff;
   background: #6c63ff;
   box-shadow: 0 4px 16px rgba(108, 99, 255, 0.13);
+  .fa-filter {
+    color: #ffc107 !important; /* Bootstrap text-warning */
+  }
 }
 
 .dropdown-menu {
@@ -162,6 +167,7 @@
 .dropdown-item:focus {
   background: #f2f1ff;
   color: #6c63ff;
+  
 }
 
 /* --- End Stylish Controls --- */
