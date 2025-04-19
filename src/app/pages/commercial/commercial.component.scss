@@ -238,6 +238,14 @@
   font-weight: 500;
 }
 
+//Clear all chip
+.clear-all-chip {
+  background: #ffe5e5 !important;
+  color: #222 !important;
+  border: 1px solid #e0e0e0;
+  font-weight: 600;
+}
+
 .active-filter-chip .btn-link,
 .active-filter-chip .fa-xmark {
   color: #222 !important;

@@ -2,24 +2,28 @@
   <div class="row mb-4 align-items-center">
     <div class="col-12 col-md-6">
       <div class="search-input-wrapper">
-  <span class="input-icon position-absolute top-50 start-0 translate-middle-y ps-3" aria-hidden="true">
-    <i class="fa-solid fa-magnifying-glass text-dark"></i>
-  </span>
-  <input type="text" class="form-control search-input ps-5" placeholder="Search work..." [(ngModel)]="searchTerm">
-  <button *ngIf="searchTerm" type="button" class="search-clear-btn" (click)="searchTerm = ''" aria-label="Clear search">
-    <span class="search-clear-icon">&times;</span>
-  </button>
-</div>
+        <span class="input-icon position-absolute top-50 start-0 translate-middle-y ps-3" aria-hidden="true">
+          <i class="fa-solid fa-magnifying-glass text-dark"></i>
+        </span>
+        <input type="text" class="form-control search-input ps-5" placeholder="Search work..." [(ngModel)]="searchTerm">
+        <button *ngIf="searchTerm" type="button" class="search-clear-btn" (click)="searchTerm = ''"
+          aria-label="Clear search">
+          <span class="search-clear-icon">&times;</span>
+        </button>
+      </div>
     </div>
     <div class="col-12 col-md-6 mt-2 mt-md-0 text-md-end">
-      <div class="dropdown d-inline-block" style="position:relative;" #dropdownRef (document:click)="onOutsideClick($event, dropdownRef)">
+      <div class="dropdown d-inline-block" style="position:relative;" #dropdownRef
+        (document:click)="onOutsideClick($event, dropdownRef)">
         <button class="btn btn-outline-secondary dropdown-toggle" type="button" (click)="showDropdown = !showDropdown">
           <i class="fa-solid fa-filter text-warning"></i> Filter work
         </button>
         <ul class="dropdown-menu show" *ngIf="showDropdown"
           style="max-height:260px;overflow:auto;position:absolute;z-index:10;display:block;">
           <li class="px-3 py-1">
-            <button type="button" class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center mb-2" (click)="clearAllFilters()">
+            <button type="button"
+              class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center mb-2"
+              (click)="clearAllFilters()">
               <i class="fa-solid fa-xmark me-1"></i> Clear All Filters
             </button>
           </li>
@@ -37,19 +41,21 @@
     <div class="col-12">
       <ng-container *ngIf="selectedTitles.length > 0">
         <div class="mb-2 d-flex flex-wrap gap-2 align-items-center">
-  <span *ngIf="selectedTitles.length > 0" class="active-filter-chip bg-danger-subtle text-dark fw-semibold" style="border:1px solid #e0e0e0;">
-    Clear All
-    <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="clearAllFilters()" aria-label="Clear all filters">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-  </span>
-  <span *ngFor="let title of selectedTitles" class="active-filter-chip">
-    {{ title }}
-    <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="toggleTitleSelection(title)" aria-label="Remove filter">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-  </span>
-</div>
+          <span *ngIf="selectedTitles.length > 0" class="active-filter-chip clear-all-chip">
+            Clear All
+            <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="clearAllFilters()"
+              aria-label="Clear all filters">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </span>
+          <span *ngFor="let title of selectedTitles" class="active-filter-chip">
+            {{ title }}
+            <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="toggleTitleSelection(title)"
+              aria-label="Remove filter">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </span>
+        </div>
       </ng-container>
     </div>
   </div>
@@ -59,7 +65,8 @@
         <div class="card h-100 shadow-sm position-relative overflow-hidden work-card-custom" (click)="goToProject(item)"
           style="cursor:pointer;">
           <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0" alt="work image">
-          <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3" [ngClass]="{'show-overlay': searchTerm || selectedTitles.length > 0}">
+          <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3"
+            [ngClass]="{'show-overlay': searchTerm || selectedTitles.length > 0}">
             <div class="flex-grow-1 d-flex flex-column justify-content-end align-items-center text-center">
               <h5 class="card-title mb-2 text-white work-card-title" [innerHTML]="highlightMatch(item.title)"></h5>
             </div>
