@@ -37,13 +37,19 @@
     <div class="col-12">
       <ng-container *ngIf="selectedTitles.length > 0">
         <div class="mb-2 d-flex flex-wrap gap-2 align-items-center">
-          <span *ngFor="let title of selectedTitles" class="active-filter-chip">
-  {{ title }}
-  <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="toggleTitleSelection(title)" aria-label="Remove filter">
-    <i class="fa-solid fa-xmark"></i>
-  </button>
-</span>
-        </div>
+  <span *ngIf="selectedTitles.length > 0" class="active-filter-chip bg-danger-subtle text-dark fw-semibold" style="border:1px solid #e0e0e0;">
+    Clear All
+    <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="clearAllFilters()" aria-label="Clear all filters">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </span>
+  <span *ngFor="let title of selectedTitles" class="active-filter-chip">
+    {{ title }}
+    <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="toggleTitleSelection(title)" aria-label="Remove filter">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </span>
+</div>
       </ng-container>
     </div>
   </div>
