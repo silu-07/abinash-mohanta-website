@@ -1,7 +1,12 @@
 <div class="container py-5" appInViewport>
   <div class="row mb-4 align-items-center">
     <div class="col-12 col-md-6">
-      <input type="text" class="form-control search-input" placeholder="Search work..." [(ngModel)]="searchTerm">
+      <div class="search-input-wrapper">
+        <input type="text" class="form-control search-input" placeholder="Search work..." [(ngModel)]="searchTerm">
+        <button *ngIf="searchTerm" type="button" class="search-clear-btn" (click)="searchTerm = ''" aria-label="Clear search">
+          <span class="search-clear-icon">&times;</span>
+        </button>
+      </div>
     </div>
     <div class="col-12 col-md-6 mt-2 mt-md-0 text-md-end">
       <div class="dropdown d-inline-block" style="position:relative;" #dropdownRef (document:click)="onOutsideClick($event, dropdownRef)">
