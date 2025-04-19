@@ -92,7 +92,7 @@
 //For mobile overlay and title visibility effect on search filter
 @media (max-width: 600px) {
   :host {
-    display: inline;
+    padding: 1rem 0rem;
   }
 
   .card-overlay {

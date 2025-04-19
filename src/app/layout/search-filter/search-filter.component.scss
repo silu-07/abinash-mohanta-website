@@ -189,3 +189,10 @@
 .active-filter-chip .fa-xmark {
   color: #222 !important;
 }
+
+//Mobile
+@media (max-width: 600px) {
+  .mb-4 {
+    margin-bottom: 0.6rem !important;
+  }
+}
