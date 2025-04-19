@@ -1,16 +1,44 @@
 <div class="container py-5" appInViewport>
+  <div class="row mb-4 align-items-center">
+    <div class="col-12 col-md-6">
+      <input type="text" class="form-control" placeholder="Search work..." [(ngModel)]="searchTerm">
+    </div>
+    <div class="col-12 col-md-6 mt-2 mt-md-0 text-md-end">
+      <div class="dropdown d-inline-block" style="position:relative;">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" (click)="showDropdown = !showDropdown">
+          Filter by Title
+        </button>
+        <ul class="dropdown-menu show" *ngIf="showDropdown" style="max-height:260px;overflow:auto;position:absolute;z-index:10;display:block;">
+          <li *ngFor="let title of uniqueTitles">
+            <label class="dropdown-item">
+              <input type="checkbox" [checked]="selectedTitles.includes(title)" (change)="$event.stopPropagation(); toggleTitleSelection(title)"> {{ title }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <div class="row g-4">
-    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of comImages">
-      <div class="card h-100 shadow-sm position-relative overflow-hidden work-card-custom"
-        (click)="goToProject(item)" style="cursor:pointer;">
-        <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0"
-          alt="work image">
-        <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3">
-          <div class="flex-grow-1 d-flex flex-column justify-content-end align-items-center text-center">
-            <h5 class="card-title mb-2 text-white work-card-title">{{ item.title }}</h5>
+    <ng-container *ngIf="filteredCards.length > 0; else noResults">
+      <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of filteredCards">
+        <div class="card h-100 shadow-sm position-relative overflow-hidden work-card-custom"
+          (click)="goToProject(item)" style="cursor:pointer;">
+          <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0"
+            alt="work image">
+          <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3">
+            <div class="flex-grow-1 d-flex flex-column justify-content-end align-items-center text-center">
+              <h5 class="card-title mb-2 text-white work-card-title">{{ item.title }}</h5>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
+    <ng-template #noResults>
+      <div class="col-12 text-center py-5 text-muted">
+        <div *ngIf="searchTerm && filteredCards.length === 0">
+          <h5>No results found.</h5>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
