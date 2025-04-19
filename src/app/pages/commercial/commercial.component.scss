@@ -172,6 +172,17 @@
   line-height: 1;
 }
 
+//Search and filter icon
+.input-icon {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+  font-size: 1.1rem;
+}
+
 @media (max-width: 600px) {
   :host {
     padding: 12px 4px !important;
