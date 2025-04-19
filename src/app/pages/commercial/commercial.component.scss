@@ -12,8 +12,16 @@
   background: transparent;
   border: none;
   box-shadow: none;
-  transition: none;
+  transition: box-shadow 0.28s cubic-bezier(0.4,0,0.2,1), border-color 0.18s, transform 0.22s cubic-bezier(0.4,0,0.2,1);
 }
+
+.card:hover,
+.card:focus-within {
+  box-shadow: 0 24px 64px 0 rgba(60, 72, 88, .18), 0 2px 8px rgba(60,72,88,.10);
+  border-color: #c9d0db;
+  transform: scale(1.035);
+}
+
 
 .work-card-custom {
   min-height: 340px;
@@ -39,7 +47,16 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  opacity: 0;
+  transition: opacity 0.32s cubic-bezier(0.4,0,0.2,1);
 }
+
+.card:hover .card-overlay,
+.card:focus-within .card-overlay {
+  display: flex;
+  opacity: 1;
+}
+
 
 .card:hover .card-overlay,
 .card:focus-within .card-overlay {
