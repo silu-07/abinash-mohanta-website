@@ -91,6 +91,10 @@
 
 //For desktop overlay and title visibility effect on search filter
 @media (max-width: 600px) {
+  :host {
+    display:inline;
+  }
+
   .card-overlay {
     display: flex !important;
     opacity: 1 !important;
