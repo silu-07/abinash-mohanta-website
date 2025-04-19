@@ -6,14 +6,15 @@ import { comImages } from './images-commercial';
 
 import { cardGridAnimation } from './commercial.animations';
 import { dropdownAnimation } from '../../animation/dropdown.animations';
+import { overlayAnimation } from '../../animation/overlay.animations';
 
 @Component({
   selector: 'app-commercial',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './commercial.component.html',
-  styleUrl: './commercial.component.scss',
-  animations: [...cardGridAnimation, ...dropdownAnimation]
+  styleUrls: ['./commercial.component.scss'],
+  animations: [...cardGridAnimation, ...dropdownAnimation, ...overlayAnimation]
 })
 export class CommercialComponent {
   searchTerm: string = '';

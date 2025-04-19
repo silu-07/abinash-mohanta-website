@@ -67,7 +67,7 @@
           style="cursor:pointer;">
           <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0" alt="work image">
           <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3"
-            [class.show-overlay]="searchTerm || selectedTitles.length > 0">
+            [class.show-overlay]="searchTerm || selectedTitles.length > 0" @overlayFade>
             <div class="flex-grow-1 d-flex flex-column justify-content-end align-items-center text-center">
               <h5 class="card-title mb-2 text-white work-card-title" [innerHTML]="highlightMatch(item.title)"></h5>
             </div>
