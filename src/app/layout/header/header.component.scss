@@ -12,6 +12,20 @@
   box-shadow: none;
 }
 
+// Tablet
+@media (max-width: 900px) {
+  .home-header {
+    padding: 14px 24px 14px 24px;
+  }
+}
+
+// Mobile
+@media (max-width: 600px) {
+  .home-header {
+    padding: 10px 10px 10px 10px;
+  }
+}
+
 .home-header.scrolled {
   box-shadow: 0 2px 18px rgba(60,72,88,0.08);
 }
