@@ -1,6 +1,6 @@
 <div class="container py-5" appInViewport>
   <div class="row g-4">
-    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of images">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of comImages">
       <div class="card h-100 shadow-sm position-relative overflow-hidden work-card-custom"
         (click)="goToProject(item)" style="cursor:pointer;">
         <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0"
