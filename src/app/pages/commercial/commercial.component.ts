@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalComponent } from '../../layout/card-modal/modal.component';
+import { ModalComponent } from '../../layout/modal/card-modal/modal.component';
 
 @Component({
   selector: 'app-commercial',
