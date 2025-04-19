@@ -21,12 +21,20 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class SearchFilterComponent {
   isAtBottom = false;
+  showAtBottom = false;
   dropdownDirection: 'up' | 'down' = 'down';
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isAtBottom = window.scrollY > 100;
-    this.dropdownDirection = this.isAtBottom ? 'up' : 'down';
+    const shouldBeAtBottom = window.scrollY > 100;
+    if (shouldBeAtBottom && !this.isAtBottom) {
+      this.isAtBottom = true;
+      setTimeout(() => this.showAtBottom = true, 10); // allow DOM update
+    } else if (!shouldBeAtBottom && this.isAtBottom) {
+      this.showAtBottom = false;
+      setTimeout(() => this.isAtBottom = false, 350); // match CSS transition
+    }
+    this.dropdownDirection = shouldBeAtBottom ? 'up' : 'down';
   }
 
   ngOnInit() {
@@ -61,7 +69,11 @@ export class SearchFilterComponent {
     this.clearAll.emit();
   }
 
-  onToggleTitle(title: string) {
+  onToggleTitle(title: string, event?: Event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     this.toggleTitle.emit(title);
   }
 

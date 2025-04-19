@@ -1,4 +1,4 @@
-<div class="search-filter-floating-bar" [class.at-bottom]="isAtBottom">
+<div class="search-filter-floating-bar" [class.at-bottom]="isAtBottom" [class.show]="showAtBottom">
   <div class="d-flex align-items-center justify-content-between gap-2">
     <div class="flex-grow-1">
       <div class="search-input-wrapper">
@@ -34,7 +34,7 @@
           <li *ngFor="let title of uniqueTitles">
             <label class="dropdown-item">
               <input type="checkbox" [checked]="selectedTitles.includes(title)"
-                (change)="$event.stopPropagation(); onToggleTitle(title)"> {{ title }}
+                (change)="onToggleTitle(title, $event)"> {{ title }}
             </label>
           </li>
         </ul>

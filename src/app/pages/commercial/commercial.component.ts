@@ -56,7 +56,11 @@ export class CommercialComponent {
     this.router.navigate([item.link]);
   }
 
-  toggleTitleSelection(title: string) {
+  toggleTitleSelection(title: string, event?: Event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     if (this.selectedTitles.includes(title)) {
       this.selectedTitles = this.selectedTitles.filter(t => t !== title);
     } else {
