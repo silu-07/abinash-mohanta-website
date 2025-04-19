@@ -29,12 +29,16 @@ export class CommercialComponent {
   }
 
   toggleTitleSelection(title: string) {
-    const idx = this.selectedTitles.indexOf(title);
-    if (idx === -1) {
-      this.selectedTitles.push(title);
+    if (this.selectedTitles.includes(title)) {
+      this.selectedTitles = this.selectedTitles.filter(t => t !== title);
     } else {
-      this.selectedTitles.splice(idx, 1);
+      this.selectedTitles = [...this.selectedTitles, title];
     }
+  }
+
+  clearAllFilters() {
+    this.selectedTitles = [];
+    this.showDropdown = false;
   }
 
   get uniqueTitles(): string[] {
