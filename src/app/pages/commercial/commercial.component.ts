@@ -18,6 +18,12 @@ export class CommercialComponent {
 
   constructor(private router: Router) { }
 
+  onOutsideClick(event: MouseEvent, dropdownRef: HTMLElement) {
+    if (this.showDropdown && dropdownRef && !dropdownRef.contains(event.target as Node)) {
+      this.showDropdown = false;
+    }
+  }
+
   goToProject(item: { link: string }) {
     this.router.navigate([item.link]);
   }

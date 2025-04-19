@@ -4,9 +4,9 @@
       <input type="text" class="form-control search-input" placeholder="Search work..." [(ngModel)]="searchTerm">
     </div>
     <div class="col-12 col-md-6 mt-2 mt-md-0 text-md-end">
-      <div class="dropdown d-inline-block" style="position:relative;">
+      <div class="dropdown d-inline-block" style="position:relative;" #dropdownRef (document:click)="onOutsideClick($event, dropdownRef)">
         <button class="btn btn-outline-secondary dropdown-toggle" type="button" (click)="showDropdown = !showDropdown">
-          Filter by Title
+          Filter work
         </button>
         <ul class="dropdown-menu show" *ngIf="showDropdown"
           style="max-height:260px;overflow:auto;position:absolute;z-index:10;display:block;">
