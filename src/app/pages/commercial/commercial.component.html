@@ -7,6 +7,9 @@
   </app-search-filter>
   <div #dropdownRef></div>
 
+  <div *ngIf="searchTerm && filteredCards.length > 0" class="mb-3 text-muted small">
+    {{ filteredCards.length }} result{{ filteredCards.length === 1 ? '' : 's' }} found
+  </div>
   <div class="row g-4">
     <ng-container *ngIf="filteredCards.length > 0; else noResults">
       <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of filteredCards; trackBy: trackByFn">
@@ -27,7 +30,7 @@
     <ng-template #noResults>
       <div class="col-12 text-center py-5 text-muted">
         <div *ngIf="searchTerm && filteredCards.length === 0">
-          <h5>No results found.</h5>
+          <h5 class="fs-5">No results found.</h5>
         </div>
       </div>
     </ng-template>
