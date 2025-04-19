@@ -4,12 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { comImages } from './images-commercial';
 
+import { cardGridAnimation } from './commercial.animations';
+
 @Component({
   selector: 'app-commercial',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './commercial.component.html',
-  styleUrl: './commercial.component.scss'
+  styleUrl: './commercial.component.scss',
+  animations: cardGridAnimation
 })
 export class CommercialComponent {
   searchTerm: string = '';

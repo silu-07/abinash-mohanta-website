@@ -23,6 +23,8 @@
           <li class="px-3 py-1">
             <button type="button"
               class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center mb-2"
+              [ngClass]="{'active-clear-btn': selectedTitles.length > 0}"
+              [disabled]="selectedTitles.length === 0"
               (click)="clearAllFilters()">
               <i class="fa-solid fa-xmark me-1"></i> Clear All Filters
             </button>
@@ -60,8 +62,8 @@
     </div>
   </div>
   <div class="row g-4">
-    <ng-container *ngIf="filteredCards.length > 0; else noResults">
-      <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of filteredCards">
+    <ng-container *ngIf="filteredCards.length > 0; else noResults" @cardGrid>
+      <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of filteredCards" @cardItem>
         <div class="card h-100 shadow-sm position-relative overflow-hidden work-card-custom" (click)="goToProject(item)"
           style="cursor:pointer;">
           <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0" alt="work image">
