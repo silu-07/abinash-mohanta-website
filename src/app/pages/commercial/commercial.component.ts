@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SearchFilterComponent } from '../../layout/search-filter';
 import { Router } from '@angular/router';
 import { comImages } from './images-commercial';
-import { cardGridAnimation } from '../../animation/cardgrid.animations';
-import { dropdownAnimation } from '../../animation/dropdown.animations';
-import { overlayAnimation } from '../../animation/overlay.animations';
+import { cardGridAnimation, cardAnimation } from '../../animations/card-grid.animations';
+import { dropdownAnimation } from '../../animations/dropdown.animations';
+import { overlayAnimation } from '../../animations/overlay.animations';
 
 @Component({
   selector: 'app-commercial',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SearchFilterComponent],
   templateUrl: './commercial.component.html',
   styleUrls: ['./commercial.component.scss'],
-  animations: [...cardGridAnimation, ...dropdownAnimation, ...overlayAnimation]
+  animations: [...cardGridAnimation,...cardAnimation, ...dropdownAnimation, ...overlayAnimation]
 })
 export class CommercialComponent {
   searchTerm: string = '';
@@ -22,7 +23,15 @@ export class CommercialComponent {
 
   constructor(private router: Router) { }
 
-  onOutsideClick(event: MouseEvent, dropdownRef: HTMLElement) {
+  trackByFn(_index: number, item: any) {
+    return item.title; // Or item.id if you have a unique id
+  }
+
+  onShowDropdownChange(val: boolean) {
+    this.showDropdown = val;
+  }
+
+  onOutsideClick(event: Event, dropdownRef: HTMLElement) {
     if (this.showDropdown && dropdownRef && !dropdownRef.contains(event.target as Node)) {
       this.showDropdown = false;
     }
@@ -45,15 +54,19 @@ export class CommercialComponent {
     this.showDropdown = false;
   }
 
+  get allImages() {
+    return [...comImages]; // Always return a fresh copy
+  }
+
   get uniqueTitles(): string[] {
-    return Array.from(new Set(comImages
+    return Array.from(new Set(this.allImages
       .map((item: { title: string }) => item.title)
       .filter((title: string) => !!title)
     )).sort();
   }
 
   get filteredCards() {
-    return comImages.filter((item: { title: string }) => {
+    return this.allImages.filter((item: { title: string }) => {
       const matchesTitle =
         this.selectedTitles.length === 0 || this.selectedTitles.includes(item.title);
       const matchesSearch =

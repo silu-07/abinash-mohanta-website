@@ -1,0 +1,62 @@
+<div class="row mb-4 align-items-center">
+  <div class="col-12 col-md-6">
+    <div class="search-input-wrapper">
+      <span class="input-icon position-absolute top-50 start-0 translate-middle-y ps-3" aria-hidden="true">
+        <i class="fa-solid fa-magnifying-glass text-dark"></i>
+      </span>
+      <input type="text" class="form-control search-input ps-5" placeholder="Search work..." [ngModel]="searchTerm" (ngModelChange)="onSearchTermChange($event)">
+      <button *ngIf="searchTerm" type="button" class="search-clear-btn" (click)="onClearSearch()"
+        aria-label="Clear search">
+        <span class="search-clear-icon">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 mt-2 mt-md-0 text-md-end">
+    <div class="dropdown d-inline-block" style="position:relative;" #dropdownContainer
+      (document:click)="onOutsideClick($event, dropdownContainer)">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" (click)="onDropdownToggle()">
+        <i class="fa-solid fa-filter text-black"></i> Filter work
+      </button>
+
+      <ul class="dropdown-menu"[@dropdownMenu]="showDropdown ? 'open' : 'closed'"
+        style="max-height:260px;overflow:auto;position:absolute;z-index:10;display:block;">
+        <li class="px-3 py-1">
+          <button type="button"
+            class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center mb-2"
+            [ngClass]="{'active-clear-btn': selectedTitles.length > 0}" [disabled]="selectedTitles.length === 0"
+            (click)="onClearAll()">
+            <i class="fa-solid fa-xmark me-1"></i> Clear All Filters
+          </button>
+        </li>
+        <li *ngFor="let title of uniqueTitles">
+          <label class="dropdown-item">
+            <input type="checkbox" [checked]="selectedTitles.includes(title)"
+              (change)="$event.stopPropagation(); onToggleTitle(title)"> {{ title }}
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col-12">
+    <ng-container *ngIf="selectedTitles.length > 0">
+      <div class="mb-2 d-flex flex-wrap gap-2 align-items-center">
+        <span *ngIf="selectedTitles.length > 0" class="active-filter-chip clear-all-chip">
+          Clear All
+          <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="onClearAll()"
+            aria-label="Clear all filters">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </span>
+        <span *ngFor="let title of selectedTitles" class="active-filter-chip">
+          {{ title }}
+          <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="onToggleTitle(title)"
+            aria-label="Remove filter">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </span>
+      </div>
+    </ng-container>
+  </div>
+</div>
