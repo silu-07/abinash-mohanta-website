@@ -58,4 +58,12 @@ export class CommercialComponent {
     });
   }
 
+  highlightMatch(text: string): string {
+    if (!this.searchTerm) return text;
+    const escaped = this.searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(`(${escaped})`, 'ig');
+    return text.replace(re, '<mark class="search-highlight">$1</mark>');
+  }
+
+
 }

@@ -53,9 +53,9 @@
         <div class="card h-100 shadow-sm position-relative overflow-hidden work-card-custom" (click)="goToProject(item)"
           style="cursor:pointer;">
           <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0" alt="work image">
-          <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3">
+          <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3" [ngClass]="{'show-overlay': searchTerm || selectedTitles.length > 0}">
             <div class="flex-grow-1 d-flex flex-column justify-content-end align-items-center text-center">
-              <h5 class="card-title mb-2 text-white work-card-title">{{ item.title }}</h5>
+              <h5 class="card-title mb-2 text-white work-card-title" [innerHTML]="highlightMatch(item.title)"></h5>
             </div>
           </div>
         </div>

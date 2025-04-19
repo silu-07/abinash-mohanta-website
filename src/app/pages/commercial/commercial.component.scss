@@ -51,6 +51,12 @@
   transition: opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.card-overlay.show-overlay {
+  display: flex !important;
+  opacity: 1 !important;
+}
+
+
 .card:hover .card-overlay,
 .card:focus-within .card-overlay {
   display: flex;
@@ -70,8 +76,9 @@
   margin-bottom: 0.6rem;
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-  display: none;
+  display: block !important;
 }
+
 
 .card:hover .work-card-title,
 .card:focus-within .work-card-title {
@@ -208,6 +215,14 @@
   pointer-events: none;
   z-index: 2;
   font-size: 1.1rem;
+}
+
+//Search highlight
+.search-highlight {
+  background: #ffe066;
+  color: #222;
+  border-radius: 0.25em;
+  padding: 0 0.15em;
 }
 
 //Active filter chip
