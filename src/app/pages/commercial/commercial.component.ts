@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { comImages } from './images-commercial';
 
 import { cardGridAnimation } from './commercial.animations';
+import { dropdownAnimation } from '../../animation/dropdown.animations';
 
 @Component({
   selector: 'app-commercial',
@@ -12,7 +13,7 @@ import { cardGridAnimation } from './commercial.animations';
   imports: [CommonModule, FormsModule],
   templateUrl: './commercial.component.html',
   styleUrl: './commercial.component.scss',
-  animations: cardGridAnimation
+  animations: [...cardGridAnimation, ...dropdownAnimation]
 })
 export class CommercialComponent {
   searchTerm: string = '';
