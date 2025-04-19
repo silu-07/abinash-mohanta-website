@@ -86,11 +86,41 @@
   box-shadow: 0 8px 24px rgba(108, 99, 255, 0.13), 0 1.5px 6px rgba(0, 0, 0, 0.04);
   padding: 0.5rem 0.25rem;
   min-width: 220px;
-  margin-top: 0.5rem;
   border: 1px solid #f0f0f0;
   background: #fff;
-  position: relative;
+  position: absolute;
+  left: 0;
+  z-index: 10;
 }
+
+.dropdown-up {
+  bottom: 100%;
+  top: auto;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  box-shadow: 0 -8px 24px rgba(108, 99, 255, 0.13), 0 -1.5px 6px rgba(0, 0, 0, 0.04);
+  border-radius: 1rem 1rem 0.75rem 0.75rem;
+  pointer-events: auto;
+  overflow-y: auto;
+  max-height: 260px;
+}
+
+
+.dropdown-up,
+.dropdown-down {
+  z-index: 1050;
+}
+
+
+.dropdown-down {
+  top: 100%;
+  bottom: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.13), 0 1.5px 6px rgba(0, 0, 0, 0.04);
+  border-radius: 0.75rem 0.75rem 1rem 1rem;
+}
+
 
 .dropdown-menu>li:first-child {
   position: sticky;
@@ -194,5 +224,38 @@
 @media (max-width: 600px) {
   .mb-4 {
     margin-bottom: 0.6rem !important;
+  }
+}
+
+//Floating search filter while scrolldown
+.search-filter-floating-bar {
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 1.2rem 1.2rem 0 0;
+  padding: 1rem 1.2rem;
+  box-shadow: none;
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.search-filter-floating-bar.at-bottom {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  top: auto;
+  transform: translateX(-50%);
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 600px) {
+  .search-filter-floating-bar,
+  .search-filter-floating-bar.at-bottom {
+    max-width: 98vw;
+    padding: 0.7rem 0.5rem;
   }
 }

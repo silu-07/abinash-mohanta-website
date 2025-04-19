@@ -1,4 +1,5 @@
-<div class="row mb-4 align-items-center">
+<div class="search-filter-floating-bar" [class.at-bottom]="isAtBottom">
+  <div class="row mb-4 align-items-center">
   <div class="col-12 col-md-6">
     <div class="search-input-wrapper">
       <span class="input-icon position-absolute top-50 start-0 translate-middle-y ps-3" aria-hidden="true">
@@ -18,8 +19,15 @@
         <i class="fa-solid fa-filter text-black"></i> Filter
       </button>
 
-      <ul class="dropdown-menu"[@dropdownMenu]="showDropdown ? 'open' : 'closed'"
-        style="max-height:260px;overflow:auto;position:absolute;z-index:10;display:block;">
+      <ul class="dropdown-menu"
+        [ngClass]="{'dropdown-up': dropdownDirection === 'up', 'dropdown-down': dropdownDirection === 'down'}"
+        [@dropdownMenu]="showDropdown ? 'open' : 'closed'"
+        [style.maxHeight]="'260px'"
+        [style.overflow]="'auto'"
+        [style.position]="'absolute'"
+        [style.zIndex]="10"
+        [style.display]="'block'"
+        >
         <li class="px-3 py-1">
           <button type="button"
             class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center mb-2"
@@ -36,6 +44,7 @@
         </li>
       </ul>
     </div>
+  </div>
   </div>
 </div>
 <div class="row mb-3">

@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+
 @Component({
   selector: 'app-search-filter',
   standalone: true,
@@ -19,6 +20,19 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class SearchFilterComponent {
+  isAtBottom = false;
+  dropdownDirection: 'up' | 'down' = 'down';
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isAtBottom = window.scrollY > 100;
+    this.dropdownDirection = this.isAtBottom ? 'up' : 'down';
+  }
+
+  ngOnInit() {
+    // Set initial direction
+    this.dropdownDirection = window.scrollY > 100 ? 'up' : 'down';
+  }
   @Input() searchTerm: string = '';
   @Input() selectedTitles: string[] = [];
   @Input() uniqueTitles: string[] = [];
