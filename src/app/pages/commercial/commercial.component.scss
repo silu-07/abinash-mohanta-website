@@ -4,20 +4,6 @@
   font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
 }
 
-// Tablet
-@media (max-width: 900px) {
-  :host {
-    padding: 14px 24px;
-  }
-}
-
-// Mobile
-@media (max-width: 600px) {
-  :host {
-    padding: 10px 10px;
-  }
-}
-
 .py-5 {
   padding-top: 0 !important;
 }
