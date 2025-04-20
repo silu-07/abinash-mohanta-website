@@ -26,7 +26,7 @@ export class SearchFilterComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const shouldBeAtBottom = window.scrollY > 100;
+    const shouldBeAtBottom = window.scrollY > 400;
     if (shouldBeAtBottom && !this.isAtBottom) {
       this.isAtBottom = true;
       setTimeout(() => this.showAtBottom = true, 10); // allow DOM update
@@ -39,7 +39,7 @@ export class SearchFilterComponent {
 
   ngOnInit() {
     // Set initial direction
-    this.dropdownDirection = window.scrollY > 100 ? 'up' : 'down';
+    this.dropdownDirection = window.scrollY > 440 ? 'up' : 'down';
   }
   @Input() searchTerm: string = '';
   @Input() selectedTitles: string[] = [];
