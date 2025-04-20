@@ -16,14 +16,15 @@ export class InViewportDirective implements OnInit, OnDestroy {
     this.ngZone.runOutsideAngular(() => {
       this.observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            this.ngZone.run(() => {
-              this.isInViewport = true;
-              this.inViewport.emit(true);
+          this.ngZone.run(() => {
+            this.isInViewport = entry.isIntersecting;
+            this.inViewport.emit(entry.isIntersecting);
+            if (entry.isIntersecting) {
               this.renderer.addClass(this.el.nativeElement, 'in-viewport');
-              this.observer?.unobserve(this.el.nativeElement); // Animate only once
-            });
-          }
+            } else {
+              this.renderer.removeClass(this.el.nativeElement, 'in-viewport');
+            }
+          });
         });
       }, { threshold: 0.1 });
       this.observer.observe(this.el.nativeElement);
