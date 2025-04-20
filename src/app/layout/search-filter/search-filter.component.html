@@ -28,7 +28,7 @@
               class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center mb-2"
               [ngClass]="{'active-clear-btn': selectedTitles.length > 0}" [disabled]="selectedTitles.length === 0"
               (click)="onClearAll()">
-              <i class="fa-solid fa-xmark me-1"></i> Clear All Filters
+              <i class="fa-solid fa-xmark me-1"></i> Clear All
             </button>
           </li>
           <li *ngFor="let title of uniqueTitles">
