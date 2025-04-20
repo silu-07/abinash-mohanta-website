@@ -375,14 +375,3 @@
     right: 0;
   }
 }
-
-
-@media (max-width: 600px) {
-  .dropdown-menu {
-    max-width: 98vw;
-    min-width: 0;
-    font-size: 0.97rem;
-    padding: 0.25rem 0.1rem;
-    max-height: 55vh;
-  }
-}
