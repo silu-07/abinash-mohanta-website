@@ -375,3 +375,19 @@
     right: 0;
   }
 }
+
+// --- Mobile: Floating filter bar at bottom, header above ---
+@media (max-width: 600px) {
+  .search-filter-floating-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    border-radius: 0;
+    box-shadow: 0 -2px 12px rgba(60,72,88,0.12);
+    background: #fff;
+    z-index: 99 !important; // header is 100
+  }
+}
+
