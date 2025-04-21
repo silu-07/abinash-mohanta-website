@@ -13,6 +13,7 @@
   border: none;
   box-shadow: none;
   transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.18s, transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 !important;
 }
 
 .card:hover,
