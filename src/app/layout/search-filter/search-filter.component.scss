@@ -383,7 +383,7 @@
   max-height: 55vh;
   left: auto;
   right: 0;
-  scrollbar-width: none;
+  overflow-x: hidden !important;
 }
 
 @media (max-width: 1200px) {
