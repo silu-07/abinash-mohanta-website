@@ -1,11 +1,12 @@
 :host {
   display: block;
-  padding: 48px 16px;
+  padding: 1rem;
   font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
 }
 
 .py-5 {
   padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .bg-light {
@@ -14,6 +15,6 @@
 
 @media (max-width: 600px) {
   :host {
-    padding: 12px 4px !important;
+    padding: .6rem 0.2rem !important;
   }
 }

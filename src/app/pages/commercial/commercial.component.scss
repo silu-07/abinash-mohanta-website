@@ -1,11 +1,16 @@
 :host {
   display: block;
-  padding: 16px 60px;
+  padding: 1rem;
   font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
 }
 
 .py-5 {
   padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.mt-4 {
+  margin-top: 0 !important;
 }
 
 .card {
@@ -90,10 +95,18 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
+.no-result-text {
+  font-size: .875rem !important;
+}
+
 //For mobile overlay and title visibility effect on search filter
 @media (max-width: 600px) {
   :host {
-    padding: 1rem 0rem;
+    padding: 0.6rem 0rem;
+  }
+
+  .py-5 {
+    padding-bottom: 3.5rem !important;
   }
 
   .card-overlay {
