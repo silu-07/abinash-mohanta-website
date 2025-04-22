@@ -4,6 +4,11 @@
 @import './app/styles/scrollbar.scss';
 
 
+/* Hide horizontal scrollbar for all components */
+html, body {
+  overflow-x: hidden !important;
+}
+
 body {
   margin: 0;
   padding: 0;
