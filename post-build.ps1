@@ -7,10 +7,25 @@ $dest = "docs"
 
 if (Test-Path $src) {
     Write-Host "Moving files from $src to $dest..."
-    Move-Item -Path "$src\*" -Destination $dest -Force
-    Write-Host "Removing $src directory..."
-    Remove-Item $src -Recurse -Force
-    Write-Host "Done. All files are now in $dest."
+    $maxTries = 5
+    $try = 0
+    $success = $false
+    while (-not $success -and $try -lt $maxTries) {
+        try {
+            Move-Item -Path "$src\*" -Destination $dest -Force
+            Remove-Item $src -Recurse -Force
+            $success = $true
+        } catch {
+            $try++
+            Write-Host "Attempt $try failed. Retrying in 2 seconds..."
+            Start-Sleep -Seconds 2
+        }
+    }
+    if ($success) {
+        Write-Host "Move and cleanup successful. All files are now in $dest."
+    } else {
+        Write-Host "Failed to move/delete all files after $maxTries attempts. Some files may still be locked."
+    }
 } else {
     Write-Host "$src does not exist. Nothing to move."
 }
