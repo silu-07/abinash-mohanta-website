@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-
 import { ChangeDetectionStrategy } from '@angular/core';
+import { dropdownAnimation } from '../../animations/dropdown.animations';
+
 @Component({
   selector: 'app-search-filter',
   standalone: true,
@@ -11,25 +11,16 @@ import { ChangeDetectionStrategy } from '@angular/core';
   imports: [CommonModule, FormsModule],
   templateUrl: './search-filter.component.html',
   styleUrls: ['./search-filter.component.scss'],
-  animations: [
-    trigger('dropdownMenu', [
-      state('open', style({ opacity: 1 })),
-      state('closed', style({ opacity: 0 })),
-      transition('open <=> closed', [
-        animate('200ms ease-in-out')
-      ]),
-    ])
-  ]
+  animations: [...dropdownAnimation]
 })
+
 export class SearchFilterComponent {
   @Input() placeholder: string = '';
   @Input() placeholderList: string[] = [];
-
   @Input() searchTerm: string = '';
   @Input() selectedTitles: string[] = [];
   @Input() uniqueTitles: string[] = [];
   @Input() showDropdown: boolean = false;
-
   @Output() searchTermChange = new EventEmitter<string>();
   @Output() selectedTitlesChange = new EventEmitter<string[]>();
   @Output() showDropdownChange = new EventEmitter<boolean>();
