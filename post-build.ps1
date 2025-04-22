@@ -26,6 +26,16 @@ if (Test-Path $src) {
     } else {
         Write-Host "Failed to move/delete all files after $maxTries attempts. Some files may still be locked."
     }
+    # List any files that could not be moved
+    if (Test-Path $src) {
+        $remainingFiles = Get-ChildItem -Path $src -File -ErrorAction SilentlyContinue
+        if ($remainingFiles) {
+            Write-Host "The following files could not be moved (likely locked):"
+            $remainingFiles | ForEach-Object { Write-Host $_.FullName }
+        } else {
+            Write-Host "No remaining files in $src."
+        }
+    }
 } else {
     Write-Host "$src does not exist. Nothing to move."
 }
