@@ -174,25 +174,35 @@ img.lg-object {
     z-index: 2;
 }
 
+.lg-toolbar, .lg-actions, .lg-icon, .lg-fullscreen, .lg-close {
+  display: inline-block !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  z-index: 9999 !important;
+}
+
 @media screen and (max-width: 600px) {
-    .lg-next,
-    .lg-prev {
-        display: none;
-    }
-    .lg-fullscreen,
-    .lg-close {
-        display: inline-block !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-    }
+  .lg-toolbar, .lg-actions, .lg-icon, .lg-fullscreen, .lg-close {
+    display: inline-block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    z-index: 9999 !important;
+  }
+  .lg-next,
+  .lg-prev {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .lg-fullscreen,
-    .lg-close {
-        display: inline-block !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        font-size: 22px !important;
-    }
+  .lg-toolbar, .lg-actions, .lg-icon, .lg-fullscreen, .lg-close {
+    display: inline-block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    z-index: 9999 !important;
+    font-size: 22px !important;
+  }
 }

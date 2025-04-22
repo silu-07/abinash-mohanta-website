@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Roboto:wght@300;400&display=swap');
+@import '~lightgallery/css/lightgallery.css';
+@import '~lightgallery/css/lg-thumbnail.css';
+@import '~lightgallery/css/lg-zoom.css';
+@import '~lightgallery/css/lg-autoplay.css';
+@import '~lightgallery/css/lg-fullscreen.css';
 @import './app/styles/light-gallery.scss';
 @import './app/styles/variable.scss';
 @import './app/styles/scrollbar.scss';
