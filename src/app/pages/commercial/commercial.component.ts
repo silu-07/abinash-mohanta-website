@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SearchFilterComponent } from '../../layout/search-filter';
+import { SearchFilterComponent } from '../../shared/search-filter/search-filter.component';
 import { Router } from '@angular/router';
 import { comImages } from './assets/images-commercial';
 import { cardGridAnimation, cardAnimation } from '../../animations/card-grid.animations';
