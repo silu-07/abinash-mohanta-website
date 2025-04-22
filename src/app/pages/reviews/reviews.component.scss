@@ -116,10 +116,6 @@ span {
 }
 
 @media (max-width: 600px) {
-  :host {
-    padding: .6rem 0.2rem;
-  }
-
   .heading-2 {
     font-size: 1rem !important;
   }
@@ -129,6 +125,6 @@ span {
   }
 
   .text {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }

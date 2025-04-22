@@ -101,10 +101,6 @@
 
 //For mobile overlay and title visibility effect on search filter
 @media (max-width: 600px) {
-  :host {
-    padding: 0.6rem 0rem;
-  }
-
   .py-5 {
     padding-bottom: 3.5rem !important;
   }
