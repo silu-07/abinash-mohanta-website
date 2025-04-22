@@ -7,24 +7,59 @@ $dest = "docs"
 
 if (Test-Path $src) {
     Write-Host "Moving files from $src to $dest..."
-    $maxTries = 5
-    $try = 0
-    $success = $false
-    while (-not $success -and $try -lt $maxTries) {
-        try {
-            Move-Item -Path "$src\*" -Destination $dest -Force
-            Remove-Item $src -Recurse -Force
-            $success = $true
-        } catch {
-            $try++
-            Write-Host "Attempt $try failed. Retrying in 2 seconds..."
-            Start-Sleep -Seconds 2
+    $maxRetries = 5
+    $retryDelay = 2 # seconds
+    $lockedFiles = @()
+    $files = Get-ChildItem -Path $src -File -ErrorAction SilentlyContinue
+    foreach ($file in $files) {
+        $moved = $false
+        $attempts = 0
+        while (-not $moved -and $attempts -lt $maxRetries) {
+            try {
+                Move-Item -Path $file.FullName -Destination $dest -Force
+                $moved = $true
+            } catch {
+                $attempts++
+                if ($attempts -lt $maxRetries) {
+                    Write-Host "File $($file.Name) is locked. Retrying in $retryDelay seconds... (Attempt $attempts of $maxRetries)"
+                    Start-Sleep -Seconds $retryDelay
+                } else {
+                    Write-Host "File $($file.Name) could not be moved after $maxRetries attempts."
+                    $lockedFiles += $file.FullName
+                }
+            }
         }
     }
-    if ($success) {
-        Write-Host "Move and cleanup successful. All files are now in $dest."
+    # Move directories (such as media) with retry logic
+    $dirs = Get-ChildItem -Path $src -Directory -ErrorAction SilentlyContinue
+    foreach ($dir in $dirs) {
+        $moved = $false
+        $attempts = 0
+        while (-not $moved -and $attempts -lt $maxRetries) {
+            try {
+                Move-Item -Path $dir.FullName -Destination $dest -Force
+                $moved = $true
+            } catch {
+                $attempts++
+                if ($attempts -lt $maxRetries) {
+                    Write-Host "Directory $($dir.Name) is locked. Retrying in $retryDelay seconds... (Attempt $attempts of $maxRetries)"
+                    Start-Sleep -Seconds $retryDelay
+                } else {
+                    Write-Host "Directory $($dir.Name) could not be moved after $maxRetries attempts."
+                }
+            }
+        }
+    }
+    # Try to remove the source directory if empty
+    try {
+        Remove-Item $src -Recurse -Force -ErrorAction SilentlyContinue
+    } catch {}
+    Write-Host "Move and cleanup attempted. All movable files and directories are now in $dest."
+    if ($lockedFiles.Count -gt 0) {
+        Write-Host "The following files could not be moved (likely locked):"
+        $lockedFiles | ForEach-Object { Write-Host $_ }
     } else {
-        Write-Host "Failed to move/delete all files after $maxTries attempts. Some files may still be locked."
+        Write-Host "No remaining files in $src."
     }
     # List any files that could not be moved
     if (Test-Path $src) {
