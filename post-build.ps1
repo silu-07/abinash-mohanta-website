@@ -55,8 +55,15 @@ $spa404 = @"
     // Get the path after the repo name
     var repo = '/abinash-mohanta-website';
     var path = window.location.pathname.startsWith(repo) ? window.location.pathname.substr(repo.length) : window.location.pathname;
-    var newUrl = repo + '/index.html#' + path + window.location.search + window.location.hash;
-    window.location.replace(newUrl);
+    // If already on a hash URL, just redirect as before
+    if (window.location.hash && window.location.hash.startsWith('#/')) {
+      var newUrl = repo + '/index.html' + window.location.hash + window.location.search;
+      window.location.replace(newUrl);
+    } else {
+      // If not, convert the path to a hash
+      var newUrl = repo + '/index.html#' + path + window.location.search + window.location.hash;
+      window.location.replace(newUrl);
+    }
   </script>
   <noscript>
     <meta http-equiv=\"refresh\" content=\"0; url=/abinash-mohanta-website/index.html\">
