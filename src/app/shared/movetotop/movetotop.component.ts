@@ -17,7 +17,7 @@ export class MoveToTopComponent {
   onWindowScroll() {
     // Use both window.pageYOffset and document.documentElement.scrollTop for compatibility
     const yOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if (yOffset > 50) {
+    if (yOffset > 400) {
       this.showScrollTop = true;
     } else {
       this.showScrollTop = false;

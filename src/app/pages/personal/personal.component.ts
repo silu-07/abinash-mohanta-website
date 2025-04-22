@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InViewportDirective } from '../../shared/directives/in-viewport.directive';
+import { MoveToTopComponent } from "../../shared/movetotop/movetotop.component";
 
 @Component({
   selector: 'app-personal',
   standalone: true,
-  imports: [CommonModule, InViewportDirective],
+  imports: [CommonModule, InViewportDirective, MoveToTopComponent],
   templateUrl: './personal.component.html',
   styleUrl: './personal.component.scss'
 })

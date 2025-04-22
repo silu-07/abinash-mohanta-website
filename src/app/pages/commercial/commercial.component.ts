@@ -7,11 +7,12 @@ import { comImages } from './assets/images-commercial';
 import { cardGridAnimation, cardAnimation } from '../../animations/card-grid.animations';
 import { dropdownAnimation } from '../../animations/dropdown.animations';
 import { overlayAnimation } from '../../animations/overlay.animations';
+import { MoveToTopComponent } from "../../shared/movetotop/movetotop.component";
 
 @Component({
   selector: 'app-commercial',
   standalone: true,
-  imports: [CommonModule, FormsModule, SearchFilterComponent],
+  imports: [CommonModule, FormsModule, SearchFilterComponent, MoveToTopComponent],
   templateUrl: './commercial.component.html',
   styleUrls: ['./commercial.component.scss'],
   animations: [...cardGridAnimation,...cardAnimation, ...dropdownAnimation, ...overlayAnimation]
