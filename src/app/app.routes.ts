@@ -1,18 +1,30 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { PersonalComponent } from './pages/personal/personal.component';
-import { CommercialComponent } from './pages/commercial/commercial.component';
-import { ReviewsComponent } from './pages/reviews/reviews.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect root to 'home'
-  { path: 'home', component: HomeComponent }, // Define the home route
-  { path: 'about', component: AboutComponent }, // Define the about route
-  { path: 'contact', component: ContactComponent }, // Define the contact route
-  { path: 'personal', component: PersonalComponent }, // Define the personal route
-  { path: 'commercial', component: CommercialComponent }, // Define the commercial route
-  { path: 'reviews', component: ReviewsComponent }, // Define the reviews route
-  { path: '**', redirectTo: 'home' } // Redirect unknown paths to 'home'
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/module/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/module/about.module').then(m => m.AboutModule)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./pages/contact/module/contact.module').then(m => m.ContactModule)
+  },
+  {
+    path: 'personal',
+    loadChildren: () => import('./pages/personal/module/personal.module').then(m => m.PersonalModule)
+  },
+  {
+    path: 'commercial',
+    loadChildren: () => import('./pages/commercial/module/commercial.module').then(m => m.CommercialModule)
+  },
+  {
+    path: 'reviews',
+    loadChildren: () => import('./pages/reviews/module/reviews.module').then(m => m.ReviewsModule)
+  },
+  { path: '**', redirectTo: 'home' }
 ];
