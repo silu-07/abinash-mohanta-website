@@ -1,48 +1,4 @@
-# PowerShell script to move Angular build output from docs/browser/* to docs/
-# and generate 404.html for Angular SPA routing on GitHub Pages
-# Use after every ng build
-
-$src = "docs/browser"
-$dest = "docs"
-
-if (Test-Path $src) {
-    Write-Host "Moving files from $src to $dest..."
-    $maxTries = 5
-    $try = 0
-    $success = $false
-    while (-not $success -and $try -lt $maxTries) {
-        try {
-            Move-Item -Path "$src\*" -Destination $dest -Force
-            Remove-Item $src -Recurse -Force
-            $success = $true
-        } catch {
-            $try++
-            Write-Host "Attempt $try failed. Retrying in 2 seconds..."
-            Start-Sleep -Seconds 2
-        }
-    }
-    if ($success) {
-        Write-Host "Move and cleanup successful. All files are now in $dest."
-    } else {
-        Write-Host "Failed to move/delete all files after $maxTries attempts. Some files may still be locked."
-    }
-    # List any files that could not be moved
-    if (Test-Path $src) {
-        $remainingFiles = Get-ChildItem -Path $src -File -ErrorAction SilentlyContinue
-        if ($remainingFiles) {
-            Write-Host "The following files could not be moved (likely locked):"
-            $remainingFiles | ForEach-Object { Write-Host $_.FullName }
-        } else {
-            Write-Host "No remaining files in $src."
-        }
-    }
-} else {
-    Write-Host "$src does not exist. Nothing to move."
-}
-
-# Generate 404.html for SPA fallback
-$spa404 = @"
-<!--
+﻿<!--
   Custom 404 page for Angular SPA on GitHub Pages
   Redirects all 404s to index.html with hash route so Angular router can handle the route.
 -->
@@ -164,15 +120,11 @@ $spa404 = @"
 <body>
   <div class=\"bg-blob\"></div>
   <div class=\"card\">
-    <span class=\"icon-404\">🚦 404</span>
+    <span class=\"icon-404\">ðŸš¦ 404</span>
     <div class=\"spinner\"></div>
     <h2>Redirecting...</h2>
-    <p>You tried to visit a page that doesn't exist.<br>We’re sending you back to safety!</p>
+    <p>You tried to visit a page that doesn't exist.<br>Weâ€™re sending you back to safety!</p>
     <p>If you are not redirected, <a href=\"/abinash-mohanta-website/index.html\">click here</a>.</p>
   </div>
 </body>
 </html>
-"@
-
-Set-Content -Path "docs/404.html" -Value $spa404 -Encoding UTF8
-Write-Host "404.html generated in docs/ folder."
