@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, PreloadAllModules, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,6 +11,7 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/about/module/about.module').then(m => m.AboutModule)
   },
   {
+    
     path: 'contact',
     loadChildren: () => import('./pages/contact/module/contact.module').then(m => m.ContactModule)
   },

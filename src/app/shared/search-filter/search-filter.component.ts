@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
+import { ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'app-search-filter',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, FormsModule],
   templateUrl: './search-filter.component.html',
   styleUrls: ['./search-filter.component.scss'],

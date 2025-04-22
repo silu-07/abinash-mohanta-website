@@ -10,7 +10,7 @@
   <div *ngIf="searchTerm && filteredCards.length > 0" class="mb-3 text-muted small">
     {{ filteredCards.length }} result{{ filteredCards.length === 1 ? '' : 's' }} found
   </div>
-  <div class="row g-4">
+  <div class="row g-4" @cardGridAnimation>
     <ng-container *ngIf="filteredCards.length > 0; else noResults">
       <div class="col-12 col-sm-6 col-lg-4" *ngFor="let item of filteredCards; trackBy: trackByFn">
         <div class="card h-100 shadow-sm position-relative overflow-hidden work-card-custom work-card"
@@ -18,7 +18,8 @@
                'active-filter': isActiveFilter(item),
                'active-search': isActiveSearch(item)
              }">
-          <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0" alt="work image">
+          <img [src]="item.image" class="work-card-img w-100 h-100 position-absolute top-0 start-0" alt="work image"
+            loading="lazy">
           <div class="card-overlay position-absolute top-0 start-0 w-100 h-100 p-3" @overlayFade>
             <div class="flex-grow-1 d-flex flex-column justify-content-end align-items-center text-center">
               <h5 class="card-title mb-2 text-white work-card-title" [innerHTML]="highlightMatch(item.title)"></h5>

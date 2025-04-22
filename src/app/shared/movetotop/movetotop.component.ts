@@ -1,9 +1,11 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'app-movetotop',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
   templateUrl: './movetotop.component.html',
   styleUrl: './movetotop.component.scss'
