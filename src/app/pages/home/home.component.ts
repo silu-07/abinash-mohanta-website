@@ -1,10 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import lightGallery from 'lightgallery';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
-import lgAutoplay from 'lightgallery/plugins/autoplay';
-import lgFullscreen from 'lightgallery/plugins/fullscreen';
+import { GalleryModalComponent } from '../../shared/modal/gallery-modal/gallery-modal.component';
 
 // Fix for TS7015: declare window.bootstrap
 declare global {
@@ -17,17 +13,16 @@ declare global {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GalleryModalComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @ViewChild('lightGallery', { static: false }) lightGallery!: ElementRef;
 
   showMobileNav = false;
-  lgInstance: any; // To hold the LightGallery instance
   isGalleryOpen = false;
+  selectedGalleryIndex = 0;
 
   constructor(private cdr: ChangeDetectorRef) { }
 
@@ -42,31 +37,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
 
   ngAfterViewInit(): void {
-    if (this.lightGallery) {
-      this.lgInstance = lightGallery(this.lightGallery.nativeElement, {
-        plugins: [lgThumbnail, lgZoom, lgFullscreen, lgAutoplay],
-        speed: 600,
-        thumbnail: true,
-        zoom: false,
-        autoplay: true,
-        autoplayControls: true,
-        autoplayInterval: 2500,
-        mode: 'lg-slide'
-      } as any);
-
-      // Listen for LightGallery events
-      this.lightGallery.nativeElement.addEventListener('lgAfterOpen', () => {
-        this.isGalleryOpen = true;
-        console.log('LightGallery opened, isGalleryOpen:', this.isGalleryOpen);
-        this.cdr.markForCheck();
-      });
-      this.lightGallery.nativeElement.addEventListener('lgAfterClose', () => {
-        this.isGalleryOpen = false;
-        console.log('LightGallery closed, isGalleryOpen:', this.isGalleryOpen);
-        this.cdr.markForCheck();
-      });
-    }
-
     // --- Bootstrap Carousel Manual Initialization ---
     const carouselElement = document.getElementById('homeBootstrapCarousel');
     if (carouselElement && window.bootstrap && window.bootstrap.Carousel) {
@@ -78,21 +48,17 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         wrap: true
       });
     }
-
   }
 
   openGalleryAt(index: number) {
-    if (this.lgInstance && this.lgInstance.openGallery) {
-      this.lgInstance.openGallery(index);
-    } else if (
-      this.lightGallery &&
-      (this.lightGallery.nativeElement as any).lgData &&
-      (this.lightGallery.nativeElement as any).lgData.openGallery
-    ) {
-      // Fallback for some LightGallery versions
-      (this.lightGallery.nativeElement as any).lgData.openGallery(index);
-    }
+    this.selectedGalleryIndex = index;
+    this.isGalleryOpen = true;
   }
+
+  onCloseGallery() {
+    this.isGalleryOpen = false;
+  }
+
 
   ngOnDestroy() { }
 

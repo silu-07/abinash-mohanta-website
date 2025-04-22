@@ -22,13 +22,12 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-
-      <!-- Hidden LightGallery container -->
-      <div #lightGallery style="display: none;">
-        <a *ngFor="let img of images" [href]="img">
-          <img [src]="img" />
-        </a>
-      </div>
     </div>
   </div>
+  <app-gallery-modal
+    [images]="images"
+    [open]="isGalleryOpen"
+    [initialIndex]="selectedGalleryIndex"
+    (close)="onCloseGallery()"
+  />
 </div>
