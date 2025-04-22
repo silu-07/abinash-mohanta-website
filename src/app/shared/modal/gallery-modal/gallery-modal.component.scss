@@ -181,11 +181,15 @@
   background: #fff;
   box-sizing: border-box;
   overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
 }
+
 .gallery-modal-thumbnails::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 .gallery-modal-thumbnails img {
@@ -214,6 +218,11 @@
 
 }
 
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: lightgray;
+}
+
 @media (max-width: 600px) {
   .gallery-modal-arrow {
     width: 28px;
@@ -230,16 +239,22 @@
     background: #fff;
     margin: 0 auto;
   }
+
   .gallery-modal-thumbnails {
     height: 72px;
     gap: 0.5rem;
     overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
   }
+
   .gallery-modal-thumbnails::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
   }
+
   .gallery-modal-thumbnails img {
     width: 72px;
     height: 54px;
