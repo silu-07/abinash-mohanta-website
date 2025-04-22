@@ -7,6 +7,16 @@
   display: block;
 }
 
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu-custom {
+  max-height: 260px;
+  overflow: auto;
+  position: absolute;
+  z-index: 10;
+}
 
 .form-control.search-input {
   border-radius: 2rem;
