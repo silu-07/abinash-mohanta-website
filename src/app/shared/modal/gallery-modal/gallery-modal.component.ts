@@ -9,6 +9,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./gallery-modal.component.scss']
 })
 export class GalleryModalComponent implements OnInit {
+  readonly isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
   isFullScreen = false;
 
   ngOnInit(): void {}
