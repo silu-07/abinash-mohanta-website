@@ -175,9 +175,24 @@ img.lg-object {
 }
 
 @media screen and (max-width: 600px) {
-
     .lg-next,
     .lg-prev {
         display: none;
+    }
+    .lg-fullscreen,
+    .lg-close {
+        display: inline-block !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .lg-fullscreen,
+    .lg-close {
+        display: inline-block !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        font-size: 22px !important;
     }
 }
