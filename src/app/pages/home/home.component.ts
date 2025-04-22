@@ -6,6 +6,13 @@ import lgZoom from 'lightgallery/plugins/zoom';
 import lgAutoplay from 'lightgallery/plugins/autoplay';
 import lgFullscreen from 'lightgallery/plugins/fullscreen';
 
+// Fix for TS7015: declare window.bootstrap
+declare global {
+  interface Window {
+    bootstrap: any;
+  }
+}
+
 
 @Component({
   selector: 'app-home',
@@ -43,7 +50,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         zoom: false,
         autoplay: true,
         autoplayControls: true,
-        autoplayInterval: 2000,
+        autoplayInterval: 2500,
         mode: 'lg-slide'
       } as any);
 
@@ -59,6 +66,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         this.cdr.markForCheck();
       });
     }
+
+    // --- Bootstrap Carousel Manual Initialization ---
+    const carouselElement = document.getElementById('homeBootstrapCarousel');
+    if (carouselElement && window.bootstrap && window.bootstrap.Carousel) {
+      new window.bootstrap.Carousel(carouselElement, {
+        interval: 2000, // 2 seconds
+        ride: 'carousel',
+        pause: false,
+        touch: true,
+        wrap: true
+      });
+    }
+
   }
 
   openGalleryAt(index: number) {

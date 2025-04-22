@@ -182,72 +182,31 @@
 }
 
 @media (max-width: 600px) {
-  :host {
-    overflow-y: hidden !important;
+  .carousel-container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    height: 200px !important;
+    min-height: 0 !important;
   }
 
-  .home-main {
-    overflow-y: hidden !important;
+  .carousel-image {
+    width: 100vw !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
   }
 
   .main-image {
-    height: 240px !important;
+    height: 180px !important;
     max-width: 98vw;
     min-width: 60px;
     object-fit: cover;
   }
 
-
-  .home-main {
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0;
-  }
-
-  .main-image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .main-image-row {
-    margin-top: 0;
-    margin-bottom: 0;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .main-image {
-    height: 180px;
-  }
-
-
-  .carousel-container {
-    width: 98vw;
-    max-width: 98vw;
-    height: 240px;
-    max-height: 240px;
-    min-width: 60px;
-    min-height: 60px;
-  }
-
-  .carousel-image {
-    width: 98vw;
-    max-width: 98vw;
-    height: 240px;
-    max-height: 240px;
-    min-width: 60px;
-    min-height: 60px;
-  }
-
   .carousel-control-prev,
   .carousel-control-next {
-    display: none !important;
+    margin: 0 !important;
   }
-
 }
