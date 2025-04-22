@@ -11,7 +11,6 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/about/module/about.module').then(m => m.AboutModule)
   },
   {
-    
     path: 'contact',
     loadChildren: () => import('./pages/contact/module/contact.module').then(m => m.ContactModule)
   },
