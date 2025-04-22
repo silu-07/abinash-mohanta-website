@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterComponent } from '../../layout/search-filter';
 import { Router } from '@angular/router';
-import { comImages } from './images-commercial';
+import { comImages } from './assets/images-commercial';
 import { cardGridAnimation, cardAnimation } from '../../animations/card-grid.animations';
 import { dropdownAnimation } from '../../animations/dropdown.animations';
 import { overlayAnimation } from '../../animations/overlay.animations';
