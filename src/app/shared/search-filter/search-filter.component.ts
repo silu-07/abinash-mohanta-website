@@ -22,27 +22,9 @@ import { ChangeDetectionStrategy } from '@angular/core';
   ]
 })
 export class SearchFilterComponent {
-  isAtBottom = false;
-  showAtBottom = false;
-  dropdownDirection: 'up' | 'down' = 'down';
+  @Input() placeholder: string = '';
+  @Input() placeholderList: string[] = [];
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const shouldBeAtBottom = window.scrollY > 400;
-    if (shouldBeAtBottom && !this.isAtBottom) {
-      this.isAtBottom = true;
-      setTimeout(() => this.showAtBottom = true, 10); // allow DOM update
-    } else if (!shouldBeAtBottom && this.isAtBottom) {
-      this.showAtBottom = false;
-      setTimeout(() => this.isAtBottom = false, 350); // match CSS transition
-    }
-    this.dropdownDirection = shouldBeAtBottom ? 'up' : 'down';
-  }
-
-  ngOnInit() {
-    // Set initial direction
-    this.dropdownDirection = window.scrollY > 440 ? 'up' : 'down';
-  }
   @Input() searchTerm: string = '';
   @Input() selectedTitles: string[] = [];
   @Input() uniqueTitles: string[] = [];
@@ -54,6 +36,60 @@ export class SearchFilterComponent {
   @Output() clearAll = new EventEmitter<void>();
   @Output() toggleTitle = new EventEmitter<string>();
   @Output() outsideClick = new EventEmitter<Event>();
+
+  @HostListener('window:scroll', [])
+
+  isAtBottom = false;
+  showAtBottom = false;
+  dropdownDirection: 'up' | 'down' = 'down';
+  private placeholderInterval: any;
+  private placeholderIndex: number = 0;
+  private lastPlaceholderList: string[] = [];
+
+  ngOnInit() {
+    this.dropdownDirection = window.scrollY > 440 ? 'up' : 'down';
+    this.setupPlaceholderCycling();
+  }
+
+  ngOnChanges() {
+    this.setupPlaceholderCycling();
+  }
+
+  ngOnDestroy() {
+    if (this.placeholderInterval) {
+      clearInterval(this.placeholderInterval);
+    }
+  }
+
+  setupPlaceholderCycling() {
+    if (this.placeholderInterval) {
+      clearInterval(this.placeholderInterval);
+      this.placeholderInterval = null;
+    }
+    if (this.placeholderList && this.placeholderList.length > 0) {
+      if (this.lastPlaceholderList !== this.placeholderList) {
+        this.placeholderIndex = 0;
+        this.lastPlaceholderList = this.placeholderList;
+      }
+      this.placeholder = this.placeholderList[this.placeholderIndex];
+      this.placeholderInterval = setInterval(() => {
+        this.placeholderIndex = (this.placeholderIndex + 1) % this.placeholderList.length;
+        this.placeholder = this.placeholderList[this.placeholderIndex];
+      }, 3000);
+    }
+  }
+
+  onWindowScroll() {
+    const shouldBeAtBottom = window.scrollY > 400;
+    if (shouldBeAtBottom && !this.isAtBottom) {
+      this.isAtBottom = true;
+      setTimeout(() => this.showAtBottom = true, 10); // allow DOM update
+    } else if (!shouldBeAtBottom && this.isAtBottom) {
+      this.showAtBottom = false;
+      setTimeout(() => this.isAtBottom = false, 350); // match CSS transition
+    }
+    this.dropdownDirection = shouldBeAtBottom ? 'up' : 'down';
+  }
 
   onSearchTermChange(value: string) {
     this.searchTermChange.emit(value);

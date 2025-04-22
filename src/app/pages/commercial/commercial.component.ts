@@ -22,6 +22,7 @@ export class CommercialComponent {
   selectedTitles: string[] = [];
   showDropdown: boolean = false;
   isDesktop: boolean = window.innerWidth >= 600;
+  placeholderList: string[] = comImages.map(img => img.title);
 
   constructor(private router: Router) {
     window.addEventListener('resize', this.updateIsDesktop.bind(this));

@@ -3,7 +3,8 @@
     [showDropdown]="showDropdown" (searchTermChange)="searchTerm = $event"
     (selectedTitlesChange)="selectedTitles = $event" (showDropdownChange)="onShowDropdownChange($event)"
     (clearAll)="clearAllFilters()" (toggleTitle)="toggleTitleSelection($event)"
-    (outsideClick)="onOutsideClick($event, dropdownRef)">
+    (outsideClick)="onOutsideClick($event, dropdownRef)"
+    [placeholderList]="placeholderList">
   </app-search-filter>
   <div #dropdownRef></div>
 
