@@ -16,7 +16,9 @@
            (touchstart)="onImageTouchStart($event)"
            (touchmove)="onImageTouchMove($event)"
            (touchend)="onImageTouchEnd($event)">
-        <img [src]="images[currentIndex]" alt="Gallery image" />
+        <img [src]="images[currentIndex]" alt="Gallery image"
+     [ngClass]="{ 'portrait': isPortrait, 'landscape': isLandscape }"
+     (load)="onImageLoad($event)" />
         <button class="gallery-modal-arrow left" (click)="prev()" [disabled]="currentIndex === 0"
           aria-label="Previous image">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

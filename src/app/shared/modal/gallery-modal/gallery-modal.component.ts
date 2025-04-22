@@ -9,6 +9,14 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./gallery-modal.component.scss']
 })
 export class GalleryModalComponent implements OnInit {
+  isPortrait = false;
+  isLandscape = false;
+
+  onImageLoad(event: Event) {
+    const img = event.target as HTMLImageElement;
+    this.isPortrait = img.naturalHeight > img.naturalWidth;
+    this.isLandscape = img.naturalWidth > img.naturalHeight;
+  }
   readonly isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
   isFullScreen = false;
 
