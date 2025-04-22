@@ -20,7 +20,8 @@
           <i class="fa-solid fa-filter text-black"></i> Filter
         </button>
         <ul class="dropdown-menu dropdown-menu-custom"
-          [ngClass]="{'dropdown-up': dropdownDirection === 'up', 'dropdown-down': dropdownDirection === 'down', 'show': showDropdown}">
+          [ngClass]="{'dropdown-up': dropdownDirection === 'up', 'dropdown-down': dropdownDirection === 'down', 'show': showDropdown}"
+          *ngIf="showDropdown" @dropdownMenu>
           <li class="px-3 py-1">
             <button type="button"
               class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center mb-2"
@@ -31,8 +32,8 @@
           </li>
           <li *ngFor="let title of uniqueTitles">
             <label class="dropdown-item">
-              <input type="checkbox" [checked]="selectedTitles.includes(title)"
-                (change)="onToggleTitle(title, $event)"> {{ title }}
+              <input type="checkbox" [checked]="selectedTitles.includes(title)" (change)="onToggleTitle(title, $event)">
+              {{ title }}
             </label>
           </li>
         </ul>
