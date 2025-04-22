@@ -173,26 +173,3 @@ img.lg-object {
     box-shadow: 0 0 8px rgba(178, 58, 58, 0.25);
     z-index: 2;
 }
-
-@media screen and (max-width: 600px) {
-    .lg-next,
-    .lg-prev {
-        display: none;
-    }
-    .lg-fullscreen,
-    .lg-close {
-        display: inline-block !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .lg-fullscreen,
-    .lg-close {
-        display: inline-block !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        font-size: 22px !important;
-    }
-}
