@@ -13,8 +13,8 @@ import { ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./search-filter.component.scss'],
   animations: [
     trigger('dropdownMenu', [
-      state('open', style({ opacity: 1, display: 'block' })),
-      state('closed', style({ opacity: 0, display: 'none' })),
+      state('open', style({ opacity: 1 })),
+      state('closed', style({ opacity: 0 })),
       transition('open <=> closed', [
         animate('200ms ease-in-out')
       ]),

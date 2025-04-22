@@ -20,9 +20,9 @@
           <i class="fa-solid fa-filter text-black"></i> Filter
         </button>
         <ul class="dropdown-menu"
-          [ngClass]="{'dropdown-up': dropdownDirection === 'up', 'dropdown-down': dropdownDirection === 'down'}"
-          [@dropdownMenu]="showDropdown ? 'open' : 'closed'" [style.maxHeight]="'260px'" [style.overflow]="'auto'"
-          [style.position]="'absolute'" [style.zIndex]="10" [style.display]="'block'">
+          [ngClass]="{'dropdown-up': dropdownDirection === 'up', 'dropdown-down': dropdownDirection === 'down', 'show': showDropdown}"
+          [style.maxHeight]="'260px'" [style.overflow]="'auto'"
+          [style.position]="'absolute'" [style.zIndex]="10">
           <li class="px-3 py-1">
             <button type="button"
               class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center mb-2"
