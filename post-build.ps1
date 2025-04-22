@@ -1,5 +1,21 @@
-# PowerShell script to generate 404.html for Angular SPA on GitHub Pages
-dollar = [char]36
+# PowerShell script to move Angular build output from docs/browser/* to docs/
+# and generate 404.html for Angular SPA routing on GitHub Pages
+# Use after every ng build
+
+$src = "docs/browser"
+$dest = "docs"
+
+if (Test-Path $src) {
+    Write-Host "Moving files from $src to $dest..."
+    Move-Item -Path "$src\*" -Destination $dest -Force
+    Write-Host "Removing $src directory..."
+    Remove-Item $src -Recurse -Force
+    Write-Host "Done. All files are now in $dest."
+} else {
+    Write-Host "$src does not exist. Nothing to move."
+}
+
+# Generate 404.html for SPA fallback
 $spa404 = @"
 <!--
   Custom 404 page for Angular SPA on GitHub Pages

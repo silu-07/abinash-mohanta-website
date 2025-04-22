@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:deploy": "ng build --configuration production && powershell -ExecutionPolicy Bypass -File ./post-build.ps1",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
