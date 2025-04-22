@@ -34,7 +34,7 @@ if (Test-Path $src) {
 $spa404 = @"
 <!--
   Custom 404 page for Angular SPA on GitHub Pages
-  Redirects all 404s to index.html so Angular router can handle the route.
+  Redirects all 404s to index.html with hash route so Angular router can handle the route.
 -->
 <!DOCTYPE html>
 <html lang=\"en\">
@@ -42,12 +42,11 @@ $spa404 = @"
   <meta charset=\"UTF-8\">
   <title>Redirecting...</title>
   <script type=\"text/javascript\">
-    // Get the path after the domain
-    var redirectTo = '/abinash-mohanta-website/index.html';
-    var hash = window.location.hash ? window.location.hash : '';
-    var search = window.location.search ? window.location.search : '';
-    // Preserve route and params in hash
-    window.location.replace(redirectTo + hash + search);
+    // Get the path after the repo name
+    var repo = '/abinash-mohanta-website';
+    var path = window.location.pathname.startsWith(repo) ? window.location.pathname.substr(repo.length) : window.location.pathname;
+    var newUrl = repo + '/index.html#' + path + window.location.search + window.location.hash;
+    window.location.replace(newUrl);
   </script>
   <noscript>
     <meta http-equiv=\"refresh\" content=\"0; url=/abinash-mohanta-website/index.html\">
