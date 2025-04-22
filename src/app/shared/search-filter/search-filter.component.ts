@@ -28,8 +28,6 @@ export class SearchFilterComponent {
   @Output() toggleTitle = new EventEmitter<string>();
   @Output() outsideClick = new EventEmitter<Event>();
 
-  @HostListener('window:scroll', [])
-
   isAtBottom = false;
   showAtBottom = false;
   dropdownDirection: 'up' | 'down' = 'down';
@@ -70,6 +68,8 @@ export class SearchFilterComponent {
     }
   }
 
+
+  @HostListener('window:scroll', [])
   onWindowScroll() {
     const shouldBeAtBottom = window.scrollY > 400;
     if (shouldBeAtBottom && !this.isAtBottom) {
