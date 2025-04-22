@@ -12,7 +12,10 @@
   </div>
 </div>
     <div class="gallery-modal-content">
-      <div class="gallery-modal-image">
+      <div class="gallery-modal-image"
+           (touchstart)="onImageTouchStart($event)"
+           (touchmove)="onImageTouchMove($event)"
+           (touchend)="onImageTouchEnd($event)">
         <img [src]="images[currentIndex]" alt="Gallery image" />
         <button class="gallery-modal-arrow left" (click)="prev()" [disabled]="currentIndex === 0"
           aria-label="Previous image">
@@ -23,7 +26,10 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
       </div>
-      <div class="gallery-modal-thumbnails">
+      <div class="gallery-modal-thumbnails"
+           (touchstart)="onThumbsTouchStart($event)"
+           (touchmove)="onThumbsTouchMove($event)"
+           (touchend)="onThumbsTouchEnd($event)">
         <img *ngFor="let img of images; let i = index" [src]="img" [class.active]="i === currentIndex"
           (click)="select(i)" alt="Thumbnail" />
       </div>

@@ -12,6 +12,56 @@ export class GalleryModalComponent implements OnInit {
   readonly isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
   isFullScreen = false;
 
+  // For swipe gesture detection
+  private touchStartX: number | null = null;
+  private touchMoveX: number | null = null;
+  private touchTarget: 'image' | 'thumbs' | null = null;
+
+  onImageTouchStart(event: TouchEvent) {
+    if (event.touches.length === 1) {
+      this.touchStartX = event.touches[0].clientX;
+      this.touchTarget = 'image';
+    }
+  }
+  onImageTouchMove(event: TouchEvent) {
+    if (this.touchTarget === 'image' && event.touches.length === 1) {
+      this.touchMoveX = event.touches[0].clientX;
+    }
+  }
+  onImageTouchEnd(event: TouchEvent) {
+    if (this.touchTarget === 'image' && this.touchStartX !== null && this.touchMoveX !== null) {
+      const dx = this.touchMoveX - this.touchStartX;
+      if (Math.abs(dx) > 40) {
+        if (dx < 0) this.next();
+        if (dx > 0) this.prev();
+      }
+    }
+    this.touchStartX = null;
+    this.touchMoveX = null;
+    this.touchTarget = null;
+  }
+
+  onThumbsTouchStart(event: TouchEvent) {
+    if (event.touches.length === 1) {
+      this.touchStartX = event.touches[0].clientX;
+      this.touchTarget = 'thumbs';
+    }
+  }
+  onThumbsTouchMove(event: TouchEvent) {
+    if (this.touchTarget === 'thumbs' && event.touches.length === 1) {
+      const thumbs = document.querySelector('.gallery-modal-thumbnails') as HTMLElement;
+      if (thumbs && this.touchStartX !== null) {
+        const delta = event.touches[0].clientX - this.touchStartX;
+        thumbs.scrollLeft -= delta;
+        this.touchStartX = event.touches[0].clientX;
+      }
+    }
+  }
+  onThumbsTouchEnd(event: TouchEvent) {
+    this.touchStartX = null;
+    this.touchTarget = null;
+  }
+
   ngOnInit(): void {}
 
   @Input() images: string[] = [];
