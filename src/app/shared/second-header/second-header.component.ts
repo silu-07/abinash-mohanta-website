@@ -13,16 +13,17 @@ import { titleFadeAnimation } from '../../animations/second-header-title-fade';
   animations: [...titleFadeAnimation]
 })
 export class SecondHeaderComponent {
-  secondHeaderTitle = 'ABINASH MOHANTA';
+  secondHeaderTitle: string | null = null;
+  showLogo = true; // Flag to determine if the logo should be shown
   currentTitleKey = 'home';
 
-  private routeTitleMap: { [key: string]: string } = {
-    home: 'ABINASH MOHANTA',
+  private routeTitleMap: { [key: string]: string | null } = {
+    home: null, // Use null to indicate the logo should be shown
     about: 'ABOUT ME',
     contact: 'CONTACT',
     personal: 'PERSONAL WORK',
     commercial: 'COMMERCIAL WORK',
-    reviews: ' CLIENT REVIEWS',
+    reviews: 'CLIENT REVIEWS',
   };
 
   constructor(private router: Router) {
@@ -32,7 +33,8 @@ export class SecondHeaderComponent {
       const url = event.urlAfterRedirects || event.url;
       const path = url.split('/')[1] || 'home';
       this.currentTitleKey = path;
-      this.secondHeaderTitle = this.routeTitleMap[path] || 'ABINASH MOHANTA';
+      this.secondHeaderTitle = this.routeTitleMap[path];
+      this.showLogo = path === 'home'; // Show logo only for the 'home' route
     });
   }
 }

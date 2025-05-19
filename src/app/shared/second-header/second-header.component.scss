@@ -1,8 +1,22 @@
-.second-header-title {
+.second-header {
+  font: var(--font_3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+  background-color: #fff; // Add a background color for visibility
+  margin-top: 60px !important;
+}
+
+.second-header-logo {
+  max-height: 80px;
+  width: auto;
+}
+
+h1 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5rem;
   margin-bottom: 0.5rem;
   text-align: center;
   font: var(--font_3);
@@ -11,7 +25,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .second-header-title {
-    font: var(--font_4);
+  .second-header-logo {
+    max-height: 50px;
   }
 }

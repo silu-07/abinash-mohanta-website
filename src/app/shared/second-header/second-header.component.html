@@ -1,1 +1,8 @@
-<h2 class="second-header-title" *ngIf="secondHeaderTitle" [@titleFade]="currentTitleKey">{{ secondHeaderTitle }}</h2>
+<div class="second-header">
+    <ng-container *ngIf="showLogo; else titleTemplate">
+      <img src="/logo/logo1.png" alt="Logo" class="second-header-logo" />
+    </ng-container>
+    <ng-template #titleTemplate>
+      <h1>{{ secondHeaderTitle }}</h1>
+    </ng-template>
+  </div>

@@ -1,7 +1,6 @@
 <div class="home-header" [ngClass]="{'scrolled': isScrolled}" #carouselScroll>
   <div class="logo">
-    <span class="logo-initials">A.M</span>
-    <span class="logo-desc">| Photographer</span>
+    <img src="/logo/logo.png" alt="Logo" class="logo-image" />
   </div>
   <button class="hamburger" [class.open]="showMobileNav" (click)="showMobileNav = !showMobileNav" [attr.aria-label]="showMobileNav ? 'Close navigation' : 'Open navigation'">
     <span></span>
