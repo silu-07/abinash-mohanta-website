@@ -61,12 +61,13 @@ body {
   justify-content: space-between;
   width: 100%;
   position: absolute;
-  top: 10px;
+  top: 0;
   left: 0;
   right: 0;
   padding: 0 18px;
   z-index: 20;
   box-sizing: border-box;
+  height: 60px; // Set a fixed height for the header
 }
 
 .gallery-modal-header-icons {
@@ -132,7 +133,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 60px); // Subtract the header height from the viewport height
   position: relative;
   margin: 0;
   box-sizing: border-box;
