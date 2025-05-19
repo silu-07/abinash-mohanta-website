@@ -1,8 +1,11 @@
 <div class="home-header" [ngClass]="{'scrolled': isScrolled}" #carouselScroll>
   <div class="logo">
-    <img src="/logo/logo.png" alt="Logo" class="logo-image" />
+    <a routerLink="/home">
+      <img src="/logo/logo.png" alt="Logo" class="logo-image" />
+    </a>
   </div>
-  <button class="hamburger" [class.open]="showMobileNav" (click)="showMobileNav = !showMobileNav" [attr.aria-label]="showMobileNav ? 'Close navigation' : 'Open navigation'">
+  <button class="hamburger" [class.open]="showMobileNav" (click)="showMobileNav = !showMobileNav"
+    [attr.aria-label]="showMobileNav ? 'Close navigation' : 'Open navigation'">
     <span></span>
     <span></span>
     <span></span>
