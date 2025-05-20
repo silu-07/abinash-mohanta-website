@@ -10,10 +10,10 @@ import { Component } from '@angular/core';
 })
 export class CommercialSectionComponent {
   photographyImages = [
-    { src: '/carosuel-home/image1.jpg', alt: 'Landscape', title: 'Landscape' },
-    { src: '/carosuel-home/image2.jpg', alt: 'Portrait', title: 'Portrait' },
-    { src: '/carosuel-home/image3.jpg', alt: 'Wildlife', title: 'Wildlife' },
-    { src: '/carosuel-home/image1.jpg', alt: 'Urban', title: 'Urban' }
+    { src: 'carosuel-home/image1.jpg', alt: 'Landscape', title: 'Landscape' },
+    { src: 'carosuel-home/image2.jpg', alt: 'Portrait', title: 'Portrait' },
+    { src: 'carosuel-home/image3.jpg', alt: 'Wildlife', title: 'Wildlife' },
+    { src: 'carosuel-home/image1.jpg', alt: 'Urban', title: 'Urban' }
   ];
   
   onViewMore() {
