@@ -25,6 +25,11 @@ h1 {
 }
 
 @media screen and (max-width: 600px) {
+
+  .second-header {
+    margin-top: 80px !important;
+  }
+
   .second-header-logo {
     max-height: 50px;
   }
