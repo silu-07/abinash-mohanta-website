@@ -1,22 +1,31 @@
-h5 {
-    margin-bottom: 0.1rem;
+// Common section style for all main sections
+.about-section,
+.commercial-section,
+.commercial-section {
+    width: 80%;
+    max-width: 1200px;
+    margin: 2.5rem auto 2rem auto;
 }
 
-.photography-intro {
-    padding: 0px 5px;
-    text-align: center;
-    margin: 3rem auto 2rem auto;
-    max-width: 700px;
+.commercial-text h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: end;
+}
 
-    h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
+.commercial-section {
+    background: linear-gradient(135deg, #f7f7f7 70%, #e3e6ec 100%);
+    padding: 1.5rem;
+    border-radius: 18px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 2.5rem auto 2rem auto;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.07);
+    transition: box-shadow 0.2s;
+}
 
-    p {
-        color: #666;
-        font-size: 1.1rem;
-    }
+h5 {
+    margin-bottom: 0.1rem;
 }
 
 .photography-grid {
@@ -81,19 +90,32 @@ h5 {
     background: #444;
 }
 
+.commercial-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.commercial-text {
+    flex: 1 1 60%;
+}
+
+.photography-view-more {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 0 0 auto;
+}
+
 @media (max-width: 600px) {
-    .photography-intro h2 {
-        font-size: 1.5rem;
-        margin-bottom: 0.3rem;
+    .commercial-section {
+        padding: 0rem;
     }
 
-    .photography-intro p {
-        font-size: 0.95rem;
-    }
-
-    .view-more-btn {
-        font-size: 0.95rem;
-        padding: 0.5rem 1.2rem;
+    .commercial-section {
+        padding: 0rem;
     }
 
     .photography-grid {
@@ -101,7 +123,6 @@ h5 {
         flex-direction: row;
         overflow-x: auto;
         gap: 2px;
-        padding: 0rem 1rem;
         margin: 1.5rem 0 2rem 0;
         scroll-snap-type: x mandatory;
         justify-content: flex-start;
@@ -126,5 +147,34 @@ h5 {
     .grid-overlay h5 {
         font-size: 1rem;
         margin: 0.2rem 0;
+    }
+
+    .view-more-btn {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .commercial-text h2 {
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .commercial-header-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .photography-view-more {
+        justify-content: center;
+        margin-top: 1.5rem;
+        order: 2; // Ensure it appears after the grid
+        width: 100%;
+    }
+
+    .photography-grid {
+        order: 1;
     }
 }
