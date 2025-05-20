@@ -31,9 +31,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void { }
 
   images: string[] = [
-    'carosuel-home/image1.jpg',
-    'carosuel-home/image2.jpg',
-    'carosuel-home/image3.jpg',
+    'carosuel-home/image1.JPG',
+    'carosuel-home/image2.JPG',
+    'carosuel-home/image3.JPG',
   ];
 
   ngAfterViewInit(): void {
