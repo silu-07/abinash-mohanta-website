@@ -10,7 +10,7 @@ h5 {
 
     h2 {
         font-size: 2rem;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.5rem;
     }
 
     p {
@@ -24,7 +24,7 @@ h5 {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
     margin: 2rem auto 3rem auto;
-    padding: 0 1rem;
+    padding: 0rem;
     max-width: 1200px;
 }
 
@@ -101,7 +101,7 @@ h5 {
         flex-direction: row;
         overflow-x: auto;
         gap: 2px;
-        padding: 0;
+        padding: 0rem 1rem;
         margin: 1.5rem 0 2rem 0;
         scroll-snap-type: x mandatory;
         justify-content: flex-start;

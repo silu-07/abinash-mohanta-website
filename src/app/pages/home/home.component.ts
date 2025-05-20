@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GalleryModalComponent } from '../../shared/modal/gallery-modal/gallery-modal.component';
 import { PersonalSectionComponent } from "./personal-section/personal-section.component";
 import { CommercialSectionComponent } from "./commercial-section/commercial-section.component";
+import { AboutSectionComponent } from "./about-section/about-section.component";
 
 // Fix for TS7015: declare window.bootstrap
 declare global {
@@ -15,7 +16,7 @@ declare global {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, GalleryModalComponent, PersonalSectionComponent, CommercialSectionComponent],
+  imports: [CommonModule, GalleryModalComponent, PersonalSectionComponent, CommercialSectionComponent, AboutSectionComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
