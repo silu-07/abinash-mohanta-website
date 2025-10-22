@@ -4,12 +4,13 @@
   justify-content: center;
   align-items: center;
   background-color: #fff; // Add a background color for visibility
-  margin-top: 70px !important;
+  margin-top: 75px !important;
   padding-bottom: 20px;
+  opacity: 0.75;
 }
 
 .second-header-logo {
-  max-height: 70px;
+  max-height: 50px;
   width: auto;
 }
 
@@ -31,6 +32,6 @@ h1 {
   }
 
   .second-header-logo {
-    max-height: 50px;
+    max-height: 35px;
   }
 }

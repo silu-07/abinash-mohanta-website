@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import { Router, RouterOutlet, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, RouterOutlet, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from "./layout/footer/footer.component";
 import { HeaderComponent } from "./layout/header/header.component";
 import { SecondHeaderComponent } from "./shared/second-header/second-header.component";
 import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Title } from '@angular/platform-browser';
+import { filter, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -22,15 +25,15 @@ import { trigger, transition, style, animate } from '@angular/animations';
     ]),
   ]
 })
-export class AppComponent {
-  title = 'abinash-mohanta-website';
+export class AppComponent implements OnInit, OnDestroy {
 
-  progress = 0;
-  progressVisible = false;
-  progressTimer: any = null;
+  public progress = 0;
+  public progressVisible = false;
+  private progressTimer: ReturnType<typeof setTimeout> | null = null;
+  private destroy$ = new Subject<void>();
 
-  constructor(private router: Router) {
-    this.router.events.subscribe(event => {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
+    this.router.events.pipe(takeUntil(this.destroy$)).subscribe(event => {
       if (event instanceof NavigationStart) {
         this.showProgressBar();
       } else if (
@@ -43,13 +46,31 @@ export class AppComponent {
     });
   }
 
+  ngOnInit() {
+    this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd),
+      takeUntil(this.destroy$)
+    ).subscribe(() => {
+      let route = this.activatedRoute;
+      let title = '';
+      while (route) {
+        const snapshot = route.snapshot;
+        if (snapshot && snapshot.data && snapshot.data['title']) {
+          title = snapshot.data['title'];
+        }
+        route = route.firstChild!;
+      }
+      this.titleService.setTitle(title);
+    });
+  }
+
   showProgressBar() {
     this.progress = 0;
     this.progressVisible = true;
     this.increaseProgress();
   }
 
-  increaseProgress() {
+  private increaseProgress() {
     if (this.progress < 90) {
       this.progress += Math.random() * 10 + 5;
       this.progress = Math.min(this.progress, 90);
@@ -57,7 +78,7 @@ export class AppComponent {
     }
   }
 
-  completeProgressBar() {
+  private completeProgressBar() {
     this.progress = 100;
     setTimeout(() => {
       this.progressVisible = false;
@@ -72,5 +93,13 @@ export class AppComponent {
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.isActivated ? outlet.activatedRoute : '';
   }
-}
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+    if (this.progressTimer) {
+      clearTimeout(this.progressTimer);
+      this.progressTimer = null;
+    }
+  }
+}

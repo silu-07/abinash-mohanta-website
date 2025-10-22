@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     const carouselElement = document.getElementById('homeBootstrapCarousel');
     if (carouselElement && window.bootstrap && window.bootstrap.Carousel) {
       new window.bootstrap.Carousel(carouselElement, {
-        interval: 2000, // 2 seconds
+        interval: 4000, // 4 seconds
         ride: 'carousel',
         pause: false,
         touch: true,

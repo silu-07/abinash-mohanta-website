@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PersonalComponent } from '../personal.component';
 
 const routes: Routes = [
-  { path: '', component: PersonalComponent },
+  { path: '', component: PersonalComponent, title: 'Personal Projects | Memories By Abinash' },
 ];
 
 @NgModule({

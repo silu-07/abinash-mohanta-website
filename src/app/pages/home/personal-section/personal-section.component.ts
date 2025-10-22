@@ -12,8 +12,7 @@ export class PersonalSectionComponent {
   photographyImages = [
     { src: 'carosuel-home/1.JPG', alt: 'Landscape', title: 'Landscape' },
     { src: 'carosuel-home/2.JPG', alt: 'Portrait', title: 'Portrait' },
-    { src: 'carosuel-home/3.JPG', alt: 'Wildlife', title: 'Wildlife' },
-    { src: 'carosuel-home/1.JPG', alt: 'Urban', title: 'Urban' }
+    { src: 'carosuel-home/3.JPG', alt: 'Wildlife', title: 'Wildlife' }
   ];
   
   onViewMore() {

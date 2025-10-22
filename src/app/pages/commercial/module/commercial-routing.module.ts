@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommercialComponent } from '../commercial.component';
 
 const routes: Routes = [
-  { path: '', component: CommercialComponent },
+  { path: '', component: CommercialComponent, title: 'Commercial Projects | Memories By Abinash' },
 ];
 
 @NgModule({
