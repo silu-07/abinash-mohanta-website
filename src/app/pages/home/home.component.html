@@ -25,12 +25,8 @@
     </div>
   </div>
 
-  <app-gallery-modal
-    [images]="images"
-    [open]="isGalleryOpen"
-    [initialIndex]="selectedGalleryIndex"
-    (close)="onCloseGallery()"
-  />
+  <app-gallery-modal [images]="images" [open]="isGalleryOpen" [initialIndex]="selectedGalleryIndex"
+    (close)="onCloseGallery()" />
 </div>
 <app-about-section></app-about-section>
 <app-personal-section></app-personal-section>

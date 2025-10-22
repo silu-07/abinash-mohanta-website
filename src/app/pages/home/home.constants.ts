@@ -1,0 +1,7 @@
+export class HomeConstants {
+    public static HOME_CAROUSEL_IMAGES: string[] = [
+        'carosuel-home/1.JPG',
+        'carosuel-home/2.JPG',
+        'carosuel-home/3.JPG',
+    ];
+}

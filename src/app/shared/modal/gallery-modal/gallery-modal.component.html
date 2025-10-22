@@ -1,24 +1,22 @@
 <div class="gallery-modal-backdrop" *ngIf="open" (click)="onClose()">
   <div class="gallery-modal" (click)="$event.stopPropagation()">
     <div class="gallery-modal-header">
-  <span class="gallery-modal-count">{{ currentIndex + 1 }} / {{ images.length }}</span>
-  <div class="gallery-modal-header-icons">
-    <button *ngIf="!isIOS" class="gallery-modal-fullscreen" (click)="toggleFullScreen()" aria-label="Full screen">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 4H10V6H6V10H4V4ZM14 4H20V10H18V6H14V4ZM20 14V20H14V18H18V14H20ZM10 20H4V14H6V18H10V20Z" fill="currentColor"/>
-      </svg>
-    </button>
-    <button class="gallery-modal-close" (click)="onClose()" aria-label="Close">&times;</button>
-  </div>
-</div>
+      <span class="gallery-modal-count">{{ currentIndex + 1 }} / {{ images.length }}</span>
+      <div class="gallery-modal-header-icons">
+        <button *ngIf="!isIOS" class="gallery-modal-fullscreen" (click)="toggleFullScreen()" aria-label="Full screen">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4H10V6H6V10H4V4ZM14 4H20V10H18V6H14V4ZM20 14V20H14V18H18V14H20ZM10 20H4V14H6V18H10V20Z"
+              fill="currentColor" />
+          </svg>
+        </button>
+        <button class="gallery-modal-close" (click)="onClose()" aria-label="Close">&times;</button>
+      </div>
+    </div>
     <div class="gallery-modal-content">
-      <div class="gallery-modal-image"
-           (touchstart)="onImageTouchStart($event)"
-           (touchmove)="onImageTouchMove($event)"
-           (touchend)="onImageTouchEnd($event)">
+      <div class="gallery-modal-image" (touchstart)="onImageTouchStart($event)" (touchmove)="onImageTouchMove($event)"
+        (touchend)="onImageTouchEnd($event)">
         <img [src]="images[currentIndex]" alt="Gallery image"
-     [ngClass]="{ 'portrait': isPortrait, 'landscape': isLandscape }"
-     (load)="onImageLoad($event)" />
+          [ngClass]="{ 'portrait': isPortrait, 'landscape': isLandscape }" (load)="onImageLoad($event)" />
         <button class="gallery-modal-arrow left" (click)="prev()" [disabled]="currentIndex === 0"
           aria-label="Previous image">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -28,10 +26,8 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
       </div>
-      <div class="gallery-modal-thumbnails"
-           (touchstart)="onThumbsTouchStart($event)"
-           (touchmove)="onThumbsTouchMove($event)"
-           (touchend)="onThumbsTouchEnd($event)">
+      <div class="gallery-modal-thumbnails" (touchstart)="onThumbsTouchStart($event)"
+        (touchmove)="onThumbsTouchMove($event)" (touchend)="onThumbsTouchEnd($event)">
         <img *ngFor="let img of images; let i = index" [src]="img" [class.active]="i === currentIndex"
           (click)="select(i)" alt="Thumbnail" />
       </div>
