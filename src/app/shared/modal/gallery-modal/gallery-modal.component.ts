@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-gallery-modal',
@@ -8,35 +8,54 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   templateUrl: './gallery-modal.component.html',
   styleUrls: ['./gallery-modal.component.scss']
 })
-export class GalleryModalComponent implements OnInit {
-  isPortrait = false;
-  isLandscape = false;
 
-  onImageLoad(event: Event) {
-    const img = event.target as HTMLImageElement;
-    this.isPortrait = img.naturalHeight > img.naturalWidth;
-    this.isLandscape = img.naturalWidth > img.naturalHeight;
-  }
-  readonly isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
-  isFullScreen = false;
-
-  // For swipe gesture detection
+export class GalleryModalComponent {
+  @Input() images: string[] = [];
+  @Input() open = false;
+  @Input() initialIndex = 0;
+  @Output() close = new EventEmitter<void>();
+  public currentIndex = 0;
+  public isPortrait = false;
+  public isLandscape = false;
+  public isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+  private isFullScreen = false;
   private touchStartX: number | null = null;
   private touchMoveX: number | null = null;
   private touchTarget: 'image' | 'thumbs' | null = null;
 
-  onImageTouchStart(event: TouchEvent) {
+  constructor() { document.addEventListener('fullscreenchange', () => { this.isFullScreen = !!document.fullscreenElement; }); }
+
+  ngOnChanges() {
+    if (this.open) {
+      this.currentIndex = this.initialIndex;
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+  }
+
+  public onImageLoad(event: Event) {
+    const img = event.target as HTMLImageElement;
+    this.isPortrait = img.naturalHeight > img.naturalWidth;
+    this.isLandscape = img.naturalWidth > img.naturalHeight;
+  }
+
+  public onImageTouchStart(event: TouchEvent) {
     if (event.touches.length === 1) {
       this.touchStartX = event.touches[0].clientX;
       this.touchTarget = 'image';
     }
   }
-  onImageTouchMove(event: TouchEvent) {
+
+  public onImageTouchMove(event: TouchEvent) {
     if (this.touchTarget === 'image' && event.touches.length === 1) {
       this.touchMoveX = event.touches[0].clientX;
     }
   }
-  onImageTouchEnd(event: TouchEvent) {
+
+  public onImageTouchEnd(event: TouchEvent) {
     if (this.touchTarget === 'image' && this.touchStartX !== null && this.touchMoveX !== null) {
       const dx = this.touchMoveX - this.touchStartX;
       if (Math.abs(dx) > 40) {
@@ -49,13 +68,14 @@ export class GalleryModalComponent implements OnInit {
     this.touchTarget = null;
   }
 
-  onThumbsTouchStart(event: TouchEvent) {
+  public onThumbsTouchStart(event: TouchEvent) {
     if (event.touches.length === 1) {
       this.touchStartX = event.touches[0].clientX;
       this.touchTarget = 'thumbs';
     }
   }
-  onThumbsTouchMove(event: TouchEvent) {
+
+  public onThumbsTouchMove(event: TouchEvent) {
     if (this.touchTarget === 'thumbs' && event.touches.length === 1) {
       const thumbs = document.querySelector('.gallery-modal-thumbnails') as HTMLElement;
       if (thumbs && this.touchStartX !== null) {
@@ -65,21 +85,12 @@ export class GalleryModalComponent implements OnInit {
       }
     }
   }
-  onThumbsTouchEnd(event: TouchEvent) {
+  public onThumbsTouchEnd(event: TouchEvent) {
     this.touchStartX = null;
     this.touchTarget = null;
   }
 
-  ngOnInit(): void {}
-
-  @Input() images: string[] = [];
-  @Input() open = false;
-  @Input() initialIndex = 0;
-  @Output() close = new EventEmitter<void>();
-
-  currentIndex = 0;
-
-  toggleFullScreen() {
+  public toggleFullScreen() {
     const modal = document.querySelector('.gallery-modal') as HTMLElement;
     if (!modal) return;
 
@@ -102,45 +113,28 @@ export class GalleryModalComponent implements OnInit {
     }
   }
 
-  constructor() {
-    document.addEventListener('fullscreenchange', () => {
-      this.isFullScreen = !!document.fullscreenElement;
-    });
-  }
-
-  ngOnChanges() {
-    if (this.open) {
-      this.currentIndex = this.initialIndex;
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-    }
-  }
-
-  ngOnDestroy() {
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-  }
-
-  prev() {
+  public prev() {
     if (this.currentIndex > 0) {
       this.currentIndex--;
     }
   }
 
-  next() {
+  public next() {
     if (this.currentIndex < this.images.length - 1) {
       this.currentIndex++;
     }
   }
 
-  select(index: number) {
+  public select(index: number) {
     this.currentIndex = index;
   }
 
-  onClose() {
+  public onClose() {
     this.close.emit();
+  }
+
+  ngOnDestroy() {
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 }
