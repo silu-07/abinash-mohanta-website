@@ -17,17 +17,18 @@
         (touchend)="onImageTouchEnd($event)">
         <img [src]="images[currentIndex]" alt="Gallery image"
           [ngClass]="{ 'portrait': isPortrait, 'landscape': isLandscape }" (load)="onImageLoad($event)" />
-        <button class="gallery-modal-arrow left" (click)="prev()" [disabled]="currentIndex === 0"
+        <button *ngIf="currentIndex !== 0" class="gallery-modal-arrow left" (click)="prev()"
           aria-label="Previous image">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         </button>
-        <button class="gallery-modal-arrow right" (click)="next()" [disabled]="currentIndex === images.length - 1"
+        <button *ngIf="currentIndex !== images.length - 1" class="gallery-modal-arrow right" (click)="next()"
           aria-label="Next image">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
       </div>
       <div class="gallery-modal-thumbnails" (touchstart)="onThumbsTouchStart($event)"
-        (touchmove)="onThumbsTouchMove($event)" (touchend)="onThumbsTouchEnd($event)">
+        (touchmove)="onThumbsTouchMove($event)" (touchend)="onThumbsTouchEnd($event)"
+        (wheel)="onThumbnailsWheel($event)">
         <img *ngFor="let img of images; let i = index" [src]="img" [class.active]="i === currentIndex"
           (click)="select(i)" alt="Thumbnail" />
       </div>
