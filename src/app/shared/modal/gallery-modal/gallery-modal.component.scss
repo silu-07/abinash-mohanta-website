@@ -61,7 +61,6 @@ body {
     padding-left: 18px;
     z-index: 50;
 
-    // Image count on left
     .gallery-modal-count {
       font-size: 1.3rem;
       color: #2f2e2e;
@@ -72,7 +71,6 @@ body {
       white-space: nowrap;
     }
 
-    // Buttons on right
     .gallery-modal-buttons {
       display: flex;
       align-items: center;
@@ -105,8 +103,8 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
   }
 
@@ -117,7 +115,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
+    padding: 0.5vw;
     height: calc(100vh - 70px);
     box-sizing: border-box;
     overflow: hidden;
@@ -182,20 +181,24 @@ body {
   // }
 
   // ---------- THUMBNAILS ----------
-  .gallery-modal-thumbnails {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100px;
-    background: #fff;
-    padding: 0 2vw 8px;
+  .gallery-modal-thumbnails-container {
+    width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
+    display: flex;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gallery-modal-thumbnails {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 8px 2vw;
+    white-space: nowrap;
     box-sizing: border-box;
 
     img {
+      flex: 0 0 auto;
       width: 66px;
       height: 50px;
       object-fit: cover;
@@ -205,7 +208,6 @@ body {
       border: 2px solid transparent;
       transition: all 0.22s ease-in-out;
       background: #fff;
-      margin: 8px 0;
 
       &.active {
         opacity: 1;
@@ -272,22 +274,28 @@ body {
       }
     }
 
-    .gallery-modal-thumbnails {
+    .gallery-modal-thumbnails-container {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 72px;
-      background: #fff;
-      padding: 0 1vw;
-      gap: 0.5rem;
+      display: flex;
+      justify-content: flex-start;
       z-index: 2200;
       box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.07);
       border-top: 1px solid #eee;
+      overflow-x: auto;
 
-      img {
-        width: 72px;
-        height: 54px;
+      .gallery-modal-thumbnails {
+        display: inline-flex;
+        height: 72px;
+        padding: 0 1vw;
+        gap: 0.5rem;
+
+        img {
+          width: 72px;
+          height: 54px;
+        }
       }
     }
   }

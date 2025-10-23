@@ -175,7 +175,7 @@ export class GalleryModalComponent implements OnInit, OnDestroy {
   }
 
   private scrollThumbnailIntoView(): void {
-    const thumbnailsContainer = document.querySelector('.gallery-modal-thumbnails');
+    const thumbnailsContainer = document.querySelector('.gallery-modal-thumbnails-container');
     const activeThumb = document.querySelector('.gallery-modal-thumbnails img.active');
     if (thumbnailsContainer && activeThumb) {
       const containerRect = thumbnailsContainer.getBoundingClientRect();

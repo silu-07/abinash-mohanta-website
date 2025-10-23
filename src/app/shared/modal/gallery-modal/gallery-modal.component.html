@@ -58,11 +58,13 @@
         </button> -->
       </div>
 
-      <div class="gallery-modal-thumbnails" (touchstart)="onThumbsTouchStart($event)"
+      <div class="gallery-modal-thumbnails-container" (touchstart)="onThumbsTouchStart($event)"
         (touchmove)="onThumbsTouchMove($event)" (touchend)="onThumbsTouchEnd($event)"
         (wheel)="onThumbnailsWheel($event)">
-        <img *ngFor="let img of images; let i = index" [src]="img" [class.active]="i === currentIndex"
-          (click)="select(i)" alt="Thumbnail" />
+        <div class="gallery-modal-thumbnails">
+          <img *ngFor="let img of images; let i = index" [src]="img" [class.active]="i === currentIndex"
+            (click)="select(i)" alt="Thumbnail" />
+        </div>
       </div>
     </div>
   </div>
