@@ -3,5 +3,6 @@ export class HomeConstants {
         'carosuel-home/1.JPG',
         'carosuel-home/2.JPG',
         'carosuel-home/3.JPG',
+        'carosuel-home/4.JPG',
     ];
 }

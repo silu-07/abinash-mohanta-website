@@ -1,31 +1,63 @@
 <div class="gallery-modal-backdrop" *ngIf="open" (click)="onClose()">
   <div class="gallery-modal" (click)="$event.stopPropagation()">
+
     <div class="gallery-modal-header">
-      <span class="gallery-modal-count">{{ currentIndex + 1 }} / {{ images.length }}</span>
-      <div class="gallery-modal-header-icons">
-        <button *ngIf="!isIOS" class="gallery-modal-fullscreen" (click)="toggleFullScreen()" aria-label="Full screen">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4H10V6H6V10H4V4ZM14 4H20V10H18V6H14V4ZM20 14V20H14V18H18V14H20ZM10 20H4V14H6V18H10V20Z"
-              fill="currentColor" />
+      <span class="gallery-modal-count"> {{ currentIndex + 1 }} / {{ images.length }} </span>
+
+      <div class="gallery-modal-buttons">
+        <button *ngIf="!isIOS" class="gallery-modal-fullscreen" (click)="toggleFullScreen()" aria-label="Full screen"
+          title="Fullscreen">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+            <g fill="none" fill-rule="evenodd">
+              <path d="M0 0H60V60H0z"></path>
+              <g fill="#2f2e2e">
+                <path d="M4.333 15.167H5.413V27.084H4.333z" transform="translate(17 17) rotate(45 4.873 21.125)"></path>
+                <path d="M26 8h-1V1h-7V0h8v8z" transform="translate(17 17)"></path>
+                <path d="M20.583 -1.083H21.666V10.834H20.583z" transform="translate(17 17) rotate(45 21.125 4.875)">
+                </path>
+                <path d="M0 26v-8h1v7h7v1H0z" transform="translate(17 17)"></path>
+              </g>
+            </g>
           </svg>
         </button>
-        <button class="gallery-modal-close" (click)="onClose()" aria-label="Close">&times;</button>
+
+        <button class="gallery-modal-close" (click)="onClose()" aria-label="Close" title="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+            <g fill="none" fill-rule="evenodd">
+              <path d="M0 0H60V60H0z"></path>
+              <path fill="#2f2e2e"
+                d="M42.188 17l.812.813L30.812 30 43 42.188l-.813.812L30 30.812 17.812 43 17 42.187 29.187 30 17 17.812l.813-.812L30 29.187 42.188 17z">
+              </path>
+            </g>
+          </svg>
+        </button>
       </div>
     </div>
+
+
     <div class="gallery-modal-content">
       <div class="gallery-modal-image" (touchstart)="onImageTouchStart($event)" (touchmove)="onImageTouchMove($event)"
         (touchend)="onImageTouchEnd($event)">
         <img [src]="images[currentIndex]" alt="Gallery image"
           [ngClass]="{ 'portrait': isPortrait, 'landscape': isLandscape }" (load)="onImageLoad($event)" />
-        <button *ngIf="currentIndex !== 0" class="gallery-modal-arrow left" (click)="prev()"
+        <!-- <button *ngIf="currentIndex !== 0" class="gallery-modal-arrow left" (click)="prev()"
           aria-label="Previous image">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <svg class="slideshow-arrow" width="23" height="39" viewBox="0 0 23 39"
+            style="transform: scaleX(-1) scale(1);">
+            <path d="M857.005,231.479L858.5,230l18.124,18-18.127,18-1.49-1.48L873.638,248Z"
+              transform="translate(-855 -230)"></path>
+          </svg>
         </button>
         <button *ngIf="currentIndex !== images.length - 1" class="gallery-modal-arrow right" (click)="next()"
           aria-label="Next image">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
+          <svg class="slideshow-arrow" width="23" height="39" viewBox="0 0 23 39"
+            style="transform: scaleX(1) scale(1);">
+            <path d="M857.005,231.479L858.5,230l18.124,18-18.127,18-1.49-1.48L873.638,248Z"
+              transform="translate(-855 -230)"></path>
+          </svg>
+        </button> -->
       </div>
+
       <div class="gallery-modal-thumbnails" (touchstart)="onThumbsTouchStart($event)"
         (touchmove)="onThumbsTouchMove($event)" (touchend)="onThumbsTouchEnd($event)"
         (wheel)="onThumbnailsWheel($event)">
