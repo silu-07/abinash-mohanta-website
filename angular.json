@@ -38,7 +38,7 @@
             "scripts": [
   "src/assets/bootstrap.bundle.min.js"
 ],
-            "baseHref": "/abinash-mohanta-website/"
+            "baseHref": "/"
           },
           "configurations": {
             "production": {
