@@ -96,6 +96,11 @@ export class SearchFilterComponent {
 
   onClearAll() {
     this.clearAll.emit();
+    
+    // Smooth scroll to top when filters are cleared while at bottom
+    if (this.isAtBottom) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   onToggleTitle(title: string, event?: Event) {
@@ -104,6 +109,11 @@ export class SearchFilterComponent {
       event.stopPropagation();
     }
     this.toggleTitle.emit(title);
+    
+    // Smooth scroll to top when filter is selected while at bottom
+    if (this.isAtBottom) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   onOutsideClick(event: Event, dropdownContainer: HTMLElement) {

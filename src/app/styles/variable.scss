@@ -2,88 +2,119 @@
 :host,
 .spxThemeOverride,
 .max-width-container {
-  --color-active-link: rgb(178, 58, 58);
-  --color-black: 0, 0, 0;
-  --color-white: 255, 255, 255;
-  --color-gray: 117, 117, 117;
-  --bg-overlay-color: 245, 245, 245;
+  // ============================================
+  // BRAND COLORS
+  // ============================================
+  --color-primary: rgb(178, 58, 58);        // Deep red - main accent
+  --color-primary-light: rgb(198, 100, 100); // Light red
+  --color-primary-dark: rgb(140, 45, 45);   // Dark red
+  
+  --color-secondary: #1a2236;         // Deep navy
+  --color-secondary-light: #2d3a52;   // Light navy
+  
+  // ============================================
+  // TEXT COLORS
+  // ============================================
+  --color-text-dark: #1a1a1a;         // Headings, primary text
+  --color-text-body: #444;            // Body text
+  --color-text-muted: #777;           // Muted/secondary text
+  --color-text-light: #999;           // Light text
+  --color-text-white: #fff;           // White text
+  
+  // ============================================
+  // BACKGROUND COLORS
+  // ============================================
+  --color-bg-white: #fff;
+  --color-bg-light: #f8f8f8;
+  --color-bg-gray: #f0f0f0;
+  --color-bg-dark: #1a1a1a;
+  --color-bg-overlay: rgba(0, 0, 0, 0.3);
+  --color-bg-overlay-dark: rgba(0, 0, 0, 0.6);
+  
+  // ============================================
+  // BORDER & SHADOW
+  // ============================================
+  --color-border: #e0e0e0;
+  --color-border-dark: #1a1a1a;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 8px 30px rgba(178, 58, 58, 0.3);
+  
+  // ============================================
+  // TYPOGRAPHY
+  // ============================================
+  --font-primary: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+  
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --font-size-xs: 0.75rem;    // 12px
+  --font-size-sm: 0.85rem;    // ~14px
+  --font-size-base: 1rem;     // 16px
+  --font-size-md: 1.1rem;     // ~18px
+  --font-size-lg: 1.3rem;     // ~21px
+  --font-size-xl: 1.8rem;     // ~29px
+  --font-size-2xl: 2.2rem;    // ~35px
+  --font-size-3xl: 2.8rem;    // ~45px
+  
+  --line-height-tight: 1.4;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+  
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 1px;
+  --letter-spacing-wider: 2px;
+  --letter-spacing-widest: 4px;
+  
+  // ============================================
+  // SPACING
+  // ============================================
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  
+  // ============================================
+  // BORDER RADIUS
+  // ============================================
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 50px;
+  --radius-circle: 50%;
+  
+  // ============================================
+  // TRANSITIONS
+  // ============================================
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // ============================================
+  // LAYOUT
+  // ============================================
+  --max-width-content: 1120px;
+  --max-width-text: 600px;
+  --width-container: 80%;
+  --width-container-mobile: 92%;
 
-
-  --color_0: 255, 255, 255;
-  --color_1: 255, 255, 255;
-  --color_2: 0, 0, 0;
-  --color_3: 237, 28, 36;
-  --color_4: 0, 136, 203;
-  --color_5: 255, 203, 5;
-  --color_6: 114, 114, 114;
-  --color_7: 176, 176, 176;
-  --color_8: 255, 255, 255;
-  --color_9: 114, 114, 114;
-  --color_10: 176, 176, 176;
-  --color_11: 255, 255, 255;
-  --color_12: 245, 245, 245;
-  --color_13: 229, 229, 229;
-  --color_14: 117, 117, 117;
-  --color_15: 0, 0, 0;
-  --color_16: 227, 177, 177;
-  --color_17: 198, 133, 133;
-  --color_18: 170, 58, 58;
-  --color_19: 113, 39, 39;
-  --color_20: 57, 19, 19;
-  --color_21: 238, 203, 190;
-  --color_22: 221, 173, 154;
-  --color_23: 204, 115, 81;
-  --color_24: 136, 77, 54;
-  --color_25: 68, 38, 27;
-  --color_26: 223, 193, 209;
-  --color_27: 191, 153, 172;
-  --color_28: 159, 95, 128;
-  --color_29: 106, 63, 85;
-  --color_30: 53, 32, 43;
-  --color_31: 209, 215, 207;
-  --color_32: 169, 176, 167;
-  --color_33: 128, 136, 126;
-  --color_34: 85, 96, 82;
-  --color_35: 43, 48, 41;
-  --color_36: 255, 255, 255;
-  --color_37: 0, 0, 0;
-  --color_38: 245, 245, 245;
-  --color_39: 229, 229, 229;
-  --color_40: 117, 117, 117;
-  --color_41: 170, 58, 58;
-  --color_42: 198, 133, 133;
-  --color_43: 229, 229, 229;
-  --color_44: 255, 255, 255;
-  --color_45: 0, 0, 0;
-  --color_46: 0, 0, 0;
-  --color_47: 229, 229, 229;
-  --color_48: 170, 58, 58;
-  --color_49: 170, 58, 58;
-  --color_50: 255, 255, 255;
-  --color_51: 255, 255, 255;
-  --color_52: 170, 58, 58;
-  --color_53: 170, 58, 58;
-  --color_54: 229, 229, 229;
-  --color_55: 229, 229, 229;
-  --color_56: 255, 255, 255;
-  --color_57: 255, 255, 255;
-  --color_58: 170, 58, 58;
-  --color_59: 170, 58, 58;
-  --color_60: 170, 58, 58;
-  --color_61: 170, 58, 58;
-  --color_62: 255, 255, 255;
-  --color_63: 255, 255, 255;
-  --color_64: 229, 229, 229;
-  --color_65: 229, 229, 229;
-  --font_0: normal normal bold 60px / 1.4em montserrat, sans-serif;
-  --font_1: normal normal normal 16px / 1.4em din-next-w01-light, sans-serif;
-  --font_2: normal normal normal 40px / 1.4em montserrat, sans-serif;
-  --font_3: normal normal normal 30px / 1.4em montserrat, sans-serif;
-  --font_4: normal normal normal 25px / 1.4em montserrat, sans-serif;
-  --font_5: normal normal normal 22px / 1.4em montserrat, sans-serif;
-  --font_6: normal normal normal 18px / 1.4em montserrat, sans-serif;
-  --font_7: normal normal normal 16px / 1.4em montserrat, sans-serif;
-  --font_8: normal normal normal 13px / 1.4em montserrat, sans-serif;
-  --font_9: normal normal normal 11px / 1.4em montserrat, sans-serif;
-  --font_10: normal normal normal 12px / 1.4em din-next-w01-light, sans-serif;
+  // ============================================
+  // BUTTONS
+  // ============================================
+  --btn-padding-y: 0.85rem;
+  --btn-padding-x: 2.2rem;
+  --btn-padding-y-mobile: 0.75rem;
+  --btn-padding-x-mobile: 1.8rem;
+  --btn-font-size: 0.8rem;
+  --btn-letter-spacing: 2px;
 }

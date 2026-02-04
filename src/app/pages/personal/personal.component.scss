@@ -1,146 +1,268 @@
+// Personal Portfolio - Unique Masonry Gallery
+// Modern, attractive photography grid
+
 :host {
   display: block;
-  padding: 48px 16px;
+  background-color: var(--color-bg-white);
+  min-height: 100vh;
 }
 
-.projects-container {
-  max-width: 1200px;
+.gallery-container {
+  max-width: 1400px;
   margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+// Search Results Count
+.search-results-count {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+// No Results
+.no-results {
   text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-y: visible;
+  padding: var(--spacing-xxl) var(--spacing-md);
+  color: var(--color-text-muted);
+  
+  h5 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-light);
+  }
 }
 
-.project-meta-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-top: 0.75rem;
-  margin-bottom: 0.25rem;
+// Search Highlight
+.search-highlight {
+  background-color: var(--color-primary);
+  color: var(--color-text-white);
+  padding: 0 2px;
+  border-radius: 2px;
 }
 
-.project-title {
-  font: var(--font_7);
-  font-size: 1.08rem;
-  font-weight: 500;
-  color: #222;
-  letter-spacing: 0.02em;
-}
-
-.project-more {
-  font-size: 0.98rem;
-  color: #1976d2;
-  font-weight: 500;
-  cursor: pointer;
-  transition: text-decoration 0.2s;
-}
-
-.project-more:hover {
-  text-decoration: underline;
-}
-
-.projects-grid {
+// Masonry Grid Layout
+.masonry-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem 2rem;
-  justify-items: center;
-  align-items: stretch;
-  justify-content: space-evenly;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 24px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense; // Fills gaps automatically
+  gap: 12px;
 }
 
-.project-card {
+// Gallery Item
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  cursor: pointer;
+  
+  &.in-viewport {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  // Wide items span 2 columns
+  &.wide {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  // Tall items span 2 rows
+  &.tall {
+    grid-row: span 2;
+  }
+  
+  // Normal items
+  &.normal {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+// Image Wrapper
+.image-wrapper {
+  position: relative;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+// Gallery Image
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              filter 0.4s ease;
+  filter: brightness(0.95);
+  
+  .gallery-item:hover & {
+    transform: scale(1.08);
+    filter: brightness(1);
+  }
+}
+
+// Overlay
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    transparent 100%
+  );
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: stretch;
+  justify-content: flex-end;
+  padding: var(--spacing-md);
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
-}
-
-.project-card.in-viewport {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.project-image {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 380px;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-.project-caption {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: #444;
-}
-
-.card-small .project-image {
-  height: 220px;
-  max-width: 380px;
-  object-fit: cover;
-}
-
-.card-medium .project-image {
-  height: 320px;
-  max-width: 380px;
-  object-fit: cover;
-}
-
-.card-tall .project-image {
-  height: 420px;
-  max-width: 380px;
-  object-fit: cover;
-}
-
-@media (max-width: 600px) {
-  :host {
-    padding: .6rem 0.2rem !important;
+  transition: opacity 0.4s ease;
+  
+  .gallery-item:hover & {
+    opacity: 1;
   }
+}
 
-
-  .projects-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2rem 0;
+.overlay-title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-white);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--spacing-xs);
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+  
+  .gallery-item:hover & {
+    transform: translateY(0);
   }
+}
 
-  .project-card {
+.overlay-action {
+  font-size: var(--font-size-xs);
+  color: var(--color-primary-light);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  font-weight: var(--font-weight-medium);
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.1s;
+  
+  .gallery-item:hover & {
+    transform: translateY(0);
+  }
+  
+  &::after {
+    content: '→';
+    margin-left: 4px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .gallery-item:hover &::after {
+    margin-left: 8px;
+  }
+}
+
+// Tablet
+@media (max-width: 1024px) {
+  .masonry-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 180px;
+  }
+  
+  .gallery-item.wide {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+// Mobile
+@media (max-width: 768px) {
+  .gallery-container {
+    padding: var(--spacing-xs);
+  }
+  
+  .masonry-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+    gap: 6px;
+  }
+  
+  // Reset all card classes to same size on mobile - no gaps
+  .gallery-item {
+    border-radius: var(--radius-sm);
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+  
+  // Always show overlay on mobile (no hover on touch)
+  .image-overlay {
+    opacity: 1;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.2) 50%,
+      transparent 100%
+    );
+    padding: var(--spacing-sm);
+  }
+  
+  .overlay-title {
+    font-size: var(--font-size-sm);
+    transform: translateY(0);
+    font-weight: var(--font-weight-normal);
+  }
+  
+  .overlay-action {
+    font-size: 10px;
+    transform: translateY(0);
+  }
+  
+  // Ensure images fill completely
+  .gallery-image {
     width: 100%;
-    align-items: center;
-  }
-
-  .project-image,
-  .card-small .project-image,
-  .card-medium .project-image,
-  .card-tall .project-image {
-    width: 100%;
-    max-width: 100%;
-    height: 220px !important; // or your preferred mobile height
-    aspect-ratio: 4/3;
+    height: 100%;
     object-fit: cover;
-    border-radius: 12px;
   }
-
-  .project-caption {
-    margin-left: 0.5rem;
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    text-align: left;
+  
+  .image-wrapper {
+    width: 100%;
+    height: 100%;
   }
+}
 
-  .project-title,
-  .project-more {
-    font: var(--font_7);
-    padding: 0 0.5rem;
+// Small Mobile
+@media (max-width: 480px) {
+  .gallery-container {
+    padding: 4px;
+  }
+  
+  .masonry-gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 160px;
+    gap: 4px;
+  }
+  
+  .gallery-item {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+  
+  .overlay-title {
+    font-size: var(--font-size-xs);
+  }
+  
+  .overlay-action {
+    font-size: 9px;
+  }
+  
+  .image-overlay {
+    padding: var(--spacing-xs);
   }
 }

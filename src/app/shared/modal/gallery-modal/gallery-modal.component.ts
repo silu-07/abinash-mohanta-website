@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, OnDestroy, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-gallery-modal',
@@ -8,7 +8,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   templateUrl: './gallery-modal.component.html',
   styleUrls: ['./gallery-modal.component.scss']
 })
-export class GalleryModalComponent implements OnInit {
+export class GalleryModalComponent implements OnInit, OnChanges, OnDestroy {
   isPortrait = false;
   isLandscape = false;
 
@@ -73,11 +73,16 @@ export class GalleryModalComponent implements OnInit {
   ngOnInit(): void {}
 
   @Input() images: string[] = [];
+  @Input() titles: string[] = [];
   @Input() open = false;
   @Input() initialIndex = 0;
   @Output() close = new EventEmitter<void>();
 
   currentIndex = 0;
+
+  get currentTitle(): string {
+    return this.titles[this.currentIndex] || '';
+  }
 
   toggleFullScreen() {
     const modal = document.querySelector('.gallery-modal') as HTMLElement;
@@ -108,14 +113,17 @@ export class GalleryModalComponent implements OnInit {
     });
   }
 
-  ngOnChanges() {
-    if (this.open) {
-      this.currentIndex = this.initialIndex;
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
+  ngOnChanges(changes: SimpleChanges) {
+    // When modal opens or initialIndex changes, update currentIndex
+    if (changes['open'] || changes['initialIndex']) {
+      if (this.open) {
+        this.currentIndex = this.initialIndex;
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }
     }
   }
 

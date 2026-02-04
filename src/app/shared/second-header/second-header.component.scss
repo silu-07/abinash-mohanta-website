@@ -1,11 +1,17 @@
+// Second Header Component
+// Using CSS Variables from variable.scss
+
 .second-header {
-  font: var(--font_3);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-normal);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff; // Add a background color for visibility
+  background-color: var(--color-bg-white);
   margin-top: 70px !important;
-  padding-bottom: 20px;
+  padding-bottom: var(--spacing-md);
 }
 
 .second-header-logo {
@@ -13,24 +19,46 @@
   width: auto;
 }
 
-h1 {
+.second-header-title {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin: 0.5rem;
+  margin: var(--spacing-xs) auto;
   text-align: center;
-  font: var(--font_3);
-  letter-spacing: 0.5em;
-  padding: 0rem 2rem;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  padding: 0 var(--spacing-lg);
 }
 
-@media screen and (max-width: 600px) {
+.second-header-description {
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: var(--max-width-text);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  line-height: var(--line-height-relaxed);
+}
 
+// Mobile
+@media screen and (max-width: 600px) {
   .second-header {
     margin-top: 80px !important;
   }
 
   .second-header-logo {
     max-height: 50px;
+  }
+
+  .second-header-title {
+    font-size: var(--font-size-lg);
+    letter-spacing: var(--letter-spacing-wider);
+  }
+
+  .second-header-description {
+    font-size: var(--font-size-sm);
   }
 }

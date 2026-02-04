@@ -1,126 +1,146 @@
-// Common section style for all main sections
-.about-section,
-.personal-section-layout,
-.commercial-section {
-    width: 80%;
-    max-width: 1200px;
-    margin: 2.5rem auto 2rem auto;
-}
+// About Section - Clean Minimal Design
+// Using CSS Variables from variable.scss
 
 .about-section {
-    background: linear-gradient(135deg, #f7f7f7 70%, #e3e6ec 100%);
-    padding: 1.5rem;
-    border-radius: 18px;
-    width: 80%;
-    max-width: 1200px;
-    margin: 2.5rem auto 2rem auto;
-    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.07);
-    transition: box-shadow 0.2s;
+  width: var(--width-container);
+  max-width: 800px;
+  margin: var(--spacing-lg) auto;
+  padding: var(--spacing-xl) 0;
+  text-align: center;
 }
 
-.about-content {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.about-text {
-    flex: 2 1 340px;
-    min-width: 260px;
-    padding: 1.5rem 1rem;
-}
-
-.about-text h2 {
-    font-size: 2.3rem;
-    margin-bottom: 1.1rem;
-    color: #1a2236;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-align: left;
-}
-
-.about-text p {
-    font-size: 1rem;
-    color: #444;
-    margin-bottom: 1.1rem;
-    line-height: 1.7;
-}
-
-.about-text a {
-    color: #0077b6;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-
-.about-text a:hover {
-    color: #005f87;
-    text-decoration: underline;
-}
-
-.about-image {
-    flex: 1 1 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 180px;
-}
-
-.about-image img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+// Profile Image
+.profile-image {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto var(--spacing-lg);
+  
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-circle);
     object-fit: cover;
-    border: 6px solid #fff;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
-    transition: transform 0.25s, box-shadow 0.25s;
-    background: #e3e6ec;
-}
-
-.about-image img:hover {
-    transform: scale(1.06) rotate(-2deg);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-}
-
-@media (max-width: 900px) {
-    .about-section {
-      margin: 0rem auto;
-      padding: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center; // Center the section horizontally
-    }
-  
-    .about-content {
-      flex-direction: column;
-      gap: 0rem;
-      align-items: center; // Center content inside
-      justify-content: center;
-    }
-  
-    .about-text {
-      text-align: center; // Center text for mobile
-      width: 100%;
-      padding: 1.5rem 0rem;
-    }
-  
-    .about-image {
-      justify-content: center;
-    }
-  
-    .about-image img {
-      width: 150px;
-      height: 150px;
-    }
-  
-    .about-text h2 {
-      font-size: 1.5rem;
-      text-align: center;
-    }
-  
-    .about-text p {
-      font-size: 1rem;
+    filter: grayscale(20%);
+    transition: all var(--transition-normal);
+    
+    &:hover {
+      filter: grayscale(0%);
+      transform: scale(1.02);
     }
   }
+}
+
+// Quote Text
+.quote-text {
+  font-size: var(--font-size-lg);
+  font-style: italic;
+  color: var(--color-text-body);
+  line-height: 1.9;
+  max-width: var(--max-width-text);
+  margin: 0 auto var(--spacing-lg);
+  font-weight: var(--font-weight-light);
+  letter-spacing: 0.3px;
+}
+
+// Signature
+.signature {
+  margin-bottom: var(--spacing-lg);
+  
+  .name {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-dark);
+    margin-bottom: 0.3rem;
+    font-family: var(--font-primary);
+    letter-spacing: var(--letter-spacing-wider);
+  }
+  
+  .title {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+// Actions
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: var(--letter-spacing-wide);
+  transition: color var(--transition-normal);
+  
+  i {
+    font-size: 1.1rem;
+  }
+  
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.contact-btn {
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  background: transparent;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  font-size: var(--btn-font-size);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--btn-letter-spacing);
+  text-transform: uppercase;
+  border: 1px solid var(--color-border-dark);
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-white);
+  }
+}
+
+// Responsive
+@media (max-width: 600px) {
+  .about-section {
+    width: var(--width-container-mobile);
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .quote-text {
+    font-size: 1.1rem;
+    padding: 0 var(--spacing-xs);
+  }
+  
+  .signature .name {
+    font-size: 1.2rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .contact-btn {
+    width: auto;
+    padding: var(--btn-padding-y-mobile) var(--btn-padding-x-mobile);
+  }
+}

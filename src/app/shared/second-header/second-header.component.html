@@ -1,8 +1,12 @@
 <div class="second-header">
-    <ng-container *ngIf="showLogo; else titleTemplate">
+    <!-- Logo for home page only -->
+    <ng-container *ngIf="shouldShowLogo">
       <img src="logo/logo1.png" alt="Logo" class="second-header-logo" />
     </ng-container>
-    <ng-template #titleTemplate>
-      <h1>{{ secondHeaderTitle }}</h1>
-    </ng-template>
+    
+    <!-- Title and description (when not showing logo) -->
+    <ng-container *ngIf="!shouldShowLogo">
+      <h1 class="second-header-title">{{ displayTitle }}</h1>
+      <p *ngIf="displayDescription" class="second-header-description">{{ displayDescription }}</p>
+    </ng-container>
   </div>

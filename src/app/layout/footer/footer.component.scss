@@ -5,14 +5,14 @@
     width: 100vw;
     text-align: center;
     font-size: 9px;
-    color: var(--color-black);
-    font-family: 'Montserrat', sans-serif;
+    color: var(--color-text-dark);
+    font-family: var(--font-body);
     letter-spacing: 0.6px;
-    font-weight: 300;
+    font-weight: var(--font-weight-light);
     z-index: 20;
-    background: var(--color-white);
+    background: var(--color-bg-white);
     padding: 8px 0 6px 0;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
+    box-shadow: var(--shadow-sm);
   }
   
   .home-footer span {
@@ -21,7 +21,7 @@
   }
 
   .home-footer {
-    background: var(--color-white) !important;
+    background: var(--color-bg-white) !important;
   }
 
   @media (max-width: 600px) {

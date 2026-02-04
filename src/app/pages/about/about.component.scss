@@ -1,7 +1,7 @@
 :host {
   display: block;
   padding: 3rem 1rem;
-  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  font-family: var(--font-body);
 }
 
 .py-5 {

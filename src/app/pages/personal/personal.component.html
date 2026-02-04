@@ -1,13 +1,42 @@
-<div class="projects-container" appInViewport>
-    <div class="projects-grid">
-        <div class="project-card" *ngFor="let project of projects; let i = index"
-            appInViewport
-            [ngClass]="{'card-small': i % 3 === 0, 'card-medium': i % 3 === 1, 'card-tall': i % 3 === 2}">
-            <img [src]="project.image" alt="Project image" class="project-image" />
-            <div class="project-meta-row">
-              <span class="project-title">{{ project.title }}</span>
-              <span class="project-more">{{ project.moreText }}</span>
-            </div>
+<div class="gallery-container" appInViewport>
+  <!-- Search Filter -->
+  <app-search-filter [searchTerm]="searchTerm" [selectedTitles]="selectedTitles" [uniqueTitles]="uniqueTitles"
+    [showDropdown]="showDropdown" (searchTermChange)="searchTerm = $event"
+    (selectedTitlesChange)="selectedTitles = $event" (showDropdownChange)="onShowDropdownChange($event)"
+    (clearAll)="clearAllFilters()" (toggleTitle)="toggleTitleSelection($event)"
+    (outsideClick)="onOutsideClick($event, dropdownRef)"
+    [placeholderList]="placeholderList">
+  </app-search-filter>
+  <div #dropdownRef></div>
+
+  <div *ngIf="searchTerm && filteredProjects.length > 0" class="search-results-count">
+    {{ filteredProjects.length }} result{{ filteredProjects.length === 1 ? '' : 's' }} found
+  </div>
+
+  <!-- Masonry Gallery -->
+  <div class="masonry-gallery" *ngIf="filteredProjects.length > 0; else noResults">
+    <div class="gallery-item" *ngFor="let project of filteredProjects; let i = index"
+         appInViewport
+         [ngClass]="getCardClass(i)"
+         (click)="navigateToDetail(project)"
+         (keydown.enter)="navigateToDetail(project)"
+         tabindex="0"
+         role="button">
+      <div class="image-wrapper">
+        <img [src]="project.image" [alt]="project.title" class="gallery-image" />
+        <div class="image-overlay">
+          <span class="overlay-title" [innerHTML]="highlightMatch(project.title)"></span>
+          <span class="overlay-action">View</span>
         </div>
+      </div>
     </div>
-</div> 
+  </div>
+
+  <ng-template #noResults>
+    <div class="no-results" *ngIf="searchTerm && filteredProjects.length === 0">
+      <h5>No results found.</h5>
+    </div>
+  </ng-template>
+</div>
+
+<app-movetotop></app-movetotop> 

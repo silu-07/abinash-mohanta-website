@@ -1,0 +1,24 @@
+<section class="photo-section">
+  <div class="section-header">
+    <span class="section-tag">{{ sectionTag }}</span>
+    <h2 class="section-title">{{ sectionTitle }}</h2>
+    <p class="section-description">{{ sectionDescription }}</p>
+  </div>
+
+  <!-- Photography Grid -->
+  <div class="photography-grid">
+    <div class="grid-item" *ngFor="let photo of photos">
+      <img [src]="photo.src" [alt]="photo.alt" class="grid-image" />
+      <div class="grid-overlay">
+        <span class="photo-category">{{ photo.title }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- View More Button -->
+  <div class="photography-view-more">
+    <button class="view-more-btn" (click)="onViewMoreClick()">
+      {{ buttonText }}
+    </button>
+  </div>
+</section>
