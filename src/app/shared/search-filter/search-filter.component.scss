@@ -26,7 +26,7 @@ $floating-bar-bottom-offset: 60px;
   box-shadow: var(--shadow-lg);
   box-sizing: border-box;
   overflow: hidden auto;
-  transition: all var(--transition-normal);
+  transition: opacity var(--transition-normal);
 
   &.show {
     display: block;
@@ -54,28 +54,7 @@ $floating-bar-bottom-offset: 60px;
   overflow: auto;
 }
 
-// Dropdown Direction Modifiers
-.dropdown-up,
-.dropdown-down {
-  z-index: 1050;
-}
-
-.dropdown-up {
-  bottom: 100%;
-  top: auto;
-  margin-bottom: var(--spacing-xs);
-  max-height: 260px;
-  border-radius: var(--radius-md) var(--radius-md) var(--radius-sm) var(--radius-sm);
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-down {
-  top: 100%;
-  bottom: auto;
-  margin-top: var(--spacing-xs);
-  border-radius: var(--radius-sm) var(--radius-sm) var(--radius-md) var(--radius-md);
-  box-shadow: var(--shadow-lg);
-}
+// Dropdown direction modifiers removed — dropdown will always open above the fixed bottom bar
 
 // ===========================================
 // SEARCH INPUT
@@ -210,32 +189,7 @@ $floating-bar-bottom-offset: 60px;
   }
 }
 
-// ===========================================
-// FILTER CHIPS
-// ===========================================
-.active-filter-chip {
-  display: flex;
-  align-items: center;
-  margin: 0 0.2rem 0.2rem 0;
-  padding: 0.45rem 1.2rem;
-  border-radius: var(--radius-full);
-  background: var(--color-bg-light) !important;
-  color: var(--color-text-dark) !important;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  transition: all var(--transition-normal);
-
-  .btn-link,
-  .fa-xmark {
-    color: var(--color-text-dark) !important;
-  }
-}
-
-.clear-all-chip {
-  border: 1px solid var(--color-border);
-  background: rgba(178, 58, 58, 0.1) !important;
-  font-weight: var(--font-weight-semibold);
-}
+/* Filter chips removed — component uses a bottom-fixed bar without chip UI */
 
 // ===========================================
 // FLOATING SEARCH FILTER BAR - ALWAYS AT BOTTOM
@@ -287,12 +241,7 @@ $floating-bar-bottom-offset: 60px;
     transform: none;
   }
 
-  // Override dropdown-up styles when inside floating bar
-  .dropdown-up {
-    bottom: 100%;
-    top: auto !important;
-    margin-bottom: var(--spacing-sm);
-  }
+  /* dropdown-up override removed */
 }
 
 // ===========================================
@@ -354,21 +303,32 @@ $floating-bar-bottom-offset: 60px;
 
     .dropdown-menu {
       position: fixed;
+      /* use symmetric left/right offsets instead of translate to avoid transform-related shifts */
       left: 5vw !important;
       right: 5vw !important;
-      bottom: calc(var(--spacing-md) + 60px);
+      bottom: calc(var(--spacing-md) + 40px);
       top: auto !important;
-      width: $dropdown-max-width-mobile;
+      width: auto;
       max-width: $dropdown-max-width-mobile;
       max-height: 50vh;
       margin: 0 auto;
       transform: none;
+      /* Force display so we can animate opacity instead of relying on display toggle */
+      display: block !important;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity var(--transition-normal) !important;
     }
+
+    .dropdown-menu.show {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+
   }
 
-  .active-filter-chip {
-    padding: 0.2rem 0.7rem !important;
-  }
 
   .mb-2 {
     margin-bottom: 0 !important;
