@@ -22,8 +22,13 @@ export class PhotoSectionCardComponent {
   @Input() buttonText: string = 'Explore Gallery';
   
   @Output() viewMore = new EventEmitter<void>();
+  @Output() photoClick = new EventEmitter<PhotoItem>();
 
   onViewMoreClick(): void {
     this.viewMore.emit();
+  }
+
+  onPhotoClick(photo: PhotoItem): void {
+    this.photoClick.emit(photo);
   }
 }

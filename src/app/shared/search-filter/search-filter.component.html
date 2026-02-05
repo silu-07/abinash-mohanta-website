@@ -42,25 +42,5 @@
   </div>
 </div>
 
-<div class="row mb-3">
-  <div class="col-12">
-    <ng-container *ngIf="selectedTitles.length > 0">
-      <div class="mb-2 d-flex flex-wrap gap-2 align-items-center">
-        <span *ngIf="selectedTitles.length > 0" class="active-filter-chip clear-all-chip">
-          Clear All
-          <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="onClearAll()"
-            aria-label="Clear all filters">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </span>
-        <span *ngFor="let title of selectedTitles" class="active-filter-chip">
-          {{ title }}
-          <button type="button" class="btn btn-sm btn-link ms-2 p-0 lh-1" (click)="onToggleTitle(title)"
-            aria-label="Remove filter">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </span>
-      </div>
-    </ng-container>
-  </div>
-</div>
+<!-- Filter chips hidden since search is always at bottom -->
+<!-- Selected filters shown in dropdown instead -->

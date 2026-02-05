@@ -23,14 +23,6 @@
         <img [src]="images[currentIndex]" alt="Gallery image"
      [ngClass]="{ 'portrait': isPortrait, 'landscape': isLandscape }"
      (load)="onImageLoad($event)" />
-        <button class="gallery-modal-arrow left" (click)="prev()" [disabled]="currentIndex === 0"
-          aria-label="Previous image">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="gallery-modal-arrow right" (click)="next()" [disabled]="currentIndex === images.length - 1"
-          aria-label="Next image">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
       </div>
       <div class="gallery-modal-thumbnails"
            (touchstart)="onThumbsTouchStart($event)"

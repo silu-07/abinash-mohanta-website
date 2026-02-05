@@ -1,0 +1,32 @@
+<div class="detail-page" *ngIf="gallery">
+    <!-- Back Button -->
+    <a routerLink="/commercial" class="back-button">
+        <span class="back-arrow">←</span>
+        <span class="back-text">Back to Gallery</span>
+    </a>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-container">
+        <div class="masonry-gallery">
+            <div class="gallery-item" *ngFor="let image of gallery.images; let i = index" appInViewport
+                [ngClass]="getCardClass(i)" (click)="openGalleryAt(i)" (keydown.enter)="openGalleryAt(i)" tabindex="0"
+                role="button">
+                <div class="image-wrapper">
+                    <img [src]="image.url" [alt]="image.title" class="gallery-image" />
+                    <div class="image-overlay">
+                        <span class="overlay-title">{{ image.title }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-gallery-modal *ngIf="gallery" 
+    [images]="galleryImages" 
+    [open]="isGalleryOpen" 
+    [initialIndex]="selectedImageIndex"
+    (close)="onCloseGallery()">
+</app-gallery-modal>
+
+<app-movetotop></app-movetotop>

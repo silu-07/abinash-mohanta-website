@@ -1,107 +1,27 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { SearchFilterComponent } from '../../shared/search-filter/search-filter.component';
 import { Router } from '@angular/router';
-import { comImages } from './assets/images-commercial';
-import { cardGridAnimation, cardAnimation } from '../../animations/card-grid.animations';
-import { dropdownAnimation } from '../../animations/dropdown.animations';
-import { overlayAnimation } from '../../animations/overlay.animations';
-import { MoveToTopComponent } from "../../shared/movetotop/movetotop.component";
+import { GalleryGridComponent } from '../shared/gallery-grid/gallery-grid.component';
+import { GalleryItem } from '../shared/gallery-grid/gallery-item.interface';
+import { COMMERCIAL_PROJECTS } from '../../data/commercial-projects.data';
 
 @Component({
   selector: 'app-commercial',
   standalone: true,
-  imports: [CommonModule, FormsModule, SearchFilterComponent, MoveToTopComponent],
-  templateUrl: './commercial.component.html',
-  styleUrls: ['./commercial.component.scss'],
-  animations: [...cardGridAnimation,...cardAnimation, ...dropdownAnimation, ...overlayAnimation]
+  imports: [GalleryGridComponent],
+  template: `
+    <app-gallery-grid 
+      [items]="items" 
+      (itemClick)="onItemClick($event)">
+    </app-gallery-grid>
+  `
 })
 export class CommercialComponent {
-  searchTerm: string = '';
-  selectedTitles: string[] = [];
-  showDropdown: boolean = false;
-  isDesktop: boolean = window.innerWidth >= 600;
-  placeholderList: string[] = comImages.map(img => img.title);
+  items: GalleryItem[] = COMMERCIAL_PROJECTS;
 
-  constructor(private router: Router) {
-    window.addEventListener('resize', this.updateIsDesktop.bind(this));
+  constructor(private readonly router: Router) {}
+
+  onItemClick(item: GalleryItem): void {
+    const slug = item.title.toLowerCase().replaceAll(/\s+/g, '-');
+    this.router.navigate(['/commercial', slug]);
   }
-
-  updateIsDesktop() {
-    this.isDesktop = window.innerWidth >= 600;
-  }
-
-  trackByFn(_index: number, item: any) {
-    return item.title; // Or item.id if you have a unique id
-  }
-
-  onShowDropdownChange(val: boolean) {
-    this.showDropdown = val;
-  }
-
-  onOutsideClick(event: Event, dropdownRef: HTMLElement) {
-    if (this.showDropdown && dropdownRef && !dropdownRef.contains(event.target as Node)) {
-      this.showDropdown = false;
-    }
-  }
-
-  isActiveFilter(item: any): boolean {
-    return this.isDesktop && this.selectedTitles.length > 0 && this.selectedTitles.includes(item.title);
-  }
-
-  isActiveSearch(item: any): boolean {
-    return this.isDesktop && this.searchTerm && item.title.toLowerCase().includes(this.searchTerm.toLowerCase());
-  }
-
-  goToProject(item: { link: string }) {
-    this.router.navigate([item.link]);
-  }
-
-  toggleTitleSelection(title: string, event?: Event) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    if (this.selectedTitles.includes(title)) {
-      this.selectedTitles = this.selectedTitles.filter(t => t !== title);
-    } else {
-      this.selectedTitles = [...this.selectedTitles, title];
-    }
-  }
-
-  clearAllFilters() {
-    this.selectedTitles = [];
-    this.showDropdown = false;
-  }
-
-  get allImages() {
-    return [...comImages]; // Always return a fresh copy
-  }
-
-  get uniqueTitles(): string[] {
-    return Array.from(new Set(this.allImages
-      .map((item: { title: string }) => item.title)
-      .filter((title: string) => !!title)
-    )).sort();
-  }
-
-  get filteredCards() {
-    return this.allImages.filter((item: { title: string }) => {
-      const matchesTitle =
-        this.selectedTitles.length === 0 || this.selectedTitles.includes(item.title);
-      const matchesSearch =
-        item.title.toLowerCase().includes(this.searchTerm.toLowerCase());
-      return matchesTitle && matchesSearch;
-    });
-  }
-
-  highlightMatch(text: string): string {
-    if (!this.searchTerm) return text;
-    const escaped = this.searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const re = new RegExp(`(${escaped})`, 'ig');
-    return text.replace(re, '<mark class="search-highlight">$1</mark>');
-  }
-
-
 }

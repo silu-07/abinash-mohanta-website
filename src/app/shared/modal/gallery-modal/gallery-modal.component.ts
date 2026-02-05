@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, OnChanges, OnDestroy, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, OnDestroy, Output, EventEmitter, SimpleChanges, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-gallery-modal',
@@ -71,6 +71,27 @@ export class GalleryModalComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit(): void {}
+
+  // Keyboard navigation
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent): void {
+    if (!this.open) return;
+    
+    switch (event.key) {
+      case 'ArrowLeft':
+        event.preventDefault();
+        this.prev();
+        break;
+      case 'ArrowRight':
+        event.preventDefault();
+        this.next();
+        break;
+      case 'Escape':
+        event.preventDefault();
+        this.onClose();
+        break;
+    }
+  }
 
   @Input() images: string[] = [];
   @Input() titles: string[] = [];

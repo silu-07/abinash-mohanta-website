@@ -7,10 +7,11 @@
 
   <!-- Photography Grid -->
   <div class="photography-grid">
-    <div class="grid-item" *ngFor="let photo of photos">
+    <div class="grid-item" *ngFor="let photo of photos" (click)="onPhotoClick(photo)" (keydown.enter)="onPhotoClick(photo)" tabindex="0" role="button">
       <img [src]="photo.src" [alt]="photo.alt" class="grid-image" />
       <div class="grid-overlay">
         <span class="photo-category">{{ photo.title }}</span>
+        <span class="overlay-action">View</span>
       </div>
     </div>
   </div>

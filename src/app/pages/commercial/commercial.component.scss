@@ -99,6 +99,36 @@
   font-size: .875rem !important;
 }
 
+// View action with arrow
+.overlay-action {
+  font-size: var(--font-size-xs);
+  color: var(--color-primary-light);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  font-weight: var(--font-weight-medium);
+  margin-top: var(--spacing-xs);
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform 0.4s ease 0.1s, opacity 0.3s ease;
+  
+  &::after {
+    content: '→';
+    margin-left: 4px;
+    transition: margin-left 0.3s ease;
+  }
+}
+
+.work-card:hover .overlay-action,
+.work-card.active-filter .overlay-action,
+.work-card.active-search .overlay-action {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.work-card:hover .overlay-action::after {
+  margin-left: 8px;
+}
+
 //For mobile overlay and title visibility effect on search filter
 @media (max-width: 600px) {
   .py-5 {
@@ -114,6 +144,11 @@
   .work-card-title {
     display: block !important;
     opacity: 1 !important;
+  }
+
+  .overlay-action {
+    transform: translateY(0);
+    opacity: 1;
   }
 
   //Ripple effects on cards on touch screen device

@@ -4,5 +4,6 @@
   [sectionDescription]="sectionDescription"
   [photos]="photographyImages"
   [buttonText]="buttonText"
-  (viewMore)="onViewMore()">
+  (viewMore)="onViewMore()"
+  (photoClick)="onPhotoClick($event)">
 </app-photo-section-card>

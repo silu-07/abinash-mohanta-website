@@ -28,15 +28,15 @@ export class SearchFilterComponent {
   @Output() toggleTitle = new EventEmitter<string>();
   @Output() outsideClick = new EventEmitter<Event>();
 
-  isAtBottom = false;
-  showAtBottom = false;
-  dropdownDirection: 'up' | 'down' = 'down';
+  isAtBottom = true;  // Always at bottom
+  showAtBottom = true; // Always show at bottom
+  dropdownDirection: 'up' | 'down' = 'up'; // Always open upward
   private placeholderInterval: any;
   private placeholderIndex: number = 0;
   private lastPlaceholderList: string[] = [];
 
   ngOnInit() {
-    this.dropdownDirection = window.scrollY > 440 ? 'up' : 'down';
+    this.dropdownDirection = 'up'; // Always open upward since filter is at bottom
     this.setupPlaceholderCycling();
   }
 
@@ -71,15 +71,9 @@ export class SearchFilterComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const shouldBeAtBottom = window.scrollY > 400;
-    if (shouldBeAtBottom && !this.isAtBottom) {
-      this.isAtBottom = true;
-      setTimeout(() => this.showAtBottom = true, 10); // allow DOM update
-    } else if (!shouldBeAtBottom && this.isAtBottom) {
-      this.showAtBottom = false;
-      setTimeout(() => this.isAtBottom = false, 350); // match CSS transition
-    }
-    this.dropdownDirection = shouldBeAtBottom ? 'up' : 'down';
+    // Filter always stays at bottom - no position change needed
+    // Keep dropdown direction as 'up' since filter is at bottom
+    this.dropdownDirection = 'up';
   }
 
   onSearchTermChange(value: string) {

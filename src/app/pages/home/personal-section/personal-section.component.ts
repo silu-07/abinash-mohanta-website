@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { PhotoSectionCardComponent, PhotoItem } from '../../shared/photo-section-card/photo-section-card.component';
+import { PERSONAL_PROJECTS } from '../../../data/personal-projects.data';
 
 @Component({
   selector: 'app-personal-section',
@@ -15,16 +17,21 @@ export class PersonalSectionComponent {
   sectionDescription = 'Explore a curated selection of my best client work, captured across genres and locations. From professional portraits to commercial shoots, each image is crafted to tell a unique story.';
   buttonText = 'Explore Gallery';
   
-  photographyImages: PhotoItem[] = [
-    { src: 'carosuel-home/1.JPG', alt: 'Landscape', title: 'Landscape' },
-    { src: 'carosuel-home/2.JPG', alt: 'Portrait', title: 'Portrait' },
-    { src: 'carosuel-home/3.JPG', alt: 'Wildlife', title: 'Wildlife' },
-    { src: 'carosuel-home/1.JPG', alt: 'Urban', title: 'Urban' },
-    { src: 'carosuel-home/1.JPG', alt: 'Urban', title: 'Urban' },
-    { src: 'carosuel-home/1.JPG', alt: 'Urban', title: 'Urban' },
-  ];
+  // Use first 6 images from shared personal projects data
+  photographyImages: PhotoItem[] = PERSONAL_PROJECTS.slice(0, 6).map(project => ({
+    src: project.image,
+    alt: project.title,
+    title: project.title
+  }));
+
+  constructor(private readonly router: Router) {}
   
   onViewMore() {
-    window.location.href = '/personal';
+    this.router.navigate(['/personal']);
+  }
+
+  onPhotoClick(photo: PhotoItem) {
+    const slug = photo.title.toLowerCase().replaceAll(/\s+/g, '-');
+    this.router.navigate(['/personal', slug]);
   }
 }

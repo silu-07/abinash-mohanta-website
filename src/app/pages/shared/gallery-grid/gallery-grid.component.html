@@ -1,0 +1,53 @@
+<div class="gallery-container">
+  <!-- Search Filter -->
+  <app-search-filter 
+    [searchTerm]="searchTerm" 
+    [selectedTitles]="selectedTitles" 
+    [uniqueTitles]="uniqueTitles"
+    [showDropdown]="showDropdown" 
+    [placeholderList]="placeholderList"
+    (searchTermChange)="searchTerm = $event"
+    (selectedTitlesChange)="selectedTitles = $event" 
+    (showDropdownChange)="onShowDropdownChange($event)"
+    (clearAll)="clearAllFilters()" 
+    (toggleTitle)="toggleTitleSelection($event)"
+    (outsideClick)="onOutsideClick($event, dropdownRef)">
+  </app-search-filter>
+  <div #dropdownRef></div>
+
+  <div *ngIf="searchTerm && filteredItems.length > 0" class="search-results-count">
+    {{ filteredItems.length }} result{{ filteredItems.length === 1 ? '' : 's' }} found
+  </div>
+
+  <!-- Masonry Gallery -->
+  <div class="masonry-gallery" *ngIf="filteredItems.length > 0">
+    <div class="gallery-item" 
+         *ngFor="let item of filteredItems; let i = index; trackBy: trackByFn"
+         appInViewport
+         [ngClass]="{
+           'wide': getCardClass(i) === 'wide',
+           'tall': getCardClass(i) === 'tall',
+           'normal': getCardClass(i) === 'normal',
+           'active-filter': isActiveFilter(item),
+           'active-search': isActiveSearch(item)
+         }"
+         (click)="onItemClick(item)"
+         (keydown.enter)="onItemClick(item)"
+         tabindex="0"
+         role="button">
+      <div class="image-wrapper">
+        <img [src]="item.image" [alt]="item.title" class="gallery-image" loading="lazy" />
+        <div class="image-overlay">
+          <span class="overlay-title" [innerHTML]="highlightMatch(item.title)"></span>
+          <span class="overlay-action">View</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-results" *ngIf="filteredItems.length === 0 && (searchTerm || selectedTitles.length > 0)">
+    <h5>No results found.</h5>
+  </div>
+</div>
+
+<app-movetotop></app-movetotop>

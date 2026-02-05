@@ -104,6 +104,9 @@ export class PersonalDetailComponent implements OnInit, OnDestroy {
       this.gallery = this.galleries[this.galleryId] || this.defaultGallery;
       this.randomizeLayout();
       
+      // Scroll to top on navigation
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
       // Update the second header with gallery title and description
       if (this.gallery) {
         this.headerService.setHeaderData(this.gallery.title, this.gallery.description);
